@@ -2,271 +2,129 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Casino with Jobs</title>
-    <style>
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-        }
-        .coin-display {
-            font-size: 1.2rem;
-            background: #2a2a2a;
-            padding: 10px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-        .coin-amount {
-            color: #ffd700;
-            font-weight: bold;
-        }
-        section {
-            background: #222;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            border: 1px solid #333;
-        }
-        button {
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-            transition: background 0.2s;
-        }
-        button:hover:not(:disabled) {
-            background-color: #555;
-        }
-        button:disabled {
-            background-color: #222;
-            color: #666;
-            cursor: not-allowed;
-            border: 1px dashed #444;
-        }
-        .job-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .job-btn {
-            flex: 1;
-            min-width: 140px;
-            text-align: center;
-            line-height: 1.4;
-        }
-        .job-status {
-            font-weight: bold;
-            color: #ff6b6b;
-            margin: 10px 0;
-            min-height: 24px;
-        }
-    </style>
+    <title>Free Casino</title>
 </head>
 <body>
 
     <h1>🎰 FREE CASINO</h1>
-    
-    <div class="coin-display">
-        所持コイン： <span id="coin-count" class="coin-amount">10000</span> 枚
-    </div>
 
-    <!-- 💼 新設：ジョブ機能セクション -->
-    <section id="job-section">
-        <h2>💼 ジョブ（働く）</h2>
-        <div id="job-status-text" class="job-status">💤 現在は働いていません</div>
-        
-        <div class="job-container">
-            <button class="job-btn" id="btn-job-1" onclick="startWork('🪰 蝿叩き', 10, 3)">
-                🪰 蝿叩き<br>
-                <small>(3秒 / 💰10枚)</small>
-            </button>
-            <button class="job-btn" id="btn-job-2" onclick="startWork('📦 倉庫整理', 100, 10)">
-                📦 倉庫整理<br>
-                <small>(10秒 / 💰100枚)</small>
-            </button>
-            <button class="job-btn" id="btn-job-3" onclick="startWork('💻 プログラミング', 500, 30)">
-                💻 プログラミング<br>
-                <small>(30秒 / 💰500枚)</small>
-            </button>
-        </div>
-    </section>
+    <p>所持コイン： <span id="coin-count">10000</span> 枚</p>
 
-    <!-- 🎰 スロット -->
-    <section>
-        <h2>🎰 スロット</h2>
-        <p>ベット 100</p>
-        <button onclick="playDummyGame('スロット', 100)">回す</button>
-        <p style="font-size: 1.5rem; letter-spacing: 10px; margin-top: 15px;">🍒 🍋 🔔</p>
-    </section>
+    <h2>🎰 スロット</h2>
+    <p>ベット 100</p>
+    <button>回す</button>
+    <p>🍒 🍋 🔔</p>
 
-    <!-- 🃏 ブラックジャック -->
-    <section>
-        <h2>🃏 ブラックジャック</h2>
-        <p>あなた：**-**（ 0）</p>
-        <p>ディーラー：**-**（ 0）</p>
-        <p>100</p>
-        <button onclick="playDummyGame('ブラックジャック', 100)">開始</button>
-        <button disabled>ヒット</button>
-        <button disabled>スタンド</button>
-    </section>
+    <h2>🃏 ブラックジャック</h2>
+    <p>あなた：**-**（ 0）</p>
+    <p>ディーラー：**-**（ 0）</p>
+    <p>100</p>
+    <button>開始</button>
+    <button disabled>ヒット</button>
+    <button disabled>スタンド</button>
 
-    <!-- 🎡 ルーレット -->
-    <section>
-        <h2>🎡 ルーレット</h2>
-        <p>100</p>
-        <button onclick="playDummyGame('ルーレット', 100)">赤</button>
-        <button onclick="playDummyGame('ルーレット', 100)">黒</button>
-        <button onclick="playDummyGame('ルーレット', 100)">0</button>
-        <p style="margin-top: 15px; font-size: 1.2rem;">?</p>
-    </section>
+    <h2>🎡 ルーレット</h2>
+    <p>100</p>
+    <button>赤</button>
+    <button>黒</button>
+    <button>0</button>
+    <p>?</p>
 
-    <!-- 🔢 Keno -->
-    <section>
-        <h2>🔢 Keno</h2>
-        <p>1〜20から5個選んでください。</p>
-        <p>100</p>
-        <button onclick="playDummyGame('Keno', 100)">抽選</button>
-    </section>
+    <h2>🔢 Keno</h2>
+    <p>1〜20から5個選んでください。</p>
+    <p>100</p>
+    <button>抽選</button>
 
-    <!-- 💣 Mines -->
-    <section>
-        <h2>💣 Mines</h2>
-        <p>爆弾を避けて開け続けるほど倍率アップ。10マス・3爆弾。</p>
-        <p>100</p>
-        <button onclick="playDummyGame('Mines', 100)">開始</button>
-        <button disabled>換金</button>
-    </section>
+    <h2>💣 Mines</h2>
+    <p>爆弾を避けて開け続けるほど倍率アップ。10マス・3爆弾。</p>
+    <p>100</p>
+    <button>開始</button>
+    <button disabled>換金</button>
 
-    <!-- 🎲 ダイス -->
-    <section>
-        <h2>🎲 ダイス</h2>
-        <p>100</p>
-        <button onclick="playDummyGame('ダイス', 100)">4〜6</button>
-        <button onclick="playDummyGame('ダイス', 100)">1〜3</button>
-        <p style="margin-top: 15px; font-size: 1.2rem;">?</p>
-    </section>
+    <h2>🎲 ダイス</h2>
+    <p>100</p>
+    <button>4〜6</button>
+    <button>1〜3</button>
+    <p>?</p>
 
-    <!-- 📜 履歴 -->
-    <section>
-        <h2>📜 履歴</h2>
-        <ul id="history-list" style="padding-left: 20px; color: #aaa;">
-            <li>まだありません。</li>
-        </ul>
-    </section>
+    <!-- 💼 追加したジョブ機能（元のプレーンなテキストUIに準拠） -->
+    <h2>💼 ジョブ</h2>
+    <div id="job-status">💤 現在は働いていません</div>
+    <button class="job-btn" onclick="startWork('🪰 蝿叩き', 10, 3)">🪰 蝿叩き (3秒/10枚)</button>
+    <button class="job-btn" onclick="startWork('📦 倉庫整理', 100, 10)">📦 倉庫整理 (10秒/100枚)</button>
+    <button class="job-btn" onclick="startWork('💻 プログラミング', 500, 30)">💻 プログラミング (30秒/500枚)</button>
+
+    <h2>📜 履歴</h2>
+    <ul id="history-list">
+        <li>まだありません。</li>
+    </ul>
 
     <!-- ⚙️ JavaScript ロジック -->
     <script>
-        // --- アプリ共通データ（グローバル変数） ---
+        // 所持コインのグローバル変数
         let coins = 10000;
-        let isWorking = false; // 連打・重複労働の防止フラグ
+        let isWorking = false; // 労働中の重複防止フラグ
 
-        // 画面のコイン表示を最新にする関数
+        // 画面のコイン表示を更新する関数
         function updateCoinDisplay() {
             document.getElementById('coin-count').innerText = coins;
         }
 
-        // --- 💼 ジョブ機能の処理ロジック ---
+        // ジョブの作動ロジック
         function startWork(jobName, reward, duration) {
-            // すでに働いている場合はボタンの処理を受け付けない
+            // すでに働いている場合は何もしない
             if (isWorking) return;
 
             isWorking = true;
             let timeLeft = duration;
 
-            // ジョブボタンをすべて無効化（労働中の連打禁止）
+            // 連打防止のため、一時的にすべてのジョブボタンを無効化
             const buttons = document.querySelectorAll('.job-btn');
             buttons.forEach(btn => btn.disabled = true);
 
-            // ステータステキストのカウントダウン開始
-            const statusText = document.getElementById('job-status-text');
-            statusText.innerText = `⏱️ ${jobName}中... あと ${timeLeft} 秒`;
+            // ステータス更新
+            const statusDiv = document.getElementById('job-status');
+            statusDiv.innerText = `⏱️ ${jobName}中... あと ${timeLeft} 秒`;
 
-            // 1秒ごとにカウントダウンを動かすタイマー
+            // カウントダウンタイマー
             const timer = setInterval(() => {
                 timeLeft--;
                 if (timeLeft > 0) {
-                    statusText.innerText = `⏱️ ${jobName}中... あと ${timeLeft} 秒`;
+                    statusDiv.innerText = `⏱️ ${jobName}中... あと ${timeLeft} 秒`;
                 } else {
-                    // カウントダウン終了時の処理
-                    clearInterval(timer); // タイマー停止
+                    clearInterval(timer); // タイマー終了
                     
-                    // コイン加算と画面更新
+                    // コインを増やして表示を更新
                     coins += reward;
                     updateCoinDisplay();
 
-                    // 履歴に労働結果を追加
-                    addHistory(`💼 ジョブ`, `【${jobName}】を完了して 💰+${reward}枚`);
+                    // 履歴に追加
+                    addHistory(`💼 ジョブ: 【${jobName}】を完了して ${reward} 枚獲得`);
 
-                    // 状態のリセット
-                    statusText.innerText = `💤 現在は働いていません`;
+                    // 状態を初期化
+                    statusDiv.innerText = `💤 現在は働いていません`;
                     isWorking = false;
-
-                    // ボタンのロックを解除
                     buttons.forEach(btn => btn.disabled = false);
 
-                    // 完了通知
-                    alert(`🎉 ${jobName} が完了しました！\n報酬として ${reward} 枚のコインを獲得しました！`);
+                    // 完了アラート
+                    alert(`${jobName} が完了しました！ ${reward} 枚のコインを稼ぎました。`);
                 }
             }, 1000);
         }
 
-        // --- 📜 履歴機能への追加ロジック ---
-        function addHistory(gameType, details) {
+        // 履歴追加用の簡易関数
+        function addHistory(text) {
             const historyList = document.getElementById('history-list');
             
-            // 最初の一件目の場合、デフォルトテキスト「まだありません。」を消去
+            // 初回追加時に「まだありません。」の文字を消す
             if (historyList.children.length === 1 && historyList.children[0].innerText === "まだありません。") {
                 historyList.innerHTML = "";
             }
 
-            // 新しい履歴行を作成して先頭に追加
-            const now = new Date();
-            const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
-            
             const li = document.createElement('li');
-            li.innerHTML = `<span style="color:#66ff66;">[${timeStr}]</span> <strong>${gameType}</strong>: ${details}`;
+            li.innerText = text;
+            // 新しい履歴を一番上（先頭）に挿入
             historyList.insertBefore(li, historyList.firstChild);
-        }
-
-        // --- 🎲 カジノのテスト用簡易関数 (動作検証用) ---
-        function playDummyGame(gameName, bet) {
-            if (coins < bet) {
-                alert("コインが足りません！ジョブで稼ぎましょう！");
-                return;
-            }
-            // ベット分を減らす
-            coins -= bet;
-            
-            // 勝敗を1/2の確率でシミュレート
-            const isWin = Math.random() > 0.5;
-            let resultText = "";
-            
-            if (isWin) {
-                const payout = bet * 2;
-                coins += payout;
-                resultText = `勝利！ 💰+${payout}枚`;
-                alert(`${gameName}で勝ちました！ 💰+${payout}枚`);
-            } else {
-                resultText = `敗北... 💸-${bet}枚`;
-                alert(`${gameName}で負けました... 💸-${bet}枚`);
-            }
-            
-            updateCoinDisplay();
-            addHistory(gameName, resultText);
         }
     </script>
 </body>
