@@ -3,59 +3,771 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Casino</title>
+
+  <title>FREE CASINO</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family:
+        "Segoe UI",
+        "Arial",
+        sans-serif;
+
+      color: #fff;
+
+      background:
+        radial-gradient(circle at 50% 0%, #18204a 0%, transparent 40%),
+        radial-gradient(circle at 0% 100%, #101b38 0%, transparent 35%),
+        #05070d;
+
+      overflow-x: hidden;
+    }
+
+    /* サイバーグリッド */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+
+      background-image:
+        linear-gradient(rgba(0, 229, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.045) 1px, transparent 1px);
+
+      background-size: 40px 40px;
+
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+      );
+
+      pointer-events: none;
+    }
+
+    /* ネオンライン */
+
+    body::after {
+      content: "";
+
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 2px;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #00eaff,
+        #8b5cff,
+        #00eaff,
+        transparent
+      );
+
+      box-shadow:
+        0 0 15px #00eaff,
+        0 0 30px #8b5cff;
+
+      pointer-events: none;
+    }
+
+    .container {
+      width: min(100% - 32px, 480px);
+      margin: auto;
+      padding: 45px 0;
+    }
+
+    /* ロゴ */
+
+    .logo {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .logo h1 {
+      font-size: 38px;
+      letter-spacing: 6px;
+
+      color: #fff;
+
+      text-shadow:
+        0 0 5px #00eaff,
+        0 0 15px #00eaff,
+        0 0 35px #006eff;
+    }
+
+    .logo p {
+      margin-top: 8px;
+
+      font-size: 11px;
+      letter-spacing: 5px;
+
+      color: #7befff;
+      opacity: 0.8;
+    }
+
+    /* カード */
+
+    .card {
+      position: relative;
+
+      padding: 28px;
+
+      border: 1px solid rgba(0, 234, 255, 0.35);
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(15, 25, 50, 0.92),
+          rgba(5, 9, 20, 0.92)
+        );
+
+      backdrop-filter: blur(15px);
+
+      box-shadow:
+        0 0 25px rgba(0, 234, 255, 0.08),
+        inset 0 0 30px rgba(0, 234, 255, 0.025);
+
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      left: 15%;
+
+      width: 70%;
+      height: 1px;
+
+      background: #00eaff;
+
+      box-shadow:
+        0 0 10px #00eaff,
+        0 0 25px #00eaff;
+    }
+
+    /* タブ */
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+
+      margin-bottom: 25px;
+
+      padding: 5px;
+
+      border-radius: 10px;
+
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .tab {
+      flex: 1;
+
+      padding: 12px;
+
+      border: none;
+      border-radius: 7px;
+
+      color: #6f849d;
+
+      background: transparent;
+
+      cursor: pointer;
+
+      font-weight: bold;
+      letter-spacing: 1px;
+
+      transition: 0.25s;
+    }
+
+    .tab.active {
+      color: #fff;
+
+      background: rgba(0, 234, 255, 0.12);
+
+      box-shadow:
+        0 0 12px rgba(0, 234, 255, 0.15);
+
+      text-shadow:
+        0 0 8px #00eaff;
+    }
+
+    /* フォーム */
+
+    .form {
+      display: none;
+    }
+
+    .form.active {
+      display: block;
+    }
+
+    .form h2 {
+      margin-bottom: 6px;
+
+      font-size: 23px;
+      letter-spacing: 2px;
+    }
+
+    .form-description {
+      margin-bottom: 24px;
+
+      font-size: 12px;
+
+      color: #71859f;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      font-size: 11px;
+
+      color: #6f9ab0;
+
+      letter-spacing: 1px;
+    }
+
+    input {
+      width: 100%;
+
+      padding: 14px 15px;
+
+      border: 1px solid rgba(0, 234, 255, 0.18);
+      border-radius: 9px;
+
+      outline: none;
+
+      color: #fff;
+
+      background: rgba(0, 0, 0, 0.35);
+
+      transition: 0.25s;
+    }
+
+    input::placeholder {
+      color: #44556d;
+    }
+
+    input:focus {
+      border-color: #00eaff;
+
+      box-shadow:
+        0 0 10px rgba(0, 234, 255, 0.2),
+        inset 0 0 10px rgba(0, 234, 255, 0.03);
+    }
+
+    /* ボタン */
+
+    .main-button {
+      width: 100%;
+
+      margin-top: 8px;
+      padding: 15px;
+
+      border: 1px solid #00eaff;
+      border-radius: 9px;
+
+      color: #fff;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0, 234, 255, 0.12),
+          rgba(92, 75, 255, 0.18)
+        );
+
+      cursor: pointer;
+
+      font-weight: bold;
+      letter-spacing: 2px;
+
+      box-shadow:
+        0 0 10px rgba(0, 234, 255, 0.12);
+
+      transition: 0.25s;
+    }
+
+    .main-button:hover {
+      transform: translateY(-2px);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0, 234, 255, 0.25),
+          rgba(92, 75, 255, 0.3)
+        );
+
+      box-shadow:
+        0 0 15px rgba(0, 234, 255, 0.4),
+        0 0 35px rgba(92, 75, 255, 0.15);
+    }
+
+    .main-button:active {
+      transform: scale(0.98);
+    }
+
+    /* メッセージ */
+
+    #message {
+      min-height: 22px;
+
+      margin-top: 18px;
+
+      text-align: center;
+
+      font-size: 12px;
+
+      color: #7befff;
+    }
+
+    /* アカウント */
+
+    #account {
+      display: none;
+    }
+
+    .account-header {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 25px;
+    }
+
+    .account-header h2 {
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      font-size: 10px;
+
+      color: #52ffb1;
+      letter-spacing: 1px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #52ffb1;
+
+      box-shadow:
+        0 0 8px #52ffb1;
+    }
+
+    /* ユーザー */
+
+    .user-box {
+      padding: 16px;
+
+      border: 1px solid rgba(139, 92, 255, 0.25);
+      border-radius: 12px;
+
+      background: rgba(139, 92, 255, 0.05);
+    }
+
+    .user-label {
+      font-size: 10px;
+
+      color: #71859f;
+
+      letter-spacing: 2px;
+    }
+
+    #username {
+      display: block;
+
+      margin-top: 5px;
+
+      font-size: 18px;
+      font-weight: bold;
+
+      color: #d8d3ff;
+
+      text-shadow:
+        0 0 10px rgba(139, 92, 255, 0.5);
+    }
+
+    /* コイン */
+
+    .coin-box {
+      position: relative;
+
+      margin-top: 15px;
+      padding: 25px;
+
+      text-align: center;
+
+      border: 1px solid rgba(0, 234, 255, 0.35);
+      border-radius: 14px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(0, 234, 255, 0.08),
+          transparent 70%
+        );
+    }
+
+    .coin-label {
+      font-size: 11px;
+
+      color: #6f9ab0;
+
+      letter-spacing: 3px;
+    }
+
+    .coin-value {
+      margin-top: 8px;
+
+      font-size: 40px;
+      font-weight: 800;
+
+      color: #fff;
+
+      text-shadow:
+        0 0 8px #00eaff,
+        0 0 20px rgba(0, 234, 255, 0.5);
+    }
+
+    .coin-unit {
+      font-size: 11px;
+
+      color: #00eaff;
+
+      letter-spacing: 3px;
+    }
+
+    /* ログアウト */
+
+    .logout {
+      margin-top: 20px;
+
+      border-color: rgba(255, 80, 130, 0.45);
+
+      color: #ff789e;
+
+      background: rgba(255, 50, 100, 0.04);
+
+      box-shadow: none;
+    }
+
+    .logout:hover {
+      border-color: #ff5080;
+
+      background: rgba(255, 50, 100, 0.1);
+
+      box-shadow:
+        0 0 15px rgba(255, 50, 100, 0.2);
+    }
+
+    /* フッター */
+
+    .footer {
+      margin-top: 25px;
+
+      text-align: center;
+
+      font-size: 9px;
+
+      color: #35445a;
+
+      letter-spacing: 2px;
+    }
+
+    /* スマホ */
+
+    @media (max-width: 480px) {
+
+      .container {
+        width: min(100% - 20px, 480px);
+
+        padding-top: 30px;
+      }
+
+      .logo h1 {
+        font-size: 30px;
+        letter-spacing: 4px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      .coin-value {
+        font-size: 34px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <h1>Free Casino</h1>
+  <main class="container">
 
-  <!-- 登録 -->
-  <section>
-    <h2>新規登録</h2>
+    <!-- ロゴ -->
 
-    <input id="signupUsername" type="text" placeholder="ユーザー名">
-    <input id="signupEmail" type="email" placeholder="メールアドレス">
-    <input id="signupPassword" type="password" placeholder="パスワード">
+    <div class="logo">
+      <h1>FREE CASINO</h1>
+      <p>NEON GAMING SYSTEM</p>
+    </div>
 
-    <button id="signupButton">登録</button>
-  </section>
 
-  <hr>
+    <!-- ログイン・登録 -->
 
-  <!-- ログイン -->
-  <section>
-    <h2>ログイン</h2>
+    <div id="authCard" class="card">
 
-    <input id="loginEmail" type="email" placeholder="メールアドレス">
-    <input id="loginPassword" type="password" placeholder="パスワード">
+      <div class="tabs">
 
-    <button id="loginButton">ログイン</button>
-  </section>
+        <button
+          id="loginTab"
+          class="tab active"
+        >
+          LOGIN
+        </button>
 
-  <hr>
+        <button
+          id="signupTab"
+          class="tab"
+        >
+          REGISTER
+        </button>
 
-  <!-- ログイン後 -->
-  <section id="account" style="display: none;">
-    <h2>アカウント</h2>
+      </div>
 
-    <p>ユーザー名：<span id="username"></span></p>
-    <p>💰 コイン：<span id="coins"></span></p>
 
-    <button id="logoutButton">ログアウト</button>
-  </section>
+      <!-- ログイン -->
 
-  <p id="message"></p>
+      <div
+        id="loginForm"
+        class="form active"
+      >
+
+        <h2>WELCOME BACK</h2>
+
+        <p class="form-description">
+          SYSTEM ACCESS // LOGIN
+        </p>
+
+        <div class="input-group">
+
+          <label>EMAIL ADDRESS</label>
+
+          <input
+            id="loginEmail"
+            type="email"
+            placeholder="example@email.com"
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>PASSWORD</label>
+
+          <input
+            id="loginPassword"
+            type="password"
+            placeholder="••••••••"
+          >
+
+        </div>
+
+
+        <button
+          id="loginButton"
+          class="main-button"
+        >
+          ENTER SYSTEM
+        </button>
+
+      </div>
+
+
+      <!-- 登録 -->
+
+      <div
+        id="signupForm"
+        class="form"
+      >
+
+        <h2>CREATE ACCOUNT</h2>
+
+        <p class="form-description">
+          SYSTEM REGISTRATION // NEW USER
+        </p>
+
+
+        <div class="input-group">
+
+          <label>USERNAME</label>
+
+          <input
+            id="signupUsername"
+            type="text"
+            placeholder="CyberUser"
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>EMAIL ADDRESS</label>
+
+          <input
+            id="signupEmail"
+            type="email"
+            placeholder="example@email.com"
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>PASSWORD</label>
+
+          <input
+            id="signupPassword"
+            type="password"
+            placeholder="••••••••"
+          >
+
+        </div>
+
+
+        <button
+          id="signupButton"
+          class="main-button"
+        >
+          INITIALIZE ACCOUNT
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- アカウント -->
+
+    <div
+      id="account"
+      class="card"
+    >
+
+      <div class="account-header">
+
+        <h2>ACCOUNT</h2>
+
+        <div class="status">
+
+          <span class="status-dot"></span>
+
+          ONLINE
+
+        </div>
+
+      </div>
+
+
+      <div class="user-box">
+
+        <span class="user-label">
+          USERNAME
+        </span>
+
+        <span id="username">
+          -
+        </span>
+
+      </div>
+
+
+      <div class="coin-box">
+
+        <div class="coin-label">
+          AVAILABLE BALANCE
+        </div>
+
+        <div
+          id="coins"
+          class="coin-value"
+        >
+          0
+        </div>
+
+        <div class="coin-unit">
+          COINS
+        </div>
+
+      </div>
+
+
+      <button
+        id="logoutButton"
+        class="main-button logout"
+      >
+        DISCONNECT
+      </button>
+
+    </div>
+
+
+    <p id="message"></p>
+
+
+    <div class="footer">
+      FREE CASINO // SECURE GAMING NETWORK
+    </div>
+
+  </main>
 
 
   <!-- Supabase -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
   <script>
-    const SUPABASE_URL = "https://nambmvqtpktwhwcethbi.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_YNmyLuQv9f8Kk5v5GVNPdA_Cyd_1432";
+
+    const SUPABASE_URL =
+      "https://nambmvqtpktwhwcethbi.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_YNmyLuQv9f8Kk5v5GVNPdA_Cyd_1432";
+
 
     const { createClient } = supabase;
+
 
     const client = createClient(
       SUPABASE_URL,
@@ -63,9 +775,61 @@
     );
 
 
-    // メッセージ表示
+    // =========================
+    // UI
+    // =========================
+
+    const loginTab =
+      document.getElementById("loginTab");
+
+    const signupTab =
+      document.getElementById("signupTab");
+
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const signupForm =
+      document.getElementById("signupForm");
+
+
+    loginTab.addEventListener(
+      "click",
+      () => {
+
+        loginTab.classList.add("active");
+        signupTab.classList.remove("active");
+
+        loginForm.classList.add("active");
+        signupForm.classList.remove("active");
+
+      }
+    );
+
+
+    signupTab.addEventListener(
+      "click",
+      () => {
+
+        signupTab.classList.add("active");
+        loginTab.classList.remove("active");
+
+        signupForm.classList.add("active");
+        loginForm.classList.remove("active");
+
+      }
+    );
+
+
+    // =========================
+    // メッセージ
+    // =========================
+
     function showMessage(message) {
-      document.getElementById("message").textContent = message;
+
+      document.getElementById(
+        "message"
+      ).textContent = message;
+
     }
 
 
@@ -73,75 +837,161 @@
     // 新規登録
     // =========================
 
-    document.getElementById("signupButton").addEventListener("click", async () => {
+    document
+      .getElementById("signupButton")
+      .addEventListener(
+        "click",
+        async () => {
 
-      const username =
-        document.getElementById("signupUsername").value.trim();
+          const username =
+            document
+              .getElementById("signupUsername")
+              .value
+              .trim();
 
-      const email =
-        document.getElementById("signupEmail").value.trim();
 
-      const password =
-        document.getElementById("signupPassword").value;
+          const email =
+            document
+              .getElementById("signupEmail")
+              .value
+              .trim();
 
-      if (!username || !email || !password) {
-        showMessage("すべて入力してください");
-        return;
-      }
 
-      const { data, error } = await client.auth.signUp({
-        email: email,
-        password: password,
-        options: {
-          data: {
-            username: username
+          const password =
+            document
+              .getElementById("signupPassword")
+              .value;
+
+
+          if (
+            !username ||
+            !email ||
+            !password
+          ) {
+
+            showMessage(
+              "ERROR // ALL FIELDS REQUIRED"
+            );
+
+            return;
+
           }
+
+
+          const {
+            data,
+            error
+          } =
+            await client.auth.signUp({
+
+              email: email,
+
+              password: password,
+
+              options: {
+
+                data: {
+
+                  username: username
+
+                }
+
+              }
+
+            });
+
+
+          if (error) {
+
+            showMessage(
+              "ERROR // " +
+              error.message
+            );
+
+            return;
+
+          }
+
+
+          showMessage(
+            "SYSTEM // ACCOUNT CREATED"
+          );
+
+
+          console.log(data);
+
         }
-      });
-
-      if (error) {
-        showMessage("登録エラー：" + error.message);
-        return;
-      }
-
-      showMessage("登録しました！");
-
-      console.log(data);
-    });
+      );
 
 
     // =========================
     // ログイン
     // =========================
 
-    document.getElementById("loginButton").addEventListener("click", async () => {
+    document
+      .getElementById("loginButton")
+      .addEventListener(
+        "click",
+        async () => {
 
-      const email =
-        document.getElementById("loginEmail").value.trim();
+          const email =
+            document
+              .getElementById("loginEmail")
+              .value
+              .trim();
 
-      const password =
-        document.getElementById("loginPassword").value;
 
-      if (!email || !password) {
-        showMessage("メールアドレスとパスワードを入力してください");
-        return;
-      }
+          const password =
+            document
+              .getElementById("loginPassword")
+              .value;
 
-      const { data, error } =
-        await client.auth.signInWithPassword({
-          email: email,
-          password: password
-        });
 
-      if (error) {
-        showMessage("ログインエラー：" + error.message);
-        return;
-      }
+          if (!email || !password) {
 
-      showMessage("ログインしました！");
+            showMessage(
+              "ERROR // EMAIL AND PASSWORD REQUIRED"
+            );
 
-      await loadProfile();
-    });
+            return;
+
+          }
+
+
+          const {
+            data,
+            error
+          } =
+            await client.auth.signInWithPassword({
+
+              email: email,
+
+              password: password
+
+            });
+
+
+          if (error) {
+
+            showMessage(
+              "ERROR // " +
+              error.message
+            );
+
+            return;
+
+          }
+
+
+          showMessage(
+            "SYSTEM // ACCESS GRANTED"
+          );
+
+
+          await loadProfile();
+
+        }
+      );
 
 
     // =========================
@@ -151,33 +1001,81 @@
     async function loadProfile() {
 
       const {
-        data: { user }
-      } = await client.auth.getUser();
+
+        data: {
+          user
+
+        }
+
+      } =
+        await client.auth.getUser();
+
 
       if (!user) {
+
         return;
+
       }
 
-      const { data: profile, error } =
+
+      const {
+
+        data: profile,
+
+        error
+
+      } =
         await client
           .from("profiles")
-          .select("username, coins")
-          .eq("id", user.id)
+          .select(
+            "username, coins"
+          )
+          .eq(
+            "id",
+            user.id
+          )
           .single();
 
+
       if (error) {
-        showMessage("プロフィール取得エラー：" + error.message);
+
+        showMessage(
+          "ERROR // PROFILE LOAD FAILED"
+        );
+
         console.error(error);
+
         return;
+
       }
 
-      document.getElementById("username").textContent =
-        profile.username || "未設定";
 
-      document.getElementById("coins").textContent =
-        Number(profile.coins).toLocaleString();
+      document.getElementById(
+        "username"
+      ).textContent =
+        profile.username ||
+        "UNKNOWN";
 
-      document.getElementById("account").style.display = "block";
+
+      document.getElementById(
+        "coins"
+      ).textContent =
+        Number(
+          profile.coins
+        ).toLocaleString();
+
+
+      document.getElementById(
+        "authCard"
+      ).style.display =
+        "none";
+
+
+      document.getElementById(
+        "account"
+      ).style.display =
+        "block";
+
     }
 
 
@@ -185,35 +1083,74 @@
     // ログアウト
     // =========================
 
-    document.getElementById("logoutButton").addEventListener("click", async () => {
+    document
+      .getElementById("logoutButton")
+      .addEventListener(
+        "click",
+        async () => {
 
-      const { error } = await client.auth.signOut();
+          const {
+            error
+          } =
+            await client.auth.signOut();
 
-      if (error) {
-        showMessage("ログアウトエラー：" + error.message);
-        return;
-      }
 
-      document.getElementById("account").style.display = "none";
+          if (error) {
 
-      showMessage("ログアウトしました");
-    });
+            showMessage(
+              "ERROR // LOGOUT FAILED"
+            );
+
+            return;
+
+          }
+
+
+          document.getElementById(
+            "account"
+          ).style.display =
+            "none";
+
+
+          document.getElementById(
+            "authCard"
+          ).style.display =
+            "block";
+
+
+          showMessage(
+            "SYSTEM // DISCONNECTED"
+          );
+
+        }
+      );
 
 
     // =========================
-    // ページを開いたとき
+    // 起動時ログイン確認
     // =========================
 
     async function checkLogin() {
 
       const {
-        data: { session }
-      } = await client.auth.getSession();
+
+        data: {
+          session
+
+        }
+
+      } =
+        await client.auth.getSession();
+
 
       if (session) {
+
         await loadProfile();
+
       }
+
     }
+
 
     checkLogin();
 
