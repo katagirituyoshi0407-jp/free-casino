@@ -1,83 +1,223 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Free Casino</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#0b1020;color:#fff}
-header{padding:18px;text-align:center;background:#111a33;border-bottom:1px solid #293557;position:sticky;top:0;z-index:2}
-h1{margin:0 0 6px;font-size:24px}.coins{font-weight:700;color:#ffd54a}
-main{max-width:900px;margin:auto;padding:18px}.games{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-button{border:0;border-radius:12px;padding:13px 16px;background:#24345f;color:#fff;font-weight:700;cursor:pointer}
-button:hover{filter:brightness(1.15)}button.active{background:#7656d6}
-.card{background:#121b35;border:1px solid #293557;border-radius:18px;padding:18px;margin-top:16px}
-.hidden{display:none}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-input{width:130px;padding:11px;border-radius:10px;border:1px solid #42527a;background:#0d1428;color:#fff}
-.msg{min-height:28px;margin-top:14px;font-weight:700}.grid{display:grid;gap:8px}
-.slot{grid-template-columns:repeat(3,1fr);max-width:420px;margin:18px auto}
-.reel{background:#080d1b;border:1px solid #39486e;border-radius:12px;padding:25px 5px;text-align:center;font-size:42px}
-.board{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:500px;margin:18px auto}
-.mine{aspect-ratio:1;border-radius:10px;padding:0;font-size:20px;background:#263760}
-.mine.open{background:#18233e}.mine.hit{background:#8d3041}
-.roulette{font-size:48px;text-align:center;padding:20px}.history{font-size:13px;color:#b8c3dd;max-height:180px;overflow:auto}
-@media(max-width:650px){.games{grid-template-columns:repeat(2,1fr)}main{padding:12px}.reel{font-size:32px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Casino</title>
 </head>
+
 <body>
-<header><h1>🎰 FREE CASINO</h1><div>所持コイン：<span class="coins" id="coins">10000</span> 枚</div></header>
-<main>
-<div class="games" id="gameMenu">
-<button data-game="slot">🎰 スロット</button><button data-game="blackjack">🃏 ブラックジャック</button>
-<button data-game="rouletteGame">🎡 ルーレット</button><button data-game="keno">🔢 Keno</button>
-<button data-game="mines">💣 Mines</button><button data-game="dice">🎲 ダイス</button>
-</div>
 
-<section class="card" id="slot"><h2>🎰 スロット</h2><div class="row"><label>ベット <input id="slotBet" type="number" min="1" value="100"></label><button onclick="spin()">回す</button></div><div class="grid slot"><div class="reel" id="s1">🍒</div><div class="reel" id="s2">🍋</div><div class="reel" id="s3">🔔</div></div><div class="msg" id="slotMsg"></div></section>
+  <h1>Free Casino</h1>
 
-<section class="card hidden" id="blackjack"><h2>🃏 ブラックジャック</h2><div>あなた：<b id="playerCards">-</b>（<span id="playerTotal">0</span>）</div><div>ディーラー：<b id="dealerCards">-</b>（<span id="dealerTotal">0</span>）</div><div class="row" style="margin-top:12px"><input id="bjBet" type="number" min="1" value="100"><button onclick="startBJ()">開始</button><button id="hitBtn" onclick="hit()" disabled>ヒット</button><button id="standBtn" onclick="stand()" disabled>スタンド</button></div><div class="msg" id="bjMsg"></div></section>
+  <!-- 登録 -->
+  <section>
+    <h2>新規登録</h2>
 
-<section class="card hidden" id="rouletteGame"><h2>🎡 ルーレット</h2><div class="row"><input id="rouletteBet" type="number" min="1" value="100"><button onclick="roulette('red')">赤</button><button onclick="roulette('black')">黒</button><button onclick="roulette('green')">0</button></div><div class="roulette" id="rouletteResult">?</div><div class="msg" id="rouletteMsg"></div></section>
+    <input id="signupUsername" type="text" placeholder="ユーザー名">
+    <input id="signupEmail" type="email" placeholder="メールアドレス">
+    <input id="signupPassword" type="password" placeholder="パスワード">
 
-<section class="card hidden" id="keno"><h2>🔢 Keno</h2><p>1〜20から5個選んでください。</p><div class="board" id="kenoBoard"></div><div class="row"><input id="kenoBet" type="number" min="1" value="100"><button onclick="playKeno()">抽選</button></div><div class="msg" id="kenoMsg"></div></section>
+    <button id="signupButton">登録</button>
+  </section>
 
-<section class="card hidden" id="mines"><h2>💣 Mines</h2><p>爆弾を避けて開け続けるほど倍率アップ。10マス・3爆弾。</p><div class="row"><input id="minesBet" type="number" min="1" value="100"><button onclick="startMines()">開始</button><button onclick="cashout()">換金</button></div><div class="board" id="mineBoard"></div><div class="msg" id="minesMsg"></div></section>
+  <hr>
 
-<section class="card hidden" id="dice"><h2>🎲 ダイス</h2><div class="row"><input id="diceBet" type="number" min="1" value="100"><button onclick="playDice('high')">4〜6</button><button onclick="playDice('low')">1〜3</button></div><div class="roulette" id="diceResult">?</div><div class="msg" id="diceMsg"></div></section>
+  <!-- ログイン -->
+  <section>
+    <h2>ログイン</h2>
 
-<section class="card"><h2>📜 履歴</h2><div class="history" id="history">まだありません。</div></section>
-</main>
-<script>
-let coins=10000, history=[];
-const $=id=>document.getElementById(id);
-function update(){ $('coins').textContent=coins.toLocaleString(); localStorage.setItem('coins',coins); $('history').innerHTML=history.slice(-30).reverse().map(x=>`<div>${x}</div>`).join('')||'まだありません。';}
-function bet(id){let n=Number($(id).value); if(!Number.isInteger(n)||n<1||n>coins){alert('ベット額が不正です。');return null} coins-=n;update();return n}
-function result(msg){history.push(msg);update()}
-document.querySelectorAll('#gameMenu button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('section.card').forEach(s=>s.classList.add('hidden'));document.getElementById(b.dataset.game).classList.remove('hidden')}));
-const symbols=['🍒','🍋','🔔','⭐','7️⃣'];
-function spin(){let b=bet('slotBet');if(!b)return;let a=[0,0,0].map(()=>Math.floor(Math.random()*symbols.length));['s1','s2','s3'].forEach((x,i)=>$(x).textContent=symbols[a[i]]);let win=0;if(a[0]===a[1]&&a[1]===a[2])win=b*5;else if(a[0]===a[1]||a[1]===a[2]||a[0]===a[2])win=b*2;coins+=win;$('slotMsg').textContent=win?`🎉 +${win}枚！`:'ハズレ';result(`スロット：${win?'+':''}${win}枚`)}
-let deck,player=[],dealer=[],bjActive=false;
-function card(){return Math.floor(Math.random()*13)+1}
-function total(a){let s=a.reduce((x,c)=>x+(c>10?10:c),0),aces=a.filter(c=>c===1).length;while(aces&&s+10<=21){s+=10;aces--}return s}
-function fmt(a){return a.map(c=>c===1?'A':c>10?['J','Q','K'][c-11]:c).join(' ')}
-function draw(a){a.push(card())}
-function startBJ(){let b=bet('bjBet');if(!b)return;deck=b;player=[];dealer=[];draw(player);draw(dealer);draw(player);draw(dealer);bjActive=true;renderBJ();$('hitBtn').disabled=false;$('standBtn').disabled=false;$('bjMsg').textContent='';if(total(player)===21)stand()}
-function renderBJ(){ $('playerCards').textContent=fmt(player);$('playerTotal').textContent=total(player);$('dealerCards').textContent=fmt(dealer);$('dealerTotal').textContent=total(dealer)}
-function finishBJ(msg,pay=0){bjActive=false;coins+=pay;renderBJ();$('bjMsg').textContent=msg;result(`ブラックジャック：${msg}`);$('hitBtn').disabled=true;$('standBtn').disabled=true}
-function hit(){if(!bjActive)return;draw(player);renderBJ();if(total(player)>21)finishBJ('バースト、負け')}
-function stand(){if(!bjActive)return;while(total(dealer)<17)draw(dealer);let p=total(player),d=total(dealer);if(p>21)finishBJ('負け');else if(d>21||p>d)finishBJ(`勝ち +${deck*2}枚`,deck*2);else if(p===d)finishBJ(`引き分け +${deck}枚`,deck);else finishBJ('負け')}
-function roulette(c){let b=bet('rouletteBet');if(!b)return;let n=Math.floor(Math.random()*37),color=n===0?'green':(n%2?'red':'black');$('rouletteResult').textContent=n;let win=color===c?(c==='green'?b*35:b*2):0;coins+=win;$('rouletteMsg').textContent=win?`🎉 +${win}枚！`:'ハズレ';result(`ルーレット：${n} ${color} ${win?'+':''}${win}枚`)}
-let selected=new Set();
-function initKeno(){let box=$('kenoBoard');for(let i=1;i<=20;i++){let b=document.createElement('button');b.textContent=i;b.onclick=()=>{if(selected.has(i)){selected.delete(i);b.classList.remove('active')}else if(selected.size<5){selected.add(i);b.classList.add('active')}};box.appendChild(b)}}
-function playKeno(){if(selected.size!==5){alert('5個選択してください');return}let b=bet('kenoBet');if(!b)return;let nums=[...Array(20)].map((_,i)=>i+1).sort(()=>Math.random()-.5).slice(0,5),hits=nums.filter(x=>selected.has(x)).length;let mult=[0,0,0,1,5,20][hits],win=b*mult;coins+=win;$('kenoMsg').textContent=`当選：${nums.join(', ')} / ${hits}個一致 ${win?`+${win}枚`:'ハズレ'}`;result(`Keno：${hits}個一致 ${win?'+':''}${win}枚`)}
-let mineState=null;
-function startMines(){let b=bet('minesBet');if(!b)return;let arr=Array(10).fill(false);let ids=[...Array(10)].map((_,i)=>i).sort(()=>Math.random()-.5).slice(0,3);ids.forEach(i=>arr[i]=true);mineState={bet:b,mines:arr,opened:new Set(),mult:1,over:false};renderMines()}
-function renderMines(){let box=$('mineBoard');box.innerHTML='';for(let i=0;i<10;i++){let b=document.createElement('button');b.className='mine';b.textContent=mineState?.opened.has(i)?(mineState.mines[i]?'💣':'💎'):'?';if(mineState?.opened.has(i)&&mineState.mines[i])b.classList.add('hit');b.onclick=()=>openMine(i);box.appendChild(b)}}
-function openMine(i){if(!mineState||mineState.over||mineState.opened.has(i))return;mineState.opened.add(i);if(mineState.mines[i]){mineState.over=true;$('minesMsg').textContent='💥 爆発！ベットを失いました';result('Mines：爆発 -'+mineState.bet+'枚')}else{mineState.mult*=1.35;$('minesMsg').textContent=`安全！現在の換金額 ${Math.floor(mineState.bet*mineState.mult)}枚`; }renderMines();update()}
-function cashout(){if(!mineState||mineState.over||mineState.opened.size===0)return;let win=Math.floor(mineState.bet*mineState.mult);coins+=win;mineState.over=true;$('minesMsg').textContent=`💰 ${win}枚を獲得！`;result(`Mines：換金 +${win}枚`);update();renderMines()}
-function playDice(c){let b=bet('diceBet');if(!b)return;let n=Math.floor(Math.random()*6)+1,win=((c==='high'&&n>=4)||(c==='low'&&n<=3))?b*2:0;coins+=win;$('diceResult').textContent=n;$('diceMsg').textContent=win?`🎉 +${win}枚！`:'ハズレ';result(`ダイス：${n} ${win?'+':''}${win}枚`)}
-coins=Number(localStorage.getItem('coins'))||10000;initKeno();update();
-window.addEventListener('error',e=>{console.error(e.error||e.message);});
-</script>
+    <input id="loginEmail" type="email" placeholder="メールアドレス">
+    <input id="loginPassword" type="password" placeholder="パスワード">
+
+    <button id="loginButton">ログイン</button>
+  </section>
+
+  <hr>
+
+  <!-- ログイン後 -->
+  <section id="account" style="display: none;">
+    <h2>アカウント</h2>
+
+    <p>ユーザー名：<span id="username"></span></p>
+    <p>💰 コイン：<span id="coins"></span></p>
+
+    <button id="logoutButton">ログアウト</button>
+  </section>
+
+  <p id="message"></p>
+
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL = "https://nambmvqtpktwhwcethbi.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_YNmyLuQv9f8Kk5v5GVNPdA_Cyd_1432";
+
+    const { createClient } = supabase;
+
+    const client = createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+    // メッセージ表示
+    function showMessage(message) {
+      document.getElementById("message").textContent = message;
+    }
+
+
+    // =========================
+    // 新規登録
+    // =========================
+
+    document.getElementById("signupButton").addEventListener("click", async () => {
+
+      const username =
+        document.getElementById("signupUsername").value.trim();
+
+      const email =
+        document.getElementById("signupEmail").value.trim();
+
+      const password =
+        document.getElementById("signupPassword").value;
+
+      if (!username || !email || !password) {
+        showMessage("すべて入力してください");
+        return;
+      }
+
+      const { data, error } = await client.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+          data: {
+            username: username
+          }
+        }
+      });
+
+      if (error) {
+        showMessage("登録エラー：" + error.message);
+        return;
+      }
+
+      showMessage("登録しました！");
+
+      console.log(data);
+    });
+
+
+    // =========================
+    // ログイン
+    // =========================
+
+    document.getElementById("loginButton").addEventListener("click", async () => {
+
+      const email =
+        document.getElementById("loginEmail").value.trim();
+
+      const password =
+        document.getElementById("loginPassword").value;
+
+      if (!email || !password) {
+        showMessage("メールアドレスとパスワードを入力してください");
+        return;
+      }
+
+      const { data, error } =
+        await client.auth.signInWithPassword({
+          email: email,
+          password: password
+        });
+
+      if (error) {
+        showMessage("ログインエラー：" + error.message);
+        return;
+      }
+
+      showMessage("ログインしました！");
+
+      await loadProfile();
+    });
+
+
+    // =========================
+    // プロフィール取得
+    // =========================
+
+    async function loadProfile() {
+
+      const {
+        data: { user }
+      } = await client.auth.getUser();
+
+      if (!user) {
+        return;
+      }
+
+      const { data: profile, error } =
+        await client
+          .from("profiles")
+          .select("username, coins")
+          .eq("id", user.id)
+          .single();
+
+      if (error) {
+        showMessage("プロフィール取得エラー：" + error.message);
+        console.error(error);
+        return;
+      }
+
+      document.getElementById("username").textContent =
+        profile.username || "未設定";
+
+      document.getElementById("coins").textContent =
+        Number(profile.coins).toLocaleString();
+
+      document.getElementById("account").style.display = "block";
+    }
+
+
+    // =========================
+    // ログアウト
+    // =========================
+
+    document.getElementById("logoutButton").addEventListener("click", async () => {
+
+      const { error } = await client.auth.signOut();
+
+      if (error) {
+        showMessage("ログアウトエラー：" + error.message);
+        return;
+      }
+
+      document.getElementById("account").style.display = "none";
+
+      showMessage("ログアウトしました");
+    });
+
+
+    // =========================
+    // ページを開いたとき
+    // =========================
+
+    async function checkLogin() {
+
+      const {
+        data: { session }
+      } = await client.auth.getSession();
+
+      if (session) {
+        await loadProfile();
+      }
+    }
+
+    checkLogin();
+
+  </script>
+
 </body>
 </html>
