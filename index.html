@@ -66,5 +66,6 @@ window.matureFixed=async id=>{const r=await bankRpc('bank_mature_fixed',{p_id:Nu
 $('logout').onclick=async()=>{await client.auth.signOut();user=null;setCoins(0);setBank(0);$('account').style.display='none';$('auth').style.display='block';message('SYSTEM // DISCONNECTED')};async function check(){const{data:{session}}=await client.auth.getSession();if(session)await loadProfile()}check();
 </script>
 <script src="./bank.js"></script>
+<script src="./progression.js"></script>
 </body>
 </html>
