@@ -1,1160 +1,2553 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>FREE CASINO</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family:
-        "Segoe UI",
-        "Arial",
-        sans-serif;
-
-      color: #fff;
-
-      background:
-        radial-gradient(circle at 50% 0%, #18204a 0%, transparent 40%),
-        radial-gradient(circle at 0% 100%, #101b38 0%, transparent 35%),
-        #05070d;
-
-      overflow-x: hidden;
-    }
-
-    /* サイバーグリッド */
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-
-      background-image:
-        linear-gradient(rgba(0, 229, 255, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 229, 255, 0.045) 1px, transparent 1px);
-
-      background-size: 40px 40px;
-
-      mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent 90%
-      );
-
-      pointer-events: none;
-    }
-
-    /* ネオンライン */
-
-    body::after {
-      content: "";
-
-      position: fixed;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 2px;
-
-      background: linear-gradient(
-        90deg,
-        transparent,
-        #00eaff,
-        #8b5cff,
-        #00eaff,
-        transparent
-      );
-
-      box-shadow:
-        0 0 15px #00eaff,
-        0 0 30px #8b5cff;
-
-      pointer-events: none;
-    }
-
-    .container {
-      width: min(100% - 32px, 480px);
-      margin: auto;
-      padding: 45px 0;
-    }
-
-    /* ロゴ */
-
-    .logo {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .logo h1 {
-      font-size: 38px;
-      letter-spacing: 6px;
-
-      color: #fff;
-
-      text-shadow:
-        0 0 5px #00eaff,
-        0 0 15px #00eaff,
-        0 0 35px #006eff;
-    }
-
-    .logo p {
-      margin-top: 8px;
-
-      font-size: 11px;
-      letter-spacing: 5px;
-
-      color: #7befff;
-      opacity: 0.8;
-    }
-
-    /* カード */
-
-    .card {
-      position: relative;
-
-      padding: 28px;
-
-      border: 1px solid rgba(0, 234, 255, 0.35);
-      border-radius: 18px;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(15, 25, 50, 0.92),
-          rgba(5, 9, 20, 0.92)
-        );
-
-      backdrop-filter: blur(15px);
-
-      box-shadow:
-        0 0 25px rgba(0, 234, 255, 0.08),
-        inset 0 0 30px rgba(0, 234, 255, 0.025);
-
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-
-      position: absolute;
-      top: 0;
-      left: 15%;
-
-      width: 70%;
-      height: 1px;
-
-      background: #00eaff;
-
-      box-shadow:
-        0 0 10px #00eaff,
-        0 0 25px #00eaff;
-    }
-
-    /* タブ */
-
-    .tabs {
-      display: flex;
-      gap: 8px;
-
-      margin-bottom: 25px;
-
-      padding: 5px;
-
-      border-radius: 10px;
-
-      background: rgba(0, 0, 0, 0.3);
-    }
-
-    .tab {
-      flex: 1;
-
-      padding: 12px;
-
-      border: none;
-      border-radius: 7px;
-
-      color: #6f849d;
-
-      background: transparent;
-
-      cursor: pointer;
-
-      font-weight: bold;
-      letter-spacing: 1px;
-
-      transition: 0.25s;
-    }
-
-    .tab.active {
-      color: #fff;
-
-      background: rgba(0, 234, 255, 0.12);
-
-      box-shadow:
-        0 0 12px rgba(0, 234, 255, 0.15);
-
-      text-shadow:
-        0 0 8px #00eaff;
-    }
-
-    /* フォーム */
-
-    .form {
-      display: none;
-    }
-
-    .form.active {
-      display: block;
-    }
-
-    .form h2 {
-      margin-bottom: 6px;
-
-      font-size: 23px;
-      letter-spacing: 2px;
-    }
-
-    .form-description {
-      margin-bottom: 24px;
-
-      font-size: 12px;
-
-      color: #71859f;
-    }
-
-    .input-group {
-      margin-bottom: 15px;
-    }
-
-    .input-group label {
-      display: block;
-
-      margin-bottom: 7px;
-
-      font-size: 11px;
-
-      color: #6f9ab0;
-
-      letter-spacing: 1px;
-    }
-
-    input {
-      width: 100%;
-
-      padding: 14px 15px;
-
-      border: 1px solid rgba(0, 234, 255, 0.18);
-      border-radius: 9px;
-
-      outline: none;
-
-      color: #fff;
-
-      background: rgba(0, 0, 0, 0.35);
-
-      transition: 0.25s;
-    }
-
-    input::placeholder {
-      color: #44556d;
-    }
-
-    input:focus {
-      border-color: #00eaff;
-
-      box-shadow:
-        0 0 10px rgba(0, 234, 255, 0.2),
-        inset 0 0 10px rgba(0, 234, 255, 0.03);
-    }
-
-    /* ボタン */
-
-    .main-button {
-      width: 100%;
-
-      margin-top: 8px;
-      padding: 15px;
-
-      border: 1px solid #00eaff;
-      border-radius: 9px;
-
-      color: #fff;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0, 234, 255, 0.12),
-          rgba(92, 75, 255, 0.18)
-        );
-
-      cursor: pointer;
-
-      font-weight: bold;
-      letter-spacing: 2px;
-
-      box-shadow:
-        0 0 10px rgba(0, 234, 255, 0.12);
-
-      transition: 0.25s;
-    }
-
-    .main-button:hover {
-      transform: translateY(-2px);
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0, 234, 255, 0.25),
-          rgba(92, 75, 255, 0.3)
-        );
-
-      box-shadow:
-        0 0 15px rgba(0, 234, 255, 0.4),
-        0 0 35px rgba(92, 75, 255, 0.15);
-    }
-
-    .main-button:active {
-      transform: scale(0.98);
-    }
-
-    /* メッセージ */
-
-    #message {
-      min-height: 22px;
-
-      margin-top: 18px;
-
-      text-align: center;
-
-      font-size: 12px;
-
-      color: #7befff;
-    }
-
-    /* アカウント */
-
-    #account {
-      display: none;
-    }
-
-    .account-header {
-      display: flex;
-
-      justify-content: space-between;
-      align-items: center;
-
-      margin-bottom: 25px;
-    }
-
-    .account-header h2 {
-      font-size: 20px;
-      letter-spacing: 2px;
-    }
-
-    .status {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-
-      font-size: 10px;
-
-      color: #52ffb1;
-      letter-spacing: 1px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: #52ffb1;
-
-      box-shadow:
-        0 0 8px #52ffb1;
-    }
-
-    /* ユーザー */
-
-    .user-box {
-      padding: 16px;
-
-      border: 1px solid rgba(139, 92, 255, 0.25);
-      border-radius: 12px;
-
-      background: rgba(139, 92, 255, 0.05);
-    }
-
-    .user-label {
-      font-size: 10px;
-
-      color: #71859f;
-
-      letter-spacing: 2px;
-    }
-
-    #username {
-      display: block;
-
-      margin-top: 5px;
-
-      font-size: 18px;
-      font-weight: bold;
-
-      color: #d8d3ff;
-
-      text-shadow:
-        0 0 10px rgba(139, 92, 255, 0.5);
-    }
-
-    /* コイン */
-
-    .coin-box {
-      position: relative;
-
-      margin-top: 15px;
-      padding: 25px;
-
-      text-align: center;
-
-      border: 1px solid rgba(0, 234, 255, 0.35);
-      border-radius: 14px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(0, 234, 255, 0.08),
-          transparent 70%
-        );
-    }
-
-    .coin-label {
-      font-size: 11px;
-
-      color: #6f9ab0;
-
-      letter-spacing: 3px;
-    }
-
-    .coin-value {
-      margin-top: 8px;
-
-      font-size: 40px;
-      font-weight: 800;
-
-      color: #fff;
-
-      text-shadow:
-        0 0 8px #00eaff,
-        0 0 20px rgba(0, 234, 255, 0.5);
-    }
-
-    .coin-unit {
-      font-size: 11px;
-
-      color: #00eaff;
-
-      letter-spacing: 3px;
-    }
-
-    /* ログアウト */
-
-    .logout {
-      margin-top: 20px;
-
-      border-color: rgba(255, 80, 130, 0.45);
-
-      color: #ff789e;
-
-      background: rgba(255, 50, 100, 0.04);
-
-      box-shadow: none;
-    }
-
-    .logout:hover {
-      border-color: #ff5080;
-
-      background: rgba(255, 50, 100, 0.1);
-
-      box-shadow:
-        0 0 15px rgba(255, 50, 100, 0.2);
-    }
-
-    /* フッター */
-
-    .footer {
-      margin-top: 25px;
-
-      text-align: center;
-
-      font-size: 9px;
-
-      color: #35445a;
-
-      letter-spacing: 2px;
-    }
-
-    /* スマホ */
-
-    @media (max-width: 480px) {
-
-      .container {
-        width: min(100% - 20px, 480px);
-
-        padding-top: 30px;
-      }
-
-      .logo h1 {
-        font-size: 30px;
-        letter-spacing: 4px;
-      }
-
-      .card {
-        padding: 22px;
-      }
-
-      .coin-value {
-        font-size: 34px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FREE CASINO</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  color:#fff;
+  font-family:"Segoe UI",Arial,sans-serif;
+  background:
+    radial-gradient(circle at 50% 0%,#18204a 0%,transparent 40%),
+    radial-gradient(circle at 0% 100%,#101b38 0%,transparent 35%),
+    #05070d;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(0,229,255,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,.045) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:linear-gradient(to bottom,black,transparent 90%);
+  pointer-events:none;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:2px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    #00eaff,
+    #8b5cff,
+    #00eaff,
+    transparent
+  );
+  box-shadow:0 0 15px #00eaff,0 0 30px #8b5cff;
+  pointer-events:none;
+}
+
+.container{
+  width:min(100% - 20px,520px);
+  margin:auto;
+  padding:35px 0 50px;
+}
+
+.logo{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.logo h1{
+  font-size:36px;
+  letter-spacing:6px;
+  text-shadow:
+    0 0 5px #00eaff,
+    0 0 15px #00eaff,
+    0 0 35px #006eff;
+}
+
+.logo p{
+  margin-top:8px;
+  font-size:10px;
+  letter-spacing:5px;
+  color:#7befff;
+}
+
+.card,
+.game-panel{
+  position:relative;
+  padding:25px;
+  border:1px solid rgba(0,234,255,.3);
+  border-radius:18px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15,25,50,.94),
+      rgba(5,9,20,.94)
+    );
+  backdrop-filter:blur(15px);
+  box-shadow:
+    0 0 25px rgba(0,234,255,.07),
+    inset 0 0 30px rgba(0,234,255,.025);
+}
+
+.card::before,
+.game-panel::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:15%;
+  width:70%;
+  height:1px;
+  background:#00eaff;
+  box-shadow:0 0 10px #00eaff,0 0 25px #00eaff;
+}
+
+.tabs{
+  display:flex;
+  gap:7px;
+  margin-bottom:25px;
+  padding:5px;
+  border-radius:10px;
+  background:rgba(0,0,0,.3);
+}
+
+.tab{
+  flex:1;
+  padding:12px;
+  border:0;
+  border-radius:7px;
+  color:#71859f;
+  background:transparent;
+  cursor:pointer;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+.tab.active{
+  color:#fff;
+  background:rgba(0,234,255,.12);
+  box-shadow:0 0 12px rgba(0,234,255,.15);
+}
+
+.form{display:none}
+.form.active{display:block}
+
+.form h2{
+  font-size:22px;
+  letter-spacing:2px;
+}
+
+.form-description{
+  margin:6px 0 22px;
+  color:#71859f;
+  font-size:11px;
+}
+
+.input-group{
+  margin-bottom:14px;
+}
+
+.input-group label{
+  display:block;
+  margin-bottom:6px;
+  color:#6f9ab0;
+  font-size:10px;
+  letter-spacing:1px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border:1px solid rgba(0,234,255,.18);
+  border-radius:9px;
+  outline:none;
+  color:#fff;
+  background:rgba(0,0,0,.35);
+}
+
+input:focus{
+  border-color:#00eaff;
+  box-shadow:0 0 10px rgba(0,234,255,.2);
+}
+
+.main-button,
+.casino-button{
+  width:100%;
+  padding:14px;
+  border:1px solid #00eaff;
+  border-radius:9px;
+  color:#fff;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,234,255,.12),
+      rgba(92,75,255,.18)
+    );
+  cursor:pointer;
+  font-weight:bold;
+  letter-spacing:2px;
+  transition:.2s;
+}
+
+.main-button:hover,
+.casino-button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 18px rgba(0,234,255,.3);
+}
+
+#message{
+  min-height:22px;
+  margin:15px 0;
+  text-align:center;
+  color:#7befff;
+  font-size:11px;
+}
+
+#account{
+  display:none;
+}
+
+.account-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.account-header h2{
+  font-size:19px;
+  letter-spacing:2px;
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#52ffb1;
+  font-size:10px;
+}
+
+.status-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#52ffb1;
+  box-shadow:0 0 8px #52ffb1;
+}
+
+.user-box{
+  padding:15px;
+  border:1px solid rgba(139,92,255,.25);
+  border-radius:12px;
+  background:rgba(139,92,255,.05);
+}
+
+.user-label{
+  display:block;
+  color:#71859f;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+#username{
+  display:block;
+  margin-top:5px;
+  color:#d8d3ff;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.coin-box{
+  margin-top:14px;
+  padding:20px;
+  text-align:center;
+  border:1px solid rgba(0,234,255,.35);
+  border-radius:14px;
+  background:radial-gradient(
+    circle,
+    rgba(0,234,255,.08),
+    transparent 70%
+  );
+}
+
+.coin-label{
+  color:#6f9ab0;
+  font-size:10px;
+  letter-spacing:3px;
+}
+
+.coin-value{
+  margin-top:5px;
+  font-size:36px;
+  font-weight:800;
+  text-shadow:0 0 8px #00eaff,0 0 20px rgba(0,234,255,.5);
+}
+
+.coin-unit{
+  color:#00eaff;
+  font-size:10px;
+  letter-spacing:3px;
+}
+
+.logout{
+  margin-top:15px;
+  border-color:rgba(255,80,130,.45);
+  color:#ff789e;
+  background:rgba(255,50,100,.04);
+}
+
+/* =========================
+   CASINO
+========================= */
+
+#casino{
+  display:none;
+  margin-top:20px;
+}
+
+.game-tabs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin-bottom:12px;
+}
+
+.game-tab{
+  padding:10px 3px;
+  border:1px solid rgba(0,234,255,.15);
+  border-radius:8px;
+  color:#63788f;
+  background:#070c16;
+  cursor:pointer;
+  font-size:9px;
+  font-weight:bold;
+}
+
+.game-tab.active{
+  color:#fff;
+  border-color:#00eaff;
+  background:rgba(0,234,255,.12);
+  box-shadow:0 0 12px rgba(0,234,255,.2);
+}
+
+.game-panel{
+  display:none;
+}
+
+.game-panel.active{
+  display:block;
+}
+
+.game-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.game-title .icon{
+  font-size:30px;
+  filter:drop-shadow(0 0 8px #00eaff);
+}
+
+.game-title h2{
+  font-size:18px;
+  letter-spacing:2px;
+}
+
+.game-title p{
+  margin-top:3px;
+  color:#61758d;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+.bet-area{
+  margin:15px 0;
+}
+
+.bet-label{
+  margin-bottom:7px;
+  color:#657c94;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+.bet-controls{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+}
+
+.bet-controls button{
+  width:36px;
+  height:36px;
+  border:1px solid rgba(0,234,255,.3);
+  border-radius:8px;
+  color:#00eaff;
+  background:rgba(0,234,255,.05);
+  cursor:pointer;
+  font-size:20px;
+}
+
+.bet-controls span{
+  min-width:80px;
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.game-result{
+  min-height:24px;
+  margin:13px 0;
+  text-align:center;
+  color:#7befff;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.secondary{
+  margin-top:7px;
+  border-color:rgba(139,92,255,.5);
+}
+
+.paytable{
+  margin-top:20px;
+  padding-top:15px;
+  border-top:1px solid rgba(0,234,255,.1);
+}
+
+.paytable h3{
+  margin-bottom:8px;
+  color:#60758c;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+.pay-row{
+  display:flex;
+  justify-content:space-between;
+  padding:7px 0;
+  border-bottom:1px solid rgba(255,255,255,.035);
+  color:#8294a9;
+  font-size:11px;
+}
+
+.pay-row strong{
+  color:#00eaff;
+}
+
+/* SLOTS */
+
+.slot-machine{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  padding:9px;
+  border:1px solid rgba(0,234,255,.2);
+  border-radius:13px;
+  background:#03060d;
+}
+
+.slot-reel{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:90px;
+  border:1px solid rgba(139,92,255,.25);
+  border-radius:9px;
+  background:linear-gradient(#10172c,#050813);
+  font-size:40px;
+  text-shadow:0 0 12px #00eaff;
+}
+
+/* BLACKJACK */
+
+.blackjack-table{
+  padding:15px;
+  border:1px solid rgba(0,234,255,.2);
+  border-radius:13px;
+  background:radial-gradient(circle,rgba(0,100,80,.2),#04080d);
+}
+
+.card-label{
+  margin-bottom:8px;
+  color:#617890;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+.dealer{
+  margin-bottom:18px;
+}
+
+.playing-cards{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  min-height:55px;
+}
+
+.playing-card{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:42px;
+  height:58px;
+  border-radius:6px;
+  color:#111;
+  background:#f3f5f7;
+  font-weight:bold;
+}
+
+.score{
+  margin-top:6px;
+  color:#00eaff;
+  font-size:11px;
+}
+
+.bj-buttons{
+  margin-top:10px;
+}
+
+/* MINES */
+
+.mines-info{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+  margin-bottom:13px;
+}
+
+.mines-info div{
+  padding:9px;
+  text-align:center;
+  border:1px solid rgba(0,234,255,.12);
+  border-radius:7px;
+  color:#5f748c;
+  font-size:8px;
+}
+
+.mines-info strong{
+  display:block;
+  margin-top:3px;
+  color:#00eaff;
+  font-size:13px;
+}
+
+.mine-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:6px;
+}
+
+.mine-tile{
+  aspect-ratio:1;
+  border:1px solid rgba(0,234,255,.15);
+  border-radius:7px;
+  color:#00eaff;
+  background:#080e1c;
+  cursor:pointer;
+  font-size:19px;
+}
+
+.mine-tile.safe{
+  border-color:#52ffb1;
+  background:rgba(82,255,177,.1);
+}
+
+.mine-tile.mine{
+  border-color:#ff507d;
+  background:rgba(255,50,100,.15);
+}
+
+/* KENO */
+
+.keno-grid{
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  gap:5px;
+}
+
+.keno-number{
+  aspect-ratio:1;
+  border:1px solid rgba(0,234,255,.13);
+  border-radius:6px;
+  color:#688096;
+  background:#070c18;
+  cursor:pointer;
+  font-size:10px;
+}
+
+.keno-number.selected{
+  color:#fff;
+  border-color:#00eaff;
+  background:rgba(0,234,255,.18);
+}
+
+.keno-number.drawn{
+  color:#52ffb1;
+  border-color:#52ffb1;
+}
+
+.keno-selected{
+  margin:12px 0;
+  text-align:center;
+  color:#647b92;
+  font-size:10px;
+}
+
+.keno-selected strong{
+  color:#00eaff;
+  font-size:17px;
+}
+
+.footer{
+  margin-top:20px;
+  text-align:center;
+  color:#35445a;
+  font-size:8px;
+  letter-spacing:2px;
+}
+
+@media(max-width:480px){
+  .logo h1{
+    font-size:29px;
+    letter-spacing:4px;
+  }
+
+  .card,
+  .game-panel{
+    padding:20px;
+  }
+
+  .game-tabs{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .slot-reel{
+    height:75px;
+    font-size:32px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <main class="container">
+<main class="container">
 
-    <!-- ロゴ -->
-
-    <div class="logo">
-      <h1>FREE CASINO</h1>
-      <p>NEON GAMING SYSTEM</p>
-    </div>
+<div class="logo">
+  <h1>FREE CASINO</h1>
+  <p>NEON GAMING SYSTEM</p>
+</div>
 
 
-    <!-- ログイン・登録 -->
+<!-- =========================
+     AUTH
+========================= -->
 
-    <div id="authCard" class="card">
+<div id="authCard" class="card">
 
-      <div class="tabs">
+  <div class="tabs">
 
-        <button
-          id="loginTab"
-          class="tab active"
-        >
-          LOGIN
-        </button>
+    <button id="loginTab" class="tab active">
+      LOGIN
+    </button>
 
-        <button
-          id="signupTab"
-          class="tab"
-        >
-          REGISTER
-        </button>
+    <button id="signupTab" class="tab">
+      REGISTER
+    </button>
 
-      </div>
+  </div>
 
 
-      <!-- ログイン -->
+  <!-- LOGIN -->
 
-      <div
-        id="loginForm"
-        class="form active"
+  <div id="loginForm" class="form active">
+
+    <h2>WELCOME BACK</h2>
+
+    <p class="form-description">
+      SYSTEM ACCESS // LOGIN
+    </p>
+
+    <div class="input-group">
+
+      <label>EMAIL ADDRESS</label>
+
+      <input
+        id="loginEmail"
+        type="email"
+        placeholder="example@email.com"
       >
-
-        <h2>WELCOME BACK</h2>
-
-        <p class="form-description">
-          SYSTEM ACCESS // LOGIN
-        </p>
-
-        <div class="input-group">
-
-          <label>EMAIL ADDRESS</label>
-
-          <input
-            id="loginEmail"
-            type="email"
-            placeholder="example@email.com"
-          >
-
-        </div>
-
-
-        <div class="input-group">
-
-          <label>PASSWORD</label>
-
-          <input
-            id="loginPassword"
-            type="password"
-            placeholder="••••••••"
-          >
-
-        </div>
-
-
-        <button
-          id="loginButton"
-          class="main-button"
-        >
-          ENTER SYSTEM
-        </button>
-
-      </div>
-
-
-      <!-- 登録 -->
-
-      <div
-        id="signupForm"
-        class="form"
-      >
-
-        <h2>CREATE ACCOUNT</h2>
-
-        <p class="form-description">
-          SYSTEM REGISTRATION // NEW USER
-        </p>
-
-
-        <div class="input-group">
-
-          <label>USERNAME</label>
-
-          <input
-            id="signupUsername"
-            type="text"
-            placeholder="CyberUser"
-          >
-
-        </div>
-
-
-        <div class="input-group">
-
-          <label>EMAIL ADDRESS</label>
-
-          <input
-            id="signupEmail"
-            type="email"
-            placeholder="example@email.com"
-          >
-
-        </div>
-
-
-        <div class="input-group">
-
-          <label>PASSWORD</label>
-
-          <input
-            id="signupPassword"
-            type="password"
-            placeholder="••••••••"
-          >
-
-        </div>
-
-
-        <button
-          id="signupButton"
-          class="main-button"
-        >
-          INITIALIZE ACCOUNT
-        </button>
-
-      </div>
 
     </div>
 
+    <div class="input-group">
 
-    <!-- アカウント -->
+      <label>PASSWORD</label>
 
-    <div
-      id="account"
-      class="card"
-    >
+      <input
+        id="loginPassword"
+        type="password"
+        placeholder="••••••••"
+      >
 
-      <div class="account-header">
+    </div>
 
-        <h2>ACCOUNT</h2>
+    <button id="loginButton" class="main-button">
+      ENTER SYSTEM
+    </button>
 
-        <div class="status">
+  </div>
 
-          <span class="status-dot"></span>
 
-          ONLINE
+  <!-- REGISTER -->
 
-        </div>
+  <div id="signupForm" class="form">
 
+    <h2>CREATE ACCOUNT</h2>
+
+    <p class="form-description">
+      SYSTEM REGISTRATION // NEW USER
+    </p>
+
+    <div class="input-group">
+
+      <label>USERNAME</label>
+
+      <input
+        id="signupUsername"
+        type="text"
+        placeholder="CyberUser"
+      >
+
+    </div>
+
+    <div class="input-group">
+
+      <label>EMAIL ADDRESS</label>
+
+      <input
+        id="signupEmail"
+        type="email"
+        placeholder="example@email.com"
+      >
+
+    </div>
+
+    <div class="input-group">
+
+      <label>PASSWORD</label>
+
+      <input
+        id="signupPassword"
+        type="password"
+        placeholder="••••••••"
+      >
+
+    </div>
+
+    <button id="signupButton" class="main-button">
+      INITIALIZE ACCOUNT
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     ACCOUNT
+========================= -->
+
+<div id="account" class="card">
+
+  <div class="account-header">
+
+    <h2>ACCOUNT</h2>
+
+    <div class="status">
+
+      <span class="status-dot"></span>
+
+      ONLINE
+
+    </div>
+
+  </div>
+
+
+  <div class="user-box">
+
+    <span class="user-label">
+      USERNAME
+    </span>
+
+    <span id="username">
+      -
+    </span>
+
+  </div>
+
+
+  <div class="coin-box">
+
+    <div class="coin-label">
+      AVAILABLE BALANCE
+    </div>
+
+    <div id="coins" class="coin-value">
+      0
+    </div>
+
+    <div class="coin-unit">
+      COINS
+    </div>
+
+  </div>
+
+
+  <button id="logoutButton" class="main-button logout">
+    DISCONNECT
+  </button>
+
+</div>
+
+
+<!-- =========================
+     CASINO
+========================= -->
+
+<div id="casino">
+
+  <div class="game-tabs">
+
+    <button class="game-tab active" data-game="slots">
+      🎰 SLOTS
+    </button>
+
+    <button class="game-tab" data-game="blackjack">
+      🃏 BLACKJACK
+    </button>
+
+    <button class="game-tab" data-game="mines">
+      💣 MINES
+    </button>
+
+    <button class="game-tab" data-game="keno">
+      🎯 KENO
+    </button>
+
+  </div>
+
+
+  <!-- =========================
+       SLOTS
+  ========================= -->
+
+  <section id="slots" class="game-panel active">
+
+    <div class="game-title">
+
+      <span class="icon">🎰</span>
+
+      <div>
+        <h2>CYBER SLOTS</h2>
+        <p>NEON REELS // 3 REEL</p>
       </div>
 
+    </div>
 
-      <div class="user-box">
 
-        <span class="user-label">
-          USERNAME
+    <div class="slot-machine">
+
+      <div id="slot1" class="slot-reel">
+        7️⃣
+      </div>
+
+      <div id="slot2" class="slot-reel">
+        7️⃣
+      </div>
+
+      <div id="slot3" class="slot-reel">
+        7️⃣
+      </div>
+
+    </div>
+
+
+    <div id="slotResult" class="game-result">
+      READY
+    </div>
+
+
+    <div class="bet-area">
+
+      <div class="bet-label">
+        BET
+      </div>
+
+      <div class="bet-controls">
+
+        <button onclick="changeBet('slots',-100)">
+          −
+        </button>
+
+        <span id="slotsBet">
+          100
         </span>
 
-        <span id="username">
-          -
+        <button onclick="changeBet('slots',100)">
+          ＋
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <button class="casino-button" onclick="spinSlots()">
+      SPIN
+    </button>
+
+
+    <div class="paytable">
+
+      <h3>PAY TABLE</h3>
+
+      <div class="pay-row">
+        <span>7️⃣ 7️⃣ 7️⃣</span>
+        <strong>x50</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>💎 💎 💎</span>
+        <strong>x20</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>🔔 🔔 🔔</span>
+        <strong>x10</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>🍋 🍋 🍋</span>
+        <strong>x5</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>同じ絵柄 ×2</span>
+        <strong>x2</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       BLACKJACK
+  ========================= -->
+
+  <section id="blackjack" class="game-panel">
+
+    <div class="game-title">
+
+      <span class="icon">🃏</span>
+
+      <div>
+        <h2>BLACKJACK</h2>
+        <p>21 // CARD SYSTEM</p>
+      </div>
+
+    </div>
+
+
+    <div class="blackjack-table">
+
+      <div class="dealer">
+
+        <div class="card-label">
+          DEALER
+        </div>
+
+        <div id="dealerCards" class="playing-cards"></div>
+
+        <div id="dealerScore" class="score">
+          SCORE: -
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <div class="card-label">
+          PLAYER
+        </div>
+
+        <div id="playerCards" class="playing-cards"></div>
+
+        <div id="playerScore" class="score">
+          SCORE: -
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="blackjackResult" class="game-result">
+      READY
+    </div>
+
+
+    <div class="bet-area">
+
+      <div class="bet-label">
+        BET
+      </div>
+
+      <div class="bet-controls">
+
+        <button onclick="changeBet('blackjack',-100)">
+          −
+        </button>
+
+        <span id="blackjackBet">
+          100
         </span>
 
-      </div>
-
-
-      <div class="coin-box">
-
-        <div class="coin-label">
-          AVAILABLE BALANCE
-        </div>
-
-        <div
-          id="coins"
-          class="coin-value"
-        >
-          0
-        </div>
-
-        <div class="coin-unit">
-          COINS
-        </div>
+        <button onclick="changeBet('blackjack',100)">
+          ＋
+        </button>
 
       </div>
 
+    </div>
+
+
+    <div class="bj-buttons">
 
       <button
-        id="logoutButton"
-        class="main-button logout"
+        id="dealButton"
+        class="casino-button"
+        onclick="startBlackjack()"
       >
-        DISCONNECT
+        DEAL
+      </button>
+
+      <button
+        id="hitButton"
+        class="casino-button secondary"
+        onclick="hitBlackjack()"
+        disabled
+      >
+        HIT
+      </button>
+
+      <button
+        id="standButton"
+        class="casino-button secondary"
+        onclick="standBlackjack()"
+        disabled
+      >
+        STAND
       </button>
 
     </div>
 
 
-    <p id="message"></p>
+    <div class="paytable">
 
+      <h3>PAY TABLE</h3>
 
-    <div class="footer">
-      FREE CASINO // SECURE GAMING NETWORK
+      <div class="pay-row">
+        <span>BLACKJACK</span>
+        <strong>x2.5</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>WIN</span>
+        <strong>x2</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>PUSH</span>
+        <strong>x1</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>LOSE</span>
+        <strong>x0</strong>
+      </div>
+
     </div>
 
-  </main>
+  </section>
 
 
-  <!-- Supabase -->
+  <!-- =========================
+       MINES
+  ========================= -->
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <section id="mines" class="game-panel">
+
+    <div class="game-title">
+
+      <span class="icon">💣</span>
+
+      <div>
+        <h2>MINES</h2>
+        <p>GRID // RISK SYSTEM</p>
+      </div>
+
+    </div>
 
 
-  <script>
+    <div class="mines-info">
 
-    const SUPABASE_URL =
-      "https://nambmvqtpktwhwcethbi.supabase.co";
+      <div>
+        BET
+        <strong id="minesBet">
+          100
+        </strong>
+      </div>
 
-    const SUPABASE_KEY =
-      "sb_publishable_YNmyLuQv9f8Kk5v5GVNPdA_Cyd_1432";
+      <div>
+        MINES
+        <strong>
+          3
+        </strong>
+      </div>
+
+      <div>
+        MULTIPLIER
+        <strong id="mineMultiplier">
+          1.00x
+        </strong>
+      </div>
+
+    </div>
 
 
-    const { createClient } = supabase;
+    <div id="mineGrid" class="mine-grid"></div>
 
 
-    const client = createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
+    <div id="minesResult" class="game-result">
+      PRESS START
+    </div>
+
+
+    <div class="bet-controls">
+
+      <button onclick="changeBet('mines',-100)">
+        −
+      </button>
+
+      <span id="minesBetControl">
+        100
+      </span>
+
+      <button onclick="changeBet('mines',100)">
+        ＋
+      </button>
+
+    </div>
+
+
+    <button class="casino-button" onclick="startMines()">
+      START
+    </button>
+
+    <button class="casino-button secondary" onclick="cashoutMines()">
+      CASH OUT
+    </button>
+
+
+    <div class="paytable">
+
+      <h3>MINES PAY TABLE</h3>
+
+      <div class="pay-row">
+        <span>SAFE ×1</span>
+        <strong>x1.12</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>SAFE ×3</span>
+        <strong>x1.40</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>SAFE ×5</span>
+        <strong>x2.00</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>SAFE ×8</span>
+        <strong>x4.00</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       KENO
+  ========================= -->
+
+  <section id="keno" class="game-panel">
+
+    <div class="game-title">
+
+      <span class="icon">🎯</span>
+
+      <div>
+        <h2>KENO</h2>
+        <p>NUMBER // DRAW SYSTEM</p>
+      </div>
+
+    </div>
+
+
+    <div id="kenoGrid" class="keno-grid"></div>
+
+
+    <div class="keno-selected">
+
+      SELECTED:
+
+      <strong id="kenoSelected">
+        0
+      </strong>
+
+      / 10
+
+    </div>
+
+
+    <div class="bet-controls">
+
+      <button onclick="changeBet('keno',-100)">
+        −
+      </button>
+
+      <span id="kenoBet">
+        100
+      </span>
+
+      <button onclick="changeBet('keno',100)">
+        ＋
+      </button>
+
+    </div>
+
+
+    <button class="casino-button" onclick="playKeno()">
+      DRAW NUMBERS
+    </button>
+
+
+    <div id="kenoResult" class="game-result">
+      SELECT 10 NUMBERS
+    </div>
+
+
+    <div class="paytable">
+
+      <h3>KENO PAY TABLE</h3>
+
+      <div class="pay-row">
+        <span>10 / 10</span>
+        <strong>x1000</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>9 / 10</span>
+        <strong>x100</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>8 / 10</span>
+        <strong>x20</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>7 / 10</span>
+        <strong>x10</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>6 / 10</span>
+        <strong>x5</strong>
+      </div>
+
+      <div class="pay-row">
+        <span>5 / 10</span>
+        <strong>x2</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<p id="message"></p>
+
+<div class="footer">
+  FREE CASINO // SECURE GAMING NETWORK
+</div>
+
+</main>
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+/* =========================
+   SUPABASE
+========================= */
+
+const SUPABASE_URL =
+  "https://nambmvqtpktwhwcethbi.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_YNmyLuQv9f8Kk5v5GVNPdA_Cyd_1432";
+
+const {createClient}=supabase;
+
+const client=createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let balance=0;
+
+const bets={
+  slots:100,
+  blackjack:100,
+  mines:100,
+  keno:100
+};
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(text){
+  document.getElementById("message").textContent=text;
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+document.getElementById("loginTab").onclick=()=>{
+
+  document.getElementById("loginTab")
+    .classList.add("active");
+
+  document.getElementById("signupTab")
+    .classList.remove("active");
+
+  document.getElementById("loginForm")
+    .classList.add("active");
+
+  document.getElementById("signupForm")
+    .classList.remove("active");
+
+};
+
+
+document.getElementById("signupTab").onclick=()=>{
+
+  document.getElementById("signupTab")
+    .classList.add("active");
+
+  document.getElementById("loginTab")
+    .classList.remove("active");
+
+  document.getElementById("signupForm")
+    .classList.add("active");
+
+  document.getElementById("loginForm")
+    .classList.remove("active");
+
+};
+
+
+/* =========================
+   REGISTER
+========================= */
+
+document.getElementById("signupButton").onclick=async()=>{
+
+  const username=
+    document.getElementById("signupUsername")
+      .value.trim();
+
+  const email=
+    document.getElementById("signupEmail")
+      .value.trim();
+
+  const password=
+    document.getElementById("signupPassword")
+      .value;
+
+
+  if(!username||!email||!password){
+
+    showMessage(
+      "ERROR // ALL FIELDS REQUIRED"
     );
 
+    return;
 
-    // =========================
-    // UI
-    // =========================
-
-    const loginTab =
-      document.getElementById("loginTab");
-
-    const signupTab =
-      document.getElementById("signupTab");
-
-    const loginForm =
-      document.getElementById("loginForm");
-
-    const signupForm =
-      document.getElementById("signupForm");
+  }
 
 
-    loginTab.addEventListener(
-      "click",
-      () => {
+  const {data,error}=
+    await client.auth.signUp({
 
-        loginTab.classList.add("active");
-        signupTab.classList.remove("active");
+      email,
+      password,
 
-        loginForm.classList.add("active");
-        signupForm.classList.remove("active");
-
+      options:{
+        data:{
+          username
+        }
       }
+
+    });
+
+
+  if(error){
+
+    showMessage(
+      "ERROR // "+error.message
     );
 
+    return;
 
-    signupTab.addEventListener(
-      "click",
-      () => {
+  }
 
-        signupTab.classList.add("active");
-        loginTab.classList.remove("active");
 
-        signupForm.classList.add("active");
-        loginForm.classList.remove("active");
+  showMessage(
+    "SYSTEM // ACCOUNT CREATED"
+  );
 
-      }
+};
+
+
+/* =========================
+   LOGIN
+========================= */
+
+document.getElementById("loginButton").onclick=async()=>{
+
+  const email=
+    document.getElementById("loginEmail")
+      .value.trim();
+
+  const password=
+    document.getElementById("loginPassword")
+      .value;
+
+
+  if(!email||!password){
+
+    showMessage(
+      "ERROR // EMAIL AND PASSWORD REQUIRED"
     );
 
+    return;
 
-    // =========================
-    // メッセージ
-    // =========================
+  }
 
-    function showMessage(message) {
 
-      document.getElementById(
-        "message"
-      ).textContent = message;
+  const {data,error}=
+    await client.auth.signInWithPassword({
+
+      email,
+      password
+
+    });
+
+
+  if(error){
+
+    showMessage(
+      "ERROR // "+error.message
+    );
+
+    return;
+
+  }
+
+
+  showMessage(
+    "SYSTEM // ACCESS GRANTED"
+  );
+
+
+  await loadProfile();
+
+};
+
+
+/* =========================
+   PROFILE
+========================= */
+
+async function loadProfile(){
+
+  const {
+    data:{user}
+  }=
+    await client.auth.getUser();
+
+
+  if(!user)return;
+
+
+  const {
+    data:profile,
+    error
+  }=
+    await client
+      .from("profiles")
+      .select("username,coins")
+      .eq("id",user.id)
+      .single();
+
+
+  if(error){
+
+    console.error(error);
+
+    showMessage(
+      "ERROR // PROFILE LOAD FAILED"
+    );
+
+    return;
+
+  }
+
+
+  document.getElementById("username")
+    .textContent=
+      profile.username||"UNKNOWN";
+
+
+  balance=
+    Number(profile.coins)||0;
+
+
+  updateBalance();
+
+
+  document.getElementById("authCard")
+    .style.display="none";
+
+
+  document.getElementById("account")
+    .style.display="block";
+
+
+  document.getElementById("casino")
+    .style.display="block";
+
+}
+
+
+/* =========================
+   BALANCE
+========================= */
+
+function updateBalance(){
+
+  document.getElementById("coins")
+    .textContent=
+      balance.toLocaleString();
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+document.getElementById("logoutButton").onclick=async()=>{
+
+  const {error}=
+    await client.auth.signOut();
+
+
+  if(error){
+
+    showMessage(
+      "ERROR // LOGOUT FAILED"
+    );
+
+    return;
+
+  }
+
+
+  document.getElementById("account")
+    .style.display="none";
+
+  document.getElementById("casino")
+    .style.display="none";
+
+  document.getElementById("authCard")
+    .style.display="block";
+
+
+  showMessage(
+    "SYSTEM // DISCONNECTED"
+  );
+
+};
+
+
+/* =========================
+   GAME TABS
+========================= */
+
+document.querySelectorAll(".game-tab")
+.forEach(button=>{
+
+  button.onclick=()=>{
+
+    document.querySelectorAll(".game-tab")
+    .forEach(b=>b.classList.remove("active"));
+
+    document.querySelectorAll(".game-panel")
+    .forEach(p=>p.classList.remove("active"));
+
+
+    button.classList.add("active");
+
+    document.getElementById(
+      button.dataset.game
+    ).classList.add("active");
+
+  };
+
+});
+
+
+/* =========================
+   BET
+========================= */
+
+function changeBet(game,value){
+
+  bets[game]+=value;
+
+
+  if(bets[game]<100)
+    bets[game]=100;
+
+
+  if(bets[game]>10000)
+    bets[game]=10000;
+
+
+  const id=
+    game==="mines"
+      ?"minesBetControl"
+      :game+"Bet";
+
+
+  document.getElementById(id)
+    .textContent=
+      bets[game].toLocaleString();
+
+
+  if(game==="mines"){
+
+    document.getElementById("minesBet")
+      .textContent=
+        bets[game].toLocaleString();
+
+  }
+
+}
+
+
+/* =========================
+   SLOTS
+========================= */
+
+function spinSlots(){
+
+  const bet=bets.slots;
+
+
+  if(balance<bet){
+
+    document.getElementById("slotResult")
+      .textContent=
+        "NOT ENOUGH COINS";
+
+    return;
+
+  }
+
+
+  balance-=bet;
+
+
+  const symbols=[
+    "🍋",
+    "🔔",
+    "💎",
+    "7️⃣"
+  ];
+
+
+  const result=[
+    symbols[Math.floor(Math.random()*4)],
+    symbols[Math.floor(Math.random()*4)],
+    symbols[Math.floor(Math.random()*4)]
+  ];
+
+
+  document.getElementById("slot1")
+    .textContent=result[0];
+
+  document.getElementById("slot2")
+    .textContent=result[1];
+
+  document.getElementById("slot3")
+    .textContent=result[2];
+
+
+  let multiplier=0;
+
+
+  if(
+    result[0]==="7️⃣"&&
+    result[1]==="7️⃣"&&
+    result[2]==="7️⃣"
+  ){
+    multiplier=50;
+  }
+
+  else if(
+    result.every(x=>x==="💎")
+  ){
+    multiplier=20;
+  }
+
+  else if(
+    result.every(x=>x==="🔔")
+  ){
+    multiplier=10;
+  }
+
+  else if(
+    result.every(x=>x==="🍋")
+  ){
+    multiplier=5;
+  }
+
+  else if(
+    result[0]===result[1]||
+    result[1]===result[2]||
+    result[0]===result[2]
+  ){
+    multiplier=2;
+  }
+
+
+  const payout=bet*multiplier;
+
+  balance+=payout;
+
+
+  document.getElementById("slotResult")
+    .textContent=
+      multiplier
+      ? "WIN // +"+payout.toLocaleString()+" COINS"
+      : "LOSE // -"+bet.toLocaleString();
+
+
+  updateBalance();
+
+}
+
+
+/* =========================
+   BLACKJACK
+========================= */
+
+let deck=[];
+let playerHand=[];
+let dealerHand=[];
+let blackjackActive=false;
+
+
+function createDeck(){
+
+  const suits=["♠","♥","♦","♣"];
+
+  const ranks=[
+    "A","2","3","4","5","6","7",
+    "8","9","10","J","Q","K"
+  ];
+
+  const newDeck=[];
+
+
+  for(const suit of suits){
+
+    for(const rank of ranks){
+
+      newDeck.push({
+        suit,
+        rank
+      });
 
     }
 
+  }
 
-    // =========================
-    // 新規登録
-    // =========================
 
-    document
-      .getElementById("signupButton")
-      .addEventListener(
-        "click",
-        async () => {
+  return newDeck.sort(
+    ()=>Math.random()-.5
+  );
 
-          const username =
-            document
-              .getElementById("signupUsername")
-              .value
-              .trim();
+}
 
 
-          const email =
-            document
-              .getElementById("signupEmail")
-              .value
-              .trim();
+function handValue(hand){
 
+  let total=0;
+  let aces=0;
 
-          const password =
-            document
-              .getElementById("signupPassword")
-              .value;
 
+  hand.forEach(card=>{
 
-          if (
-            !username ||
-            !email ||
-            !password
-          ) {
+    if(card.rank==="A"){
 
-            showMessage(
-              "ERROR // ALL FIELDS REQUIRED"
-            );
+      total+=11;
+      aces++;
 
-            return;
+    }
 
-          }
+    else if(
+      ["J","Q","K"].includes(card.rank)
+    ){
 
+      total+=10;
 
-          const {
-            data,
-            error
-          } =
-            await client.auth.signUp({
+    }
 
-              email: email,
+    else{
 
-              password: password,
+      total+=Number(card.rank);
 
-              options: {
+    }
 
-                data: {
+  });
 
-                  username: username
 
-                }
+  while(total>21&&aces){
 
-              }
+    total-=10;
+    aces--;
 
-            });
+  }
 
 
-          if (error) {
+  return total;
 
-            showMessage(
-              "ERROR // " +
-              error.message
-            );
+}
 
-            return;
 
-          }
+function renderBlackjack(){
 
+  const player=
+    document.getElementById("playerCards");
 
-          showMessage(
-            "SYSTEM // ACCOUNT CREATED"
-          );
+  const dealer=
+    document.getElementById("dealerCards");
 
 
-          console.log(data);
+  player.innerHTML="";
+  dealer.innerHTML="";
 
-        }
-      );
 
+  playerHand.forEach(card=>{
 
-    // =========================
-    // ログイン
-    // =========================
+    const div=document.createElement("div");
 
-    document
-      .getElementById("loginButton")
-      .addEventListener(
-        "click",
-        async () => {
+    div.className="playing-card";
 
-          const email =
-            document
-              .getElementById("loginEmail")
-              .value
-              .trim();
+    div.textContent=
+      card.rank+card.suit;
 
+    player.appendChild(div);
 
-          const password =
-            document
-              .getElementById("loginPassword")
-              .value;
+  });
 
 
-          if (!email || !password) {
+  dealerHand.forEach(card=>{
 
-            showMessage(
-              "ERROR // EMAIL AND PASSWORD REQUIRED"
-            );
+    const div=document.createElement("div");
 
-            return;
+    div.className="playing-card";
 
-          }
+    div.textContent=
+      card.rank+card.suit;
 
+    dealer.appendChild(div);
 
-          const {
-            data,
-            error
-          } =
-            await client.auth.signInWithPassword({
+  });
 
-              email: email,
 
-              password: password
+  document.getElementById("playerScore")
+    .textContent=
+      "SCORE: "+handValue(playerHand);
 
-            });
 
+  document.getElementById("dealerScore")
+    .textContent=
+      "SCORE: "+handValue(dealerHand);
 
-          if (error) {
+}
 
-            showMessage(
-              "ERROR // " +
-              error.message
-            );
 
-            return;
+function startBlackjack(){
 
-          }
+  if(blackjackActive)return;
 
 
-          showMessage(
-            "SYSTEM // ACCESS GRANTED"
-          );
+  const bet=bets.blackjack;
 
 
-          await loadProfile();
+  if(balance<bet){
 
-        }
-      );
+    document.getElementById("blackjackResult")
+      .textContent=
+        "NOT ENOUGH COINS";
 
+    return;
 
-    // =========================
-    // プロフィール取得
-    // =========================
+  }
 
-    async function loadProfile() {
 
-      const {
+  balance-=bet;
 
-        data: {
-          user
 
-        }
+  deck=createDeck();
 
-      } =
-        await client.auth.getUser();
 
+  playerHand=[
+    deck.pop(),
+    deck.pop()
+  ];
 
-      if (!user) {
 
-        return;
+  dealerHand=[
+    deck.pop(),
+    deck.pop()
+  ];
+
+
+  blackjackActive=true;
+
+
+  document.getElementById("hitButton")
+    .disabled=false;
+
+  document.getElementById("standButton")
+    .disabled=false;
+
+
+  renderBlackjack();
+
+
+  if(handValue(playerHand)===21){
+
+    const payout=
+      Math.floor(bet*2.5);
+
+    balance+=payout;
+
+    blackjackActive=false;
+
+
+    document.getElementById("blackjackResult")
+      .textContent=
+        "BLACKJACK // +"+
+        payout.toLocaleString();
+
+
+    document.getElementById("hitButton")
+      .disabled=true;
+
+    document.getElementById("standButton")
+      .disabled=true;
+
+  }
+
+
+  updateBalance();
+
+}
+
+
+function hitBlackjack(){
+
+  if(!blackjackActive)return;
+
+
+  playerHand.push(deck.pop());
+
+  renderBlackjack();
+
+
+  if(handValue(playerHand)>21){
+
+    finishBlackjack(
+      "BUST // YOU LOSE",
+      0
+    );
+
+  }
+
+  else if(handValue(playerHand)===21){
+
+    standBlackjack();
+
+  }
+
+}
+
+
+function standBlackjack(){
+
+  if(!blackjackActive)return;
+
+
+  while(handValue(dealerHand)<17){
+
+    dealerHand.push(deck.pop());
+
+  }
+
+
+  renderBlackjack();
+
+
+  const player=handValue(playerHand);
+  const dealer=handValue(dealerHand);
+
+
+  if(dealer>21||player>dealer){
+
+    finishBlackjack(
+      "WIN // +2x",
+      bets.blackjack*2
+    );
+
+  }
+
+  else if(player===dealer){
+
+    finishBlackjack(
+      "PUSH // BET RETURNED",
+      bets.blackjack
+    );
+
+  }
+
+  else{
+
+    finishBlackjack(
+      "LOSE",
+      0
+    );
+
+  }
+
+}
+
+
+function finishBlackjack(message,payout){
+
+  balance+=payout;
+
+  blackjackActive=false;
+
+
+  document.getElementById("blackjackResult")
+    .textContent=message;
+
+
+  document.getElementById("hitButton")
+    .disabled=true;
+
+  document.getElementById("standButton")
+    .disabled=true;
+
+
+  updateBalance();
+
+}
+
+
+/* =========================
+   MINES
+========================= */
+
+let mineMap=[];
+let minesActive=false;
+let minesRevealed=0;
+
+
+function startMines(){
+
+  if(minesActive)return;
+
+
+  const bet=bets.mines;
+
+
+  if(balance<bet){
+
+    document.getElementById("minesResult")
+      .textContent=
+        "NOT ENOUGH COINS";
+
+    return;
+
+  }
+
+
+  balance-=bet;
+
+
+  mineMap=
+    Array(25).fill(false);
+
+
+  let count=0;
+
+
+  while(count<3){
+
+    const index=
+      Math.floor(Math.random()*25);
+
+
+    if(!mineMap[index]){
+
+      mineMap[index]=true;
+
+      count++;
+
+    }
+
+  }
+
+
+  minesActive=true;
+  minesRevealed=0;
+
+
+  const grid=
+    document.getElementById("mineGrid");
+
+  grid.innerHTML="";
+
+
+  for(let i=0;i<25;i++){
+
+    const tile=
+      document.createElement("button");
+
+    tile.className="mine-tile";
+
+    tile.textContent="?";
+
+    tile.onclick=()=>{
+      revealMine(i,tile);
+    };
+
+    grid.appendChild(tile);
+
+  }
+
+
+  document.getElementById("mineMultiplier")
+    .textContent="1.00x";
+
+
+  document.getElementById("minesResult")
+    .textContent="GAME STARTED";
+
+
+  updateBalance();
+
+}
+
+
+function revealMine(index,tile){
+
+  if(!minesActive)return;
+
+
+  if(mineMap[index]){
+
+    tile.classList.add("mine");
+    tile.textContent="💣";
+
+    minesActive=false;
+
+
+    document.querySelectorAll(".mine-tile")
+    .forEach((t,i)=>{
+
+      if(mineMap[i]){
+
+        t.classList.add("mine");
+        t.textContent="💣";
 
       }
 
-
-      const {
-
-        data: profile,
-
-        error
-
-      } =
-        await client
-          .from("profiles")
-          .select(
-            "username, coins"
-          )
-          .eq(
-            "id",
-            user.id
-          )
-          .single();
+    });
 
 
-      if (error) {
+    document.getElementById("minesResult")
+      .textContent=
+        "BOOM // BET LOST";
 
-        showMessage(
-          "ERROR // PROFILE LOAD FAILED"
+    return;
+
+  }
+
+
+  tile.classList.add("safe");
+  tile.textContent="◆";
+  tile.disabled=true;
+
+
+  minesRevealed++;
+
+
+  const multipliers=[
+    1.12,
+    1.25,
+    1.40,
+    1.65,
+    2.00,
+    2.50,
+    3.20,
+    4.00
+  ];
+
+
+  const multiplier=
+    multipliers[
+      Math.min(
+        minesRevealed-1,
+        multipliers.length-1
+      )
+    ];
+
+
+  document.getElementById("mineMultiplier")
+    .textContent=
+      multiplier.toFixed(2)+"x";
+
+
+  document.getElementById("minesResult")
+    .textContent=
+      "SAFE // "+
+      multiplier.toFixed(2)+"x";
+
+}
+
+
+function cashoutMines(){
+
+  if(!minesActive)return;
+
+
+  const multipliers=[
+    1.12,
+    1.25,
+    1.40,
+    1.65,
+    2.00,
+    2.50,
+    3.20,
+    4.00
+  ];
+
+
+  const multiplier=
+    minesRevealed===0
+      ?1
+      :multipliers[
+        Math.min(
+          minesRevealed-1,
+          multipliers.length-1
+        )
+      ];
+
+
+  const payout=
+    Math.floor(
+      bets.mines*multiplier
+    );
+
+
+  balance+=payout;
+
+  minesActive=false;
+
+
+  document.getElementById("minesResult")
+    .textContent=
+      "CASH OUT // +"+
+      payout.toLocaleString();
+
+
+  updateBalance();
+
+}
+
+
+/* =========================
+   KENO
+========================= */
+
+let selectedNumbers=[];
+
+
+function createKeno(){
+
+  const grid=
+    document.getElementById("kenoGrid");
+
+
+  for(let i=1;i<=40;i++){
+
+    const button=
+      document.createElement("button");
+
+    button.className="keno-number";
+
+    button.textContent=i;
+
+
+    button.onclick=()=>{
+
+      if(selectedNumbers.includes(i)){
+
+        selectedNumbers=
+          selectedNumbers.filter(
+            n=>n!==i
+          );
+
+        button.classList.remove(
+          "selected"
         );
 
-        console.error(error);
+      }
 
-        return;
+      else{
+
+        if(selectedNumbers.length>=10)
+          return;
+
+        selectedNumbers.push(i);
+
+        button.classList.add(
+          "selected"
+        );
 
       }
 
 
-      document.getElementById(
-        "username"
-      ).textContent =
-        profile.username ||
-        "UNKNOWN";
+      document.getElementById("kenoSelected")
+        .textContent=
+          selectedNumbers.length;
+
+    };
 
 
-      document.getElementById(
-        "coins"
-      ).textContent =
-        Number(
-          profile.coins
-        ).toLocaleString();
+    grid.appendChild(button);
+
+  }
+
+}
 
 
-      document.getElementById(
-        "authCard"
-      ).style.display =
-        "none";
+function playKeno(){
+
+  if(selectedNumbers.length!==10){
+
+    document.getElementById("kenoResult")
+      .textContent=
+        "SELECT EXACTLY 10 NUMBERS";
+
+    return;
+
+  }
 
 
-      document.getElementById(
-        "account"
-      ).style.display =
-        "block";
-
-    }
+  const bet=bets.keno;
 
 
-    // =========================
-    // ログアウト
-    // =========================
+  if(balance<bet){
 
-    document
-      .getElementById("logoutButton")
-      .addEventListener(
-        "click",
-        async () => {
+    document.getElementById("kenoResult")
+      .textContent=
+        "NOT ENOUGH COINS";
 
-          const {
-            error
-          } =
-            await client.auth.signOut();
+    return;
+
+  }
 
 
-          if (error) {
-
-            showMessage(
-              "ERROR // LOGOUT FAILED"
-            );
-
-            return;
-
-          }
+  balance-=bet;
 
 
-          document.getElementById(
-            "account"
-          ).style.display =
-            "none";
+  const drawn=[];
 
 
-          document.getElementById(
-            "authCard"
-          ).style.display =
-            "block";
+  while(drawn.length<10){
+
+    const number=
+      Math.floor(Math.random()*40)+1;
 
 
-          showMessage(
-            "SYSTEM // DISCONNECTED"
-          );
+    if(!drawn.includes(number)){
 
-        }
-      );
-
-
-    // =========================
-    // 起動時ログイン確認
-    // =========================
-
-    async function checkLogin() {
-
-      const {
-
-        data: {
-          session
-
-        }
-
-      } =
-        await client.auth.getSession();
-
-
-      if (session) {
-
-        await loadProfile();
-
-      }
+      drawn.push(number);
 
     }
 
+  }
 
-    checkLogin();
 
-  </script>
+  document.querySelectorAll(".keno-number")
+  .forEach(button=>{
+
+    const number=
+      Number(button.textContent);
+
+
+    if(drawn.includes(number)){
+
+      button.classList.add("drawn");
+
+    }
+
+  });
+
+
+  const hits=
+    selectedNumbers.filter(
+      n=>drawn.includes(n)
+    ).length;
+
+
+  const payouts={
+    10:1000,
+    9:100,
+    8:20,
+    7:10,
+    6:5,
+    5:2
+  };
+
+
+  const multiplier=
+    payouts[hits]||0;
+
+
+  const payout=
+    bet*multiplier;
+
+
+  balance+=payout;
+
+
+  document.getElementById("kenoResult")
+    .textContent=
+      hits+
+      "/10 HIT // "+
+      (payout
+        ?"+"+payout.toLocaleString()
+        :"LOSE");
+
+
+  updateBalance();
+
+}
+
+
+createKeno();
+
+
+/* =========================
+   SESSION CHECK
+========================= */
+
+async function checkLogin(){
+
+  const {
+    data:{session}
+  }=
+    await client.auth.getSession();
+
+
+  if(session){
+
+    await loadProfile();
+
+  }
+
+}
+
+
+checkLogin();
+
+</script>
 
 </body>
 </html>
