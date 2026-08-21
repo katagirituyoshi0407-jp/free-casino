@@ -1,64 +1,13 @@
 /* FREE CASINO // CYBER UI ENHANCEMENT */
-:root{
-  --neon:#00eaff;
-  --violet:#8b5cff;
-  --danger:#ff5080;
-  --panel:rgba(7,14,29,.78);
-}
-
-body{background:#03050a!important;}
-body::before{opacity:.8;animation:gridPulse 7s ease-in-out infinite alternate;}
-@keyframes gridPulse{from{opacity:.45}to{opacity:1}}
-
-.card,.blackjack-table,.slot-machine{
-  box-shadow:0 0 30px rgba(0,234,255,.08),inset 0 0 45px rgba(0,234,255,.025),0 0 0 1px rgba(139,92,255,.06);
-}
-
-.game-nav button{
-  position:relative;
-  overflow:hidden;
-  transition:transform .2s,box-shadow .2s,border-color .2s,background .2s;
-}
-.game-nav button::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.12),transparent 75%);
-  transform:translateX(-120%);
-  transition:transform .45s;
-}
-.game-nav button:hover::after{transform:translateX(120%)}
-.game-nav button:hover{transform:translateY(-2px);border-color:var(--neon);box-shadow:0 0 20px rgba(0,234,255,.18)}
-
-.balance{position:relative;overflow:hidden;box-shadow:0 0 18px rgba(0,234,255,.12)}
-.balance::before{content:"";position:absolute;inset:-60%;background:conic-gradient(transparent,var(--neon),transparent 25%);animation:spin 5s linear infinite;opacity:.12}
-.balance span{position:relative}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-.main-button,.small-button{transition:transform .18s,box-shadow .18s,filter .18s}
-.main-button:hover,.small-button:hover{filter:brightness(1.15);box-shadow:0 0 22px rgba(0,234,255,.25)}
-.main-button:active,.small-button:active{transform:scale(.97)}
-
-.game.active{animation:gameIn .25s ease-out}
-@keyframes gameIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-
-.reel{transition:box-shadow .2s,transform .2s}
-.reel:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(0,234,255,.2),inset 0 0 20px rgba(0,234,255,.08)}
-.playing-card{box-shadow:0 5px 15px rgba(0,0,0,.35);animation:cardIn .2s ease-out}
-@keyframes cardIn{from{opacity:0;transform:translateY(-8px) scale(.95)}to{opacity:1;transform:none}}
-
-.keno-number,.mine-cell{transition:transform .15s,box-shadow .15s,border-color .15s}
-.keno-number:hover,.mine-cell:hover{transform:translateY(-2px);box-shadow:0 0 14px rgba(0,234,255,.16)}
-
+:root{--neon:#00eaff;--violet:#8b5cff;--danger:#ff5080;--panel:rgba(7,14,29,.78)}
+body{background:#03050a!important}body::before{opacity:.8;animation:gridPulse 7s ease-in-out infinite alternate}@keyframes gridPulse{from{opacity:.45}to{opacity:1}}
+.card,.blackjack-table,.slot-machine{box-shadow:0 0 30px rgba(0,234,255,.08),inset 0 0 45px rgba(0,234,255,.025),0 0 0 1px rgba(139,92,255,.06)}
+.game-nav button{position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s,background .2s}.game-nav button::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.12),transparent 75%);transform:translateX(-120%);transition:transform .45s}.game-nav button:hover::after{transform:translateX(120%)}.game-nav button:hover{transform:translateY(-2px);border-color:var(--neon);box-shadow:0 0 20px rgba(0,234,255,.18)}
+.balance{position:relative;overflow:hidden;box-shadow:0 0 18px rgba(0,234,255,.12)}.balance::before{content:"";position:absolute;inset:-60%;background:conic-gradient(transparent,var(--neon),transparent 25%);animation:spin 5s linear infinite;opacity:.12}.balance span{position:relative}@keyframes spin{to{transform:rotate(360deg)}}
+.main-button,.small-button{transition:transform .18s,box-shadow .18s,filter .18s}.main-button:hover,.small-button:hover{filter:brightness(1.15);box-shadow:0 0 22px rgba(0,234,255,.25)}.main-button:active,.small-button:active{transform:scale(.97)}
+.game.active{animation:gameIn .25s ease-out}@keyframes gameIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.reel{transition:box-shadow .2s,transform .2s}.reel:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(0,234,255,.2),inset 0 0 20px rgba(0,234,255,.08)}.playing-card{box-shadow:0 5px 15px rgba(0,0,0,.35);animation:cardIn .2s ease-out}@keyframes cardIn{from{opacity:0;transform:translateY(-8px) scale(.95)}to{opacity:1;transform:none}}
+.keno-number,.mine-cell{transition:transform .15s,box-shadow .15s,border-color .15s}.keno-number:hover,.mine-cell:hover{transform:translateY(-2px);box-shadow:0 0 14px rgba(0,234,255,.16)}
 #message{transition:opacity .2s;text-shadow:0 0 8px rgba(0,234,255,.45)}
-
-@media(max-width:650px){
-  .container{padding-top:22px}
-  .card{padding:18px}
-  .logo{margin-bottom:18px}
-  .bet-area{flex-direction:column}
-  .small-button{width:100%}
-}
-
-/* Accessible focus states */
+@media(max-width:650px){.container{padding-top:22px}.card{padding:18px}.logo{margin-bottom:18px}.bet-area{flex-direction:column}.small-button{width:100%}}
 button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
