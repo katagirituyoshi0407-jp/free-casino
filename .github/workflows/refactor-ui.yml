@@ -6,6 +6,7 @@ on:
     paths:
       - 'index.html'
       - '.github/workflows/refactor-ui.yml'
+      - 'ui-refactor.trigger'
   workflow_dispatch:
 
 permissions:
@@ -33,7 +34,6 @@ jobs:
               print('Already refactored; nothing to do.')
               raise SystemExit(0)
 
-          # Backup the exact pre-refactor page.
           shutil.copyfile(p, 'index.before-refactor.html')
 
           style = re.search(r'<style>(.*?)</style>', html, re.S | re.I)
@@ -42,7 +42,6 @@ jobs:
               Path('css/style.css').write_text(style.group(1).strip() + '\n', encoding='utf-8')
               html = html[:style.start()] + '<link rel="stylesheet" href="css/style.css">' + html[style.end():]
 
-          # Extract inline application JS, keeping external scripts intact.
           scripts = list(re.finditer(r'<script(?![^>]*src=)[^>]*>(.*?)</script>', html, re.S | re.I))
           if scripts:
               js = '\n\n'.join(m.group(1).strip() for m in scripts)
@@ -51,74 +50,38 @@ jobs:
               for m in reversed(scripts):
                   html = html[:m.start()] + '<script src="js/app.js"></script>' + html[m.end():]
 
-          # Japanese-first visible UI labels. English remains as small technical labels where useful.
           replacements = {
-              '>LOGIN<': '>ログイン<',
-              '>REGISTER<': '>新規登録<',
-              '>WELCOME BACK<': '>おかえりなさい<',
-              '>CREATE ACCOUNT<': '>アカウント作成<',
-              '>ENTER SYSTEM<': '>ログインする<',
-              '>INITIALIZE ACCOUNT<': '>アカウントを作成<',
-              '>CURRENT USER<': '>現在のユーザー<',
-              '> COINS<': '> コイン<',
-              '>SLOT<': '>スロット<',
-              '>BLACKJACK<': '>ブラックジャック<',
-              '>KENO<': '>KENO<',
-              '>MINES<': '>マインズ<',
-              '>WORK<': '>仕事<',
-              '>SEND<': '>送金<',
-              '>SEND COINS<': '>コイン送金<',
-              '>BANK<': '>銀行<',
-              '>FREE BANK<': '>FREE BANK<',
-              '>BET AMOUNT<': '>ベット額<',
-              '>SPIN<': '>回す<',
-              '>DEAL<': '>配る<',
-              '>HIT<': '>ヒット<',
-              '>STAND<': '>スタンド<',
-              '>DOUBLE<': '>ダブル<',
-              '>DRAW<': '>抽選<',
-              '>START<': '>開始<',
-              '>CASH OUT<': '>換金<',
-              '>READY<': '>準備完了<',
-              '>SELECT NUMBERS<': '>数字を選択してください<',
-              '>START GAME<': '>ゲームを開始してください<',
-              '>SELECT A JOB<': '>仕事を選択してください<',
-              '>TRANSFER HISTORY<': '>送金履歴<',
-              '>BANK BALANCE<': '>銀行残高<',
-              '>CREDIT SCORE<': '>信用スコア<',
-              '>DEPOSIT<': '>預け入れ<',
-              '>WITHDRAW<': '>引き出し<',
-              '>BANK TRANSFER<': '>銀行送金<',
-              '>TRANSFER<': '>送金する<',
-              '>FIXED DEPOSIT<': '>定期預金<',
-              '>TAKE LOAN<': '>借りる<',
-              '>REPAY ACTIVE LOAN<': '>ローンを返済<',
-              '>BANK HISTORY<': '>銀行履歴<',
-              '>REWARD +50 COINS<': '>報酬 +50 コイン<',
-              '>REWARD +75 COINS<': '>報酬 +75 コイン<',
-              '>CLICK! ': '>連打！ ',
-              '>SUBMIT // +75<': '>送信 // +75<',
-              '>ANSWER<': '>回答する<',
-              '>LOAN AMOUNT<': '>借入額<',
-              '>AMOUNT<': '>金額<',
-              '>RECIPIENT<': '>送信先<',
-              '>RECIPIENT USERNAME<': '>送信先ユーザー名<',
+              '>LOGIN<': '>ログイン<', '>REGISTER<': '>新規登録<',
+              '>WELCOME BACK<': '>おかえりなさい<', '>CREATE ACCOUNT<': '>アカウント作成<',
+              '>ENTER SYSTEM<': '>ログインする<', '>INITIALIZE ACCOUNT<': '>アカウントを作成<',
+              '>CURRENT USER<': '>現在のユーザー<', '> COINS<': '> コイン<',
+              '>SLOT<': '>スロット<', '>BLACKJACK<': '>ブラックジャック<',
+              '>MINES<': '>マインズ<', '>WORK<': '>仕事<', '>SEND<': '>送金<',
+              '>SEND COINS<': '>コイン送金<', '>BANK<': '>銀行<',
+              '>BET AMOUNT<': '>ベット額<', '>SPIN<': '>回す<', '>DEAL<': '>配る<',
+              '>HIT<': '>ヒット<', '>STAND<': '>スタンド<', '>DOUBLE<': '>ダブル<',
+              '>DRAW<': '>抽選<', '>START<': '>開始<', '>CASH OUT<': '>換金<',
+              '>READY<': '>準備完了<', '>SELECT NUMBERS<': '>数字を選択してください<',
+              '>START GAME<': '>ゲームを開始してください<', '>SELECT A JOB<': '>仕事を選択してください<',
+              '>TRANSFER HISTORY<': '>送金履歴<', '>BANK BALANCE<': '>銀行残高<',
+              '>CREDIT SCORE<': '>信用スコア<', '>DEPOSIT<': '>預け入れ<', '>WITHDRAW<': '>引き出し<',
+              '>BANK TRANSFER<': '>銀行送金<', '>TRANSFER<': '>送金する<',
+              '>FIXED DEPOSIT<': '>定期預金<', '>TAKE LOAN<': '>借りる<',
+              '>REPAY ACTIVE LOAN<': '>ローンを返済<', '>BANK HISTORY<': '>銀行履歴<',
+              '>REWARD +50 COINS<': '>報酬 +50 コイン<', '>REWARD +75 COINS<': '>報酬 +75 コイン<',
+              '>CLICK! ': '>連打！ ', '>SUBMIT // +75<': '>送信 // +75<',
+              '>ANSWER<': '>回答する<', '>LOAN AMOUNT<': '>借入額<', '>AMOUNT<': '>金額<',
+              '>RECIPIENT<': '>送信先<', '>RECIPIENT USERNAME<': '>送信先ユーザー名<',
               '>NOTE<': '>メモ<',
-              '>FIXED DEPOSIT<': '>定期預金<',
           }
-          for a, b in replacements.items():
-              html = html.replace(a, b)
+          for a, b in replacements.items(): html = html.replace(a, b)
 
-          # Common placeholders/labels.
-          ph = {
-              'placeholder="EMAIL"': 'placeholder="メールアドレス"',
-              'placeholder="PASSWORD"': 'placeholder="パスワード"',
-              'placeholder="USERNAME"': 'placeholder="ユーザー名"',
-              'placeholder="CODE"': 'placeholder="コードを入力"',
-              'placeholder="送信先ユーザー名"': 'placeholder="送信先ユーザー名"',
-          }
-          for a, b in ph.items():
-              html = html.replace(a, b)
+          for a, b in {
+              'placeholder="EMAIL"':'placeholder="メールアドレス"',
+              'placeholder="PASSWORD"':'placeholder="パスワード"',
+              'placeholder="USERNAME"':'placeholder="ユーザー名"',
+              'placeholder="CODE"':'placeholder="コードを入力"',
+          }.items(): html = html.replace(a, b)
 
           html = html.replace('<title>FREE CASINO</title>', '<title>FREE CASINO｜無料カジノゲーム</title>')
           html = html.replace('<html lang="ja">', '<!-- UI-REFACTORED -->\n<html lang="ja">')
