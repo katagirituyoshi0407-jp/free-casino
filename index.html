@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FREE CASINO</title>
 
 <style>
@@ -14,10 +14,10 @@
 
 body{
   min-height:100vh;
-  color:#fff;
   font-family:"Segoe UI",Arial,sans-serif;
+  color:#fff;
   background:
-    radial-gradient(circle at 50% 0%,#18204a 0%,transparent 40%),
+    radial-gradient(circle at 50% 0%,#17245a 0%,transparent 40%),
     radial-gradient(circle at 0% 100%,#101b38 0%,transparent 35%),
     #05070d;
   overflow-x:hidden;
@@ -28,10 +28,9 @@ body::before{
   position:fixed;
   inset:0;
   background-image:
-    linear-gradient(rgba(0,229,255,.045) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,255,.045) 1px,transparent 1px);
+    linear-gradient(rgba(0,234,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,234,255,.04) 1px,transparent 1px);
   background-size:40px 40px;
-  mask-image:linear-gradient(to bottom,black,transparent 90%);
   pointer-events:none;
 }
 
@@ -50,14 +49,14 @@ body::after{
     #00eaff,
     transparent
   );
-  box-shadow:0 0 15px #00eaff,0 0 30px #8b5cff;
+  box-shadow:0 0 15px #00eaff;
   pointer-events:none;
 }
 
 .container{
-  width:min(100% - 20px,520px);
+  width:min(100% - 24px,1100px);
   margin:auto;
-  padding:35px 0 50px;
+  padding:35px 0 60px;
 }
 
 .logo{
@@ -66,7 +65,7 @@ body::after{
 }
 
 .logo h1{
-  font-size:36px;
+  font-size:38px;
   letter-spacing:6px;
   text-shadow:
     0 0 5px #00eaff,
@@ -75,32 +74,35 @@ body::after{
 }
 
 .logo p{
-  margin-top:8px;
+  margin-top:7px;
   font-size:10px;
   letter-spacing:5px;
   color:#7befff;
 }
 
-.card,
-.game-panel{
+.hidden{
+  display:none!important;
+}
+
+/* 共通カード */
+
+.card{
   position:relative;
   padding:25px;
   border:1px solid rgba(0,234,255,.3);
-  border-radius:18px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(15,25,50,.94),
-      rgba(5,9,20,.94)
-    );
-  backdrop-filter:blur(15px);
+  border-radius:16px;
+  background:linear-gradient(
+    145deg,
+    rgba(15,25,50,.94),
+    rgba(5,9,20,.94)
+  );
   box-shadow:
     0 0 25px rgba(0,234,255,.07),
-    inset 0 0 30px rgba(0,234,255,.025);
+    inset 0 0 30px rgba(0,234,255,.02);
+  overflow:hidden;
 }
 
-.card::before,
-.game-panel::before{
+.card::before{
   content:"";
   position:absolute;
   top:0;
@@ -108,16 +110,23 @@ body::after{
   width:70%;
   height:1px;
   background:#00eaff;
-  box-shadow:0 0 10px #00eaff,0 0 25px #00eaff;
+  box-shadow:0 0 12px #00eaff;
+}
+
+/* AUTH */
+
+.auth{
+  width:min(100%,470px);
+  margin:auto;
 }
 
 .tabs{
   display:flex;
   gap:7px;
-  margin-bottom:25px;
   padding:5px;
-  border-radius:10px;
+  margin-bottom:22px;
   background:rgba(0,0,0,.3);
+  border-radius:10px;
 }
 
 .tab{
@@ -125,31 +134,35 @@ body::after{
   padding:12px;
   border:0;
   border-radius:7px;
-  color:#71859f;
+  color:#70849d;
   background:transparent;
   cursor:pointer;
   font-weight:bold;
-  letter-spacing:1px;
 }
 
 .tab.active{
   color:#fff;
   background:rgba(0,234,255,.12);
-  box-shadow:0 0 12px rgba(0,234,255,.15);
+  text-shadow:0 0 8px #00eaff;
 }
 
-.form{display:none}
-.form.active{display:block}
+.form{
+  display:none;
+}
+
+.form.active{
+  display:block;
+}
 
 .form h2{
-  font-size:22px;
+  margin-bottom:6px;
   letter-spacing:2px;
 }
 
-.form-description{
-  margin:6px 0 22px;
-  color:#71859f;
+.description{
+  margin-bottom:22px;
   font-size:11px;
+  color:#71859f;
 }
 
 .input-group{
@@ -166,11 +179,11 @@ body::after{
 
 input{
   width:100%;
-  padding:14px;
-  border:1px solid rgba(0,234,255,.18);
-  border-radius:9px;
+  padding:13px;
+  border:1px solid rgba(0,234,255,.2);
+  border-radius:8px;
   outline:none;
-  color:#fff;
+  color:white;
   background:rgba(0,0,0,.35);
 }
 
@@ -179,465 +192,452 @@ input:focus{
   box-shadow:0 0 10px rgba(0,234,255,.2);
 }
 
-.main-button,
-.casino-button{
+button{
+  font-family:inherit;
+}
+
+.main-button{
   width:100%;
   padding:14px;
   border:1px solid #00eaff;
-  border-radius:9px;
+  border-radius:8px;
   color:#fff;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0,234,255,.12),
-      rgba(92,75,255,.18)
-    );
+  background:linear-gradient(
+    90deg,
+    rgba(0,234,255,.12),
+    rgba(92,75,255,.18)
+  );
   cursor:pointer;
   font-weight:bold;
-  letter-spacing:2px;
+  letter-spacing:1px;
   transition:.2s;
 }
 
-.main-button:hover,
-.casino-button:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 18px rgba(0,234,255,.3);
+.main-button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 0 18px rgba(0,234,255,.25);
 }
 
-#message{
-  min-height:22px;
-  margin:15px 0;
+.message{
+  min-height:20px;
+  margin-top:15px;
   text-align:center;
   color:#7befff;
-  font-size:11px;
+  font-size:12px;
 }
 
-#account{
-  display:none;
-}
+/* CASINO HEADER */
 
-.account-header{
+.casino-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:15px;
   margin-bottom:18px;
 }
 
-.account-header h2{
-  font-size:19px;
-  letter-spacing:2px;
-}
-
-.status{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  color:#52ffb1;
-  font-size:10px;
-}
-
-.status-dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:#52ffb1;
-  box-shadow:0 0 8px #52ffb1;
-}
-
-.user-box{
-  padding:15px;
-  border:1px solid rgba(139,92,255,.25);
-  border-radius:12px;
-  background:rgba(139,92,255,.05);
-}
-
-.user-label{
-  display:block;
+.user-info{
   color:#71859f;
+  font-size:11px;
+}
+
+.user-info strong{
+  display:block;
+  margin-top:3px;
+  color:#fff;
+  font-size:16px;
+}
+
+.balance{
+  min-width:180px;
+  padding:12px 18px;
+  text-align:right;
+  border:1px solid rgba(0,234,255,.3);
+  border-radius:10px;
+  background:rgba(0,234,255,.05);
+}
+
+.balance-label{
   font-size:9px;
+  color:#6f9ab0;
   letter-spacing:2px;
 }
 
-#username{
-  display:block;
-  margin-top:5px;
-  color:#d8d3ff;
-  font-size:18px;
-  font-weight:bold;
-}
-
-.coin-box{
-  margin-top:14px;
-  padding:20px;
-  text-align:center;
-  border:1px solid rgba(0,234,255,.35);
-  border-radius:14px;
-  background:radial-gradient(
-    circle,
-    rgba(0,234,255,.08),
-    transparent 70%
-  );
-}
-
-.coin-label{
-  color:#6f9ab0;
-  font-size:10px;
-  letter-spacing:3px;
-}
-
-.coin-value{
-  margin-top:5px;
-  font-size:36px;
+#balance{
+  font-size:24px;
   font-weight:800;
-  text-shadow:0 0 8px #00eaff,0 0 20px rgba(0,234,255,.5);
+  color:#fff;
+  text-shadow:0 0 12px #00eaff;
 }
 
-.coin-unit{
-  color:#00eaff;
-  font-size:10px;
-  letter-spacing:3px;
-}
+/* NAV */
 
-.logout{
-  margin-top:15px;
-  border-color:rgba(255,80,130,.45);
-  color:#ff789e;
-  background:rgba(255,50,100,.04);
-}
-
-/* =========================
-   CASINO
-========================= */
-
-#casino{
-  display:none;
-  margin-top:20px;
-}
-
-.game-tabs{
+.game-nav{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:6px;
-  margin-bottom:12px;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+  margin-bottom:18px;
 }
 
-.game-tab{
-  padding:10px 3px;
+.game-nav button{
+  padding:12px 5px;
   border:1px solid rgba(0,234,255,.15);
   border-radius:8px;
-  color:#63788f;
-  background:#070c16;
+  color:#71859f;
+  background:rgba(0,0,0,.25);
   cursor:pointer;
-  font-size:9px;
-  font-weight:bold;
 }
 
-.game-tab.active{
+.game-nav button.active{
   color:#fff;
   border-color:#00eaff;
-  background:rgba(0,234,255,.12);
-  box-shadow:0 0 12px rgba(0,234,255,.2);
+  background:rgba(0,234,255,.1);
+  box-shadow:0 0 12px rgba(0,234,255,.1);
 }
 
-.game-panel{
+/* GAME */
+
+.game{
   display:none;
 }
 
-.game-panel.active{
+.game.active{
   display:block;
 }
 
 .game-title{
-  display:flex;
-  align-items:center;
-  gap:12px;
+  margin-bottom:5px;
+  font-size:25px;
+  letter-spacing:2px;
+}
+
+.game-subtitle{
   margin-bottom:20px;
+  color:#71859f;
+  font-size:11px;
 }
 
-.game-title .icon{
-  font-size:30px;
-  filter:drop-shadow(0 0 8px #00eaff);
+.game-area{
+  min-height:330px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  border:1px solid rgba(0,234,255,.15);
+  border-radius:12px;
+  background:rgba(0,0,0,.2);
 }
 
-.game-title h2{
-  font-size:18px;
-  letter-spacing:2px;
-}
-
-.game-title p{
-  margin-top:3px;
-  color:#61758d;
-  font-size:9px;
-  letter-spacing:2px;
-}
+/* BET */
 
 .bet-area{
-  margin:15px 0;
-}
-
-.bet-label{
-  margin-bottom:7px;
-  color:#657c94;
-  font-size:9px;
-  letter-spacing:2px;
-}
-
-.bet-controls{
   display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:20px;
+  gap:8px;
+  width:100%;
+  max-width:500px;
+  margin:18px auto 0;
 }
 
-.bet-controls button{
-  width:36px;
-  height:36px;
-  border:1px solid rgba(0,234,255,.3);
-  border-radius:8px;
-  color:#00eaff;
-  background:rgba(0,234,255,.05);
-  cursor:pointer;
-  font-size:20px;
+.bet-area input{
+  flex:1;
 }
 
-.bet-controls span{
-  min-width:80px;
-  text-align:center;
-  font-size:18px;
-  font-weight:bold;
+.bet-area button{
+  width:150px;
 }
 
-.game-result{
-  min-height:24px;
-  margin:13px 0;
-  text-align:center;
-  color:#7befff;
-  font-size:11px;
-  font-weight:bold;
-}
-
-.secondary{
-  margin-top:7px;
-  border-color:rgba(139,92,255,.5);
-}
-
-.paytable{
-  margin-top:20px;
-  padding-top:15px;
-  border-top:1px solid rgba(0,234,255,.1);
-}
-
-.paytable h3{
-  margin-bottom:8px;
-  color:#60758c;
-  font-size:9px;
-  letter-spacing:2px;
-}
-
-.pay-row{
-  display:flex;
-  justify-content:space-between;
-  padding:7px 0;
-  border-bottom:1px solid rgba(255,255,255,.035);
-  color:#8294a9;
-  font-size:11px;
-}
-
-.pay-row strong{
-  color:#00eaff;
-}
-
-/* SLOTS */
+/* SLOT */
 
 .slot-machine{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:7px;
-  padding:9px;
-  border:1px solid rgba(0,234,255,.2);
-  border-radius:13px;
-  background:#03060d;
+  display:flex;
+  gap:10px;
+  margin-bottom:22px;
 }
 
-.slot-reel{
+.reel{
+  width:100px;
+  height:100px;
   display:flex;
-  justify-content:center;
   align-items:center;
-  height:90px;
-  border:1px solid rgba(139,92,255,.25);
-  border-radius:9px;
-  background:linear-gradient(#10172c,#050813);
-  font-size:40px;
-  text-shadow:0 0 12px #00eaff;
+  justify-content:center;
+  border:1px solid #00eaff;
+  border-radius:12px;
+  font-size:48px;
+  background:#080e1d;
+  box-shadow:
+    inset 0 0 20px rgba(0,234,255,.08),
+    0 0 12px rgba(0,234,255,.1);
+}
+
+.result{
+  min-height:25px;
+  margin-top:15px;
+  text-align:center;
+  color:#7befff;
+  font-weight:bold;
 }
 
 /* BLACKJACK */
 
-.blackjack-table{
-  padding:15px;
-  border:1px solid rgba(0,234,255,.2);
-  border-radius:13px;
-  background:radial-gradient(circle,rgba(0,100,80,.2),#04080d);
-}
-
-.card-label{
-  margin-bottom:8px;
-  color:#617890;
-  font-size:9px;
-  letter-spacing:2px;
-}
-
-.dealer{
-  margin-bottom:18px;
-}
-
-.playing-cards{
+.cards{
   display:flex;
   flex-wrap:wrap;
-  gap:6px;
-  min-height:55px;
+  justify-content:center;
+  gap:8px;
+  min-height:75px;
 }
 
 .playing-card{
+  width:55px;
+  height:75px;
   display:flex;
-  justify-content:center;
   align-items:center;
-  width:42px;
-  height:58px;
-  border-radius:6px;
+  justify-content:center;
+  border-radius:7px;
   color:#111;
-  background:#f3f5f7;
+  background:#eee;
+  font-size:21px;
   font-weight:bold;
 }
 
-.score{
-  margin-top:6px;
-  color:#00eaff;
+.hand-title{
+  margin:8px 0;
+  color:#71859f;
   font-size:11px;
+  letter-spacing:2px;
 }
 
-.bj-buttons{
-  margin-top:10px;
+.blackjack-buttons{
+  display:flex;
+  gap:8px;
+  margin-top:20px;
+}
+
+.blackjack-buttons button{
+  width:130px;
 }
 
 /* MINES */
 
-.mines-info{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:6px;
-  margin-bottom:13px;
-}
-
-.mines-info div{
-  padding:9px;
-  text-align:center;
-  border:1px solid rgba(0,234,255,.12);
-  border-radius:7px;
-  color:#5f748c;
-  font-size:8px;
-}
-
-.mines-info strong{
-  display:block;
-  margin-top:3px;
-  color:#00eaff;
-  font-size:13px;
-}
-
 .mine-grid{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:6px;
+  grid-template-columns:repeat(5,55px);
+  gap:7px;
+  margin-bottom:18px;
 }
 
-.mine-tile{
-  aspect-ratio:1;
-  border:1px solid rgba(0,234,255,.15);
+.mine-cell{
+  width:55px;
+  height:55px;
+  border:1px solid rgba(0,234,255,.3);
   border-radius:7px;
-  color:#00eaff;
-  background:#080e1c;
+  color:#7befff;
+  background:#07101d;
   cursor:pointer;
-  font-size:19px;
+  font-size:20px;
 }
 
-.mine-tile.safe{
+.mine-cell:hover{
+  background:rgba(0,234,255,.1);
+}
+
+.mine-cell.safe{
   border-color:#52ffb1;
-  background:rgba(82,255,177,.1);
+  background:rgba(82,255,177,.12);
 }
 
-.mine-tile.mine{
-  border-color:#ff507d;
-  background:rgba(255,50,100,.15);
+.mine-cell.mine{
+  border-color:#ff5080;
+  background:rgba(255,80,128,.15);
 }
 
 /* KENO */
 
 .keno-grid{
   display:grid;
-  grid-template-columns:repeat(8,1fr);
-  gap:5px;
+  grid-template-columns:repeat(10,42px);
+  gap:6px;
+  margin-bottom:18px;
 }
 
 .keno-number{
-  aspect-ratio:1;
-  border:1px solid rgba(0,234,255,.13);
+  width:42px;
+  height:42px;
+  border:1px solid rgba(0,234,255,.2);
   border-radius:6px;
-  color:#688096;
-  background:#070c18;
+  color:#71859f;
+  background:#07101d;
   cursor:pointer;
-  font-size:10px;
 }
 
 .keno-number.selected{
   color:#fff;
-  border-color:#00eaff;
-  background:rgba(0,234,255,.18);
+  border-color:#8b5cff;
+  background:rgba(139,92,255,.25);
+  box-shadow:0 0 8px rgba(139,92,255,.3);
 }
 
-.keno-number.drawn{
-  color:#52ffb1;
+.keno-number.hit{
   border-color:#52ffb1;
+  background:rgba(82,255,177,.2);
 }
 
-.keno-selected{
-  margin:12px 0;
-  text-align:center;
-  color:#647b92;
-  font-size:10px;
+/* ROULETTE */
+
+.wheel{
+  width:190px;
+  height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+  border:8px solid #111b32;
+  border-radius:50%;
+  background:conic-gradient(
+    #b51e39 0deg 20deg,
+    #080d16 20deg 40deg,
+    #b51e39 40deg 60deg,
+    #080d16 60deg 80deg,
+    #b51e39 80deg 100deg,
+    #080d16 100deg 120deg,
+    #b51e39 120deg 140deg,
+    #080d16 140deg 160deg,
+    #b51e39 160deg 180deg,
+    #080d16 180deg 200deg,
+    #b51e39 200deg 220deg,
+    #080d16 220deg 240deg,
+    #b51e39 240deg 260deg,
+    #080d16 260deg 280deg,
+    #b51e39 280deg 300deg,
+    #080d16 300deg 320deg,
+    #b51e39 320deg 340deg,
+    #080d16 340deg 360deg
+  );
+  box-shadow:0 0 30px rgba(0,234,255,.12);
 }
 
-.keno-selected strong{
+.wheel span{
+  width:70px;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid #00eaff;
+  border-radius:50%;
+  background:#05070d;
   color:#00eaff;
-  font-size:17px;
+  font-size:20px;
+  font-weight:bold;
 }
 
-.footer{
-  margin-top:20px;
-  text-align:center;
-  color:#35445a;
-  font-size:8px;
+.roulette-options{
+  display:flex;
+  gap:8px;
+  margin-bottom:15px;
+}
+
+.roulette-options button{
+  min-width:100px;
+  padding:10px;
+  border:1px solid rgba(0,234,255,.25);
+  border-radius:7px;
+  color:#fff;
+  background:#07101d;
+  cursor:pointer;
+}
+
+.roulette-options button.selected{
+  border-color:#00eaff;
+  background:rgba(0,234,255,.1);
+}
+
+/* PAYTABLE */
+
+.paytable{
+  margin-top:18px;
+}
+
+.paytable h3{
+  margin-bottom:10px;
+  color:#7befff;
+  font-size:12px;
   letter-spacing:2px;
 }
 
-@media(max-width:480px){
-  .logo h1{
-    font-size:29px;
-    letter-spacing:4px;
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:11px;
+}
+
+th,td{
+  padding:9px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  text-align:left;
+}
+
+th{
+  color:#71859f;
+}
+
+td:last-child{
+  text-align:right;
+  color:#52ffb1;
+}
+
+/* LOGOUT */
+
+.logout{
+  margin-top:18px;
+  border-color:rgba(255,80,128,.4);
+  color:#ff789e;
+}
+
+.footer{
+  margin-top:25px;
+  text-align:center;
+  color:#35445a;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+@media(max-width:700px){
+
+  .casino-header{
+    flex-direction:column;
+    align-items:stretch;
   }
 
-  .card,
-  .game-panel{
-    padding:20px;
+  .balance{
+    text-align:left;
   }
 
-  .game-tabs{
+  .game-nav{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .slot-reel{
-    height:75px;
-    font-size:32px;
+  .game-nav button:last-child{
+    grid-column:span 2;
+  }
+
+  .reel{
+    width:80px;
+    height:80px;
+    font-size:38px;
+  }
+
+  .keno-grid{
+    grid-template-columns:repeat(5,42px);
+  }
+
+  .mine-grid{
+    grid-template-columns:repeat(5,48px);
+  }
+
+  .mine-cell{
+    width:48px;
+    height:48px;
   }
 }
 </style>
@@ -645,1013 +645,850 @@ input:focus{
 
 <body>
 
-<main class="container">
+<div class="container">
 
-<div class="logo">
-  <h1>FREE CASINO</h1>
-  <p>NEON GAMING SYSTEM</p>
-</div>
+  <div class="logo">
+    <h1>FREE CASINO</h1>
+    <p>NEON GAMING SYSTEM</p>
+  </div>
 
+  <!-- ================= AUTH ================= -->
 
-<!-- =========================
-     AUTH
-========================= -->
+  <div id="authCard" class="card auth">
 
-<div id="authCard" class="card">
+    <div class="tabs">
+      <button id="loginTab" class="tab active">LOGIN</button>
+      <button id="signupTab" class="tab">REGISTER</button>
+    </div>
 
-  <div class="tabs">
+    <div id="loginForm" class="form active">
 
-    <button id="loginTab" class="tab active">
-      LOGIN
-    </button>
+      <h2>WELCOME BACK</h2>
 
-    <button id="signupTab" class="tab">
-      REGISTER
-    </button>
+      <p class="description">
+        SYSTEM ACCESS // LOGIN
+      </p>
+
+      <div class="input-group">
+        <label>EMAIL ADDRESS</label>
+        <input id="loginEmail" type="email" placeholder="example@email.com">
+      </div>
+
+      <div class="input-group">
+        <label>PASSWORD</label>
+        <input id="loginPassword" type="password" placeholder="••••••••">
+      </div>
+
+      <button id="loginButton" class="main-button">
+        ENTER SYSTEM
+      </button>
+
+    </div>
+
+    <div id="signupForm" class="form">
+
+      <h2>CREATE ACCOUNT</h2>
+
+      <p class="description">
+        SYSTEM REGISTRATION // NEW USER
+      </p>
+
+      <div class="input-group">
+        <label>USERNAME</label>
+        <input id="signupUsername" type="text" placeholder="CyberUser">
+      </div>
+
+      <div class="input-group">
+        <label>EMAIL ADDRESS</label>
+        <input id="signupEmail" type="email" placeholder="example@email.com">
+      </div>
+
+      <div class="input-group">
+        <label>PASSWORD</label>
+        <input id="signupPassword" type="password" placeholder="••••••••">
+      </div>
+
+      <button id="signupButton" class="main-button">
+        INITIALIZE ACCOUNT
+      </button>
+
+    </div>
+
+    <div id="authMessage" class="message"></div>
 
   </div>
 
 
-  <!-- LOGIN -->
+  <!-- ================= CASINO ================= -->
 
-  <div id="loginForm" class="form active">
+  <div id="casino" class="hidden">
 
-    <h2>WELCOME BACK</h2>
+    <div class="casino-header">
 
-    <p class="form-description">
-      SYSTEM ACCESS // LOGIN
-    </p>
+      <div class="user-info">
+        CURRENT USER
+        <strong id="username">---</strong>
+      </div>
 
-    <div class="input-group">
+      <div class="balance">
+        <div class="balance-label">
+          AVAILABLE BALANCE
+        </div>
 
-      <label>EMAIL ADDRESS</label>
-
-      <input
-        id="loginEmail"
-        type="email"
-        placeholder="example@email.com"
-      >
-
-    </div>
-
-    <div class="input-group">
-
-      <label>PASSWORD</label>
-
-      <input
-        id="loginPassword"
-        type="password"
-        placeholder="••••••••"
-      >
-
-    </div>
-
-    <button id="loginButton" class="main-button">
-      ENTER SYSTEM
-    </button>
-
-  </div>
-
-
-  <!-- REGISTER -->
-
-  <div id="signupForm" class="form">
-
-    <h2>CREATE ACCOUNT</h2>
-
-    <p class="form-description">
-      SYSTEM REGISTRATION // NEW USER
-    </p>
-
-    <div class="input-group">
-
-      <label>USERNAME</label>
-
-      <input
-        id="signupUsername"
-        type="text"
-        placeholder="CyberUser"
-      >
-
-    </div>
-
-    <div class="input-group">
-
-      <label>EMAIL ADDRESS</label>
-
-      <input
-        id="signupEmail"
-        type="email"
-        placeholder="example@email.com"
-      >
-
-    </div>
-
-    <div class="input-group">
-
-      <label>PASSWORD</label>
-
-      <input
-        id="signupPassword"
-        type="password"
-        placeholder="••••••••"
-      >
-
-    </div>
-
-    <button id="signupButton" class="main-button">
-      INITIALIZE ACCOUNT
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- =========================
-     ACCOUNT
-========================= -->
-
-<div id="account" class="card">
-
-  <div class="account-header">
-
-    <h2>ACCOUNT</h2>
-
-    <div class="status">
-
-      <span class="status-dot"></span>
-
-      ONLINE
-
-    </div>
-
-  </div>
-
-
-  <div class="user-box">
-
-    <span class="user-label">
-      USERNAME
-    </span>
-
-    <span id="username">
-      -
-    </span>
-
-  </div>
-
-
-  <div class="coin-box">
-
-    <div class="coin-label">
-      AVAILABLE BALANCE
-    </div>
-
-    <div id="coins" class="coin-value">
-      0
-    </div>
-
-    <div class="coin-unit">
-      COINS
-    </div>
-
-  </div>
-
-
-  <button id="logoutButton" class="main-button logout">
-    DISCONNECT
-  </button>
-
-</div>
-
-
-<!-- =========================
-     CASINO
-========================= -->
-
-<div id="casino">
-
-  <div class="game-tabs">
-
-    <button class="game-tab active" data-game="slots">
-      🎰 SLOTS
-    </button>
-
-    <button class="game-tab" data-game="blackjack">
-      🃏 BLACKJACK
-    </button>
-
-    <button class="game-tab" data-game="mines">
-      💣 MINES
-    </button>
-
-    <button class="game-tab" data-game="keno">
-      🎯 KENO
-    </button>
-
-  </div>
-
-
-  <!-- =========================
-       SLOTS
-  ========================= -->
-
-  <section id="slots" class="game-panel active">
-
-    <div class="game-title">
-
-      <span class="icon">🎰</span>
-
-      <div>
-        <h2>CYBER SLOTS</h2>
-        <p>NEON REELS // 3 REEL</p>
+        <div>
+          💰 <span id="balance">0</span>
+        </div>
       </div>
 
     </div>
 
 
-    <div class="slot-machine">
+    <!-- GAME NAV -->
 
-      <div id="slot1" class="slot-reel">
-        7️⃣
-      </div>
+    <div class="game-nav">
 
-      <div id="slot2" class="slot-reel">
-        7️⃣
-      </div>
+      <button class="game-tab active" data-game="slot">
+        🎰 SLOT
+      </button>
 
-      <div id="slot3" class="slot-reel">
-        7️⃣
-      </div>
+      <button class="game-tab" data-game="blackjack">
+        🃏 BLACKJACK
+      </button>
+
+      <button class="game-tab" data-game="mines">
+        💣 MINES
+      </button>
+
+      <button class="game-tab" data-game="keno">
+        🎯 KENO
+      </button>
+
+      <button class="game-tab" data-game="roulette">
+        🎡 ROULETTE
+      </button>
 
     </div>
 
 
-    <div id="slotResult" class="game-result">
-      READY
-    </div>
+    <!-- ================= SLOT ================= -->
 
+    <section id="slot" class="card game active">
 
-    <div class="bet-area">
+      <h2 class="game-title">🎰 NEON SLOT</h2>
 
-      <div class="bet-label">
-        BET
-      </div>
+      <p class="game-subtitle">
+        THREE REELS // MATCH SYMBOLS TO WIN
+      </p>
 
-      <div class="bet-controls">
+      <div class="game-area">
 
-        <button onclick="changeBet('slots',-100)">
-          −
+        <div class="slot-machine">
+
+          <div id="reel1" class="reel">❔</div>
+          <div id="reel2" class="reel">❔</div>
+          <div id="reel3" class="reel">❔</div>
+
+        </div>
+
+        <button id="spinButton" class="main-button" style="max-width:400px;">
+          SPIN
         </button>
 
-        <span id="slotsBet">
-          100
-        </span>
+        <div id="slotResult" class="result"></div>
 
-        <button onclick="changeBet('slots',100)">
-          ＋
+      </div>
+
+      <div class="bet-area">
+
+        <input id="slotBet" type="number" min="1" value="100">
+
+        <button id="maxSlotBet" class="main-button">
+          MAX
         </button>
 
       </div>
 
-    </div>
+      <div class="paytable">
 
+        <h3>PAY TABLE</h3>
 
-    <button class="casino-button" onclick="spinSlots()">
-      SPIN
-    </button>
+        <table>
 
+          <tr>
+            <th>COMBINATION</th>
+            <th>PAYOUT</th>
+          </tr>
 
-    <div class="paytable">
+          <tr>
+            <td>💎 💎 💎</td>
+            <td>×20</td>
+          </tr>
 
-      <h3>PAY TABLE</h3>
+          <tr>
+            <td>7️⃣ 7️⃣ 7️⃣</td>
+            <td>×15</td>
+          </tr>
 
-      <div class="pay-row">
-        <span>7️⃣ 7️⃣ 7️⃣</span>
-        <strong>x50</strong>
+          <tr>
+            <td>⭐ ⭐ ⭐</td>
+            <td>×10</td>
+          </tr>
+
+          <tr>
+            <td>🍒 🍒 🍒</td>
+            <td>×5</td>
+          </tr>
+
+          <tr>
+            <td>Any 2 matching</td>
+            <td>×2</td>
+          </tr>
+
+        </table>
+
       </div>
 
-      <div class="pay-row">
-        <span>💎 💎 💎</span>
-        <strong>x20</strong>
-      </div>
-
-      <div class="pay-row">
-        <span>🔔 🔔 🔔</span>
-        <strong>x10</strong>
-      </div>
-
-      <div class="pay-row">
-        <span>🍋 🍋 🍋</span>
-        <strong>x5</strong>
-      </div>
-
-      <div class="pay-row">
-        <span>同じ絵柄 ×2</span>
-        <strong>x2</strong>
-      </div>
-
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- =========================
-       BLACKJACK
-  ========================= -->
+    <!-- ================= BLACKJACK ================= -->
 
-  <section id="blackjack" class="game-panel">
+    <section id="blackjack" class="card game">
 
-    <div class="game-title">
+      <h2 class="game-title">🃏 BLACKJACK</h2>
 
-      <span class="icon">🃏</span>
+      <p class="game-subtitle">
+        GET CLOSER TO 21 WITHOUT GOING OVER
+      </p>
 
-      <div>
-        <h2>BLACKJACK</h2>
-        <p>21 // CARD SYSTEM</p>
-      </div>
+      <div class="game-area">
 
-    </div>
-
-
-    <div class="blackjack-table">
-
-      <div class="dealer">
-
-        <div class="card-label">
+        <div class="hand-title">
           DEALER
+          <span id="dealerScore"></span>
         </div>
 
-        <div id="dealerCards" class="playing-cards"></div>
+        <div id="dealerCards" class="cards"></div>
 
-        <div id="dealerScore" class="score">
-          SCORE: -
-        </div>
+        <div style="height:20px;"></div>
 
-      </div>
-
-
-      <div>
-
-        <div class="card-label">
+        <div class="hand-title">
           PLAYER
+          <span id="playerScore"></span>
         </div>
 
-        <div id="playerCards" class="playing-cards"></div>
+        <div id="playerCards" class="cards"></div>
 
-        <div id="playerScore" class="score">
-          SCORE: -
+        <div id="blackjackResult" class="result"></div>
+
+        <div class="blackjack-buttons">
+
+          <button id="dealButton" class="main-button">
+            DEAL
+          </button>
+
+          <button id="hitButton" class="main-button" disabled>
+            HIT
+          </button>
+
+          <button id="standButton" class="main-button" disabled>
+            STAND
+          </button>
+
         </div>
 
       </div>
 
-    </div>
+      <div class="bet-area">
 
+        <input id="blackjackBet" type="number" min="1" value="100">
 
-    <div id="blackjackResult" class="game-result">
-      READY
-    </div>
-
-
-    <div class="bet-area">
-
-      <div class="bet-label">
-        BET
       </div>
 
-      <div class="bet-controls">
+      <div class="paytable">
 
-        <button onclick="changeBet('blackjack',-100)">
-          −
+        <h3>PAY TABLE</h3>
+
+        <table>
+
+          <tr>
+            <td>BLACKJACK</td>
+            <td>×2.5</td>
+          </tr>
+
+          <tr>
+            <td>WIN</td>
+            <td>×2</td>
+          </tr>
+
+          <tr>
+            <td>DRAW</td>
+            <td>×1</td>
+          </tr>
+
+          <tr>
+            <td>LOSE</td>
+            <td>×0</td>
+          </tr>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= MINES ================= -->
+
+    <section id="mines" class="card game">
+
+      <h2 class="game-title">💣 MINES</h2>
+
+      <p class="game-subtitle">
+        FIND SAFE CELLS // CASH OUT BEFORE THE MINE
+      </p>
+
+      <div class="game-area">
+
+        <div id="mineGrid" class="mine-grid"></div>
+
+        <div>
+          MULTIPLIER:
+          <strong id="mineMultiplier">×1.00</strong>
+        </div>
+
+        <div id="mineResult" class="result"></div>
+
+        <button id="mineCashout" class="main-button" style="max-width:300px;margin-top:15px;" disabled>
+          CASH OUT
         </button>
 
-        <span id="blackjackBet">
-          100
-        </span>
+      </div>
 
-        <button onclick="changeBet('blackjack',100)">
-          ＋
+      <div class="bet-area">
+
+        <input id="mineBet" type="number" min="1" value="100">
+
+        <button id="mineStart" class="main-button">
+          START
         </button>
 
       </div>
 
-    </div>
+      <div class="paytable">
 
+        <h3>RULES</h3>
 
-    <div class="bj-buttons">
+        <table>
 
-      <button
-        id="dealButton"
-        class="casino-button"
-        onclick="startBlackjack()"
-      >
-        DEAL
-      </button>
+          <tr>
+            <td>SAFE CELL</td>
+            <td>×1.15</td>
+          </tr>
 
-      <button
-        id="hitButton"
-        class="casino-button secondary"
-        onclick="hitBlackjack()"
-        disabled
-      >
-        HIT
-      </button>
+          <tr>
+            <td>SAFE CELL ×5</td>
+            <td>×1.90</td>
+          </tr>
 
-      <button
-        id="standButton"
-        class="casino-button secondary"
-        onclick="standBlackjack()"
-        disabled
-      >
-        STAND
-      </button>
+          <tr>
+            <td>SAFE CELL ×10</td>
+            <td>×3.50</td>
+          </tr>
 
-    </div>
+          <tr>
+            <td>MINE</td>
+            <td>LOSE BET</td>
+          </tr>
 
+        </table>
 
-    <div class="paytable">
-
-      <h3>PAY TABLE</h3>
-
-      <div class="pay-row">
-        <span>BLACKJACK</span>
-        <strong>x2.5</strong>
       </div>
 
-      <div class="pay-row">
-        <span>WIN</span>
-        <strong>x2</strong>
+    </section>
+
+
+    <!-- ================= KENO ================= -->
+
+    <section id="keno" class="card game">
+
+      <h2 class="game-title">🎯 KENO</h2>
+
+      <p class="game-subtitle">
+        SELECT NUMBERS // DRAW 5 NUMBERS
+      </p>
+
+      <div class="game-area">
+
+        <div id="kenoGrid" class="keno-grid"></div>
+
+        <div>
+          SELECTED:
+          <strong id="kenoSelected">0</strong>/5
+        </div>
+
+        <div id="kenoResult" class="result"></div>
+
       </div>
 
-      <div class="pay-row">
-        <span>PUSH</span>
-        <strong>x1</strong>
+      <div class="bet-area">
+
+        <input id="kenoBet" type="number" min="1" value="100">
+
+        <button id="kenoPlay" class="main-button">
+          DRAW
+        </button>
+
       </div>
 
-      <div class="pay-row">
-        <span>LOSE</span>
-        <strong>x0</strong>
+      <div class="paytable">
+
+        <h3>PAY TABLE</h3>
+
+        <table>
+
+          <tr>
+            <td>5 HITS</td>
+            <td>×10</td>
+          </tr>
+
+          <tr>
+            <td>4 HITS</td>
+            <td>×4</td>
+          </tr>
+
+          <tr>
+            <td>3 HITS</td>
+            <td>×2</td>
+          </tr>
+
+          <tr>
+            <td>0-2 HITS</td>
+            <td>×0</td>
+          </tr>
+
+        </table>
+
       </div>
 
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- =========================
-       MINES
-  ========================= -->
+    <!-- ================= ROULETTE ================= -->
 
-  <section id="mines" class="game-panel">
+    <section id="roulette" class="card game">
 
-    <div class="game-title">
+      <h2 class="game-title">🎡 ROULETTE</h2>
 
-      <span class="icon">💣</span>
+      <p class="game-subtitle">
+        SELECT RED / BLACK / GREEN
+      </p>
 
-      <div>
-        <h2>MINES</h2>
-        <p>GRID // RISK SYSTEM</p>
+      <div class="game-area">
+
+        <div class="wheel">
+          <span id="rouletteNumber">?</span>
+        </div>
+
+        <div class="roulette-options">
+
+          <button data-color="red">
+            🔴 RED ×2
+          </button>
+
+          <button data-color="black">
+            ⚫ BLACK ×2
+          </button>
+
+          <button data-color="green">
+            🟢 GREEN ×14
+          </button>
+
+        </div>
+
+        <button id="roulettePlay" class="main-button" style="max-width:350px;">
+          SPIN ROULETTE
+        </button>
+
+        <div id="rouletteResult" class="result"></div>
+
       </div>
 
-    </div>
+      <div class="bet-area">
 
+        <input id="rouletteBet" type="number" min="1" value="100">
 
-    <div class="mines-info">
-
-      <div>
-        BET
-        <strong id="minesBet">
-          100
-        </strong>
       </div>
 
-      <div>
-        MINES
-        <strong>
-          3
-        </strong>
+      <div class="paytable">
+
+        <h3>PAY TABLE</h3>
+
+        <table>
+
+          <tr>
+            <td>RED</td>
+            <td>×2</td>
+          </tr>
+
+          <tr>
+            <td>BLACK</td>
+            <td>×2</td>
+          </tr>
+
+          <tr>
+            <td>GREEN / 0</td>
+            <td>×14</td>
+          </tr>
+
+        </table>
+
       </div>
 
-      <div>
-        MULTIPLIER
-        <strong id="mineMultiplier">
-          1.00x
-        </strong>
-      </div>
-
-    </div>
+    </section>
 
 
-    <div id="mineGrid" class="mine-grid"></div>
-
-
-    <div id="minesResult" class="game-result">
-      PRESS START
-    </div>
-
-
-    <div class="bet-controls">
-
-      <button onclick="changeBet('mines',-100)">
-        −
-      </button>
-
-      <span id="minesBetControl">
-        100
-      </span>
-
-      <button onclick="changeBet('mines',100)">
-        ＋
-      </button>
-
-    </div>
-
-
-    <button class="casino-button" onclick="startMines()">
-      START
+    <button id="logoutButton" class="main-button logout">
+      DISCONNECT
     </button>
 
-    <button class="casino-button secondary" onclick="cashoutMines()">
-      CASH OUT
-    </button>
+    <div id="casinoMessage" class="message"></div>
+
+  </div>
 
 
-    <div class="paytable">
-
-      <h3>MINES PAY TABLE</h3>
-
-      <div class="pay-row">
-        <span>SAFE ×1</span>
-        <strong>x1.12</strong>
-      </div>
-
-      <div class="pay-row">
-        <span>SAFE ×3</span>
-        <strong>x1.40</strong>
-      </div>
-
-      <div class="pay-row">
-        <span>SAFE ×5</span>
-        <strong>x2.00</strong>
-      </div>
-
-      <div class="pay-row">
-        <span>SAFE ×8</span>
-        <strong>x4.00</strong>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       KENO
-  ========================= -->
-
-  <section id="keno" class="game-panel">
-
-    <div class="game-title">
-
-      <span class="icon">🎯</span>
-
-      <div>
-        <h2>KENO</h2>
-        <p>NUMBER // DRAW SYSTEM</p>
-      </div>
-
-    </div>
-
-
-    <div id="kenoGrid" class="keno-grid"></div>
-
-
-    <div class="keno-selected">
-
-      SELECTED:
-
-      <strong id="kenoSelected">
-        0
-      </strong>
-
-      / 10
-
-    </div>
-
-
-    <div class="bet-controls">
-
-      <button onclick="changeBet('keno',-100)">
-        −
-      </button>
-
-      <span id="kenoBet">
-        100
-      </span>
-
-      <button onclick="changeBet('keno',100)">
-        ＋
-      </button>
-
-    </div>
-
-
-    <button class="casino-button" onclick="playKeno()">
-      DRAW NUMBERS
-    </button>
-
-
-    <div id="kenoResult" class="game-result">
-      SELECT 10 NUMBERS
-    </div>
-
-
-    <div class="paytable">
-
-      <h3>KENO PAY TABLE</h3>
-
-      <div class="pay-row">
-        <span>10 / 10</span>
-        <strong>x1000</strong>
-      </div>
-
-      <div class="pay-row">
-        <span>9 / 10</span>
-        <strong>x100</strong>
-      </div>
-
-      <div class="pay-row">
-        <span>8 / 10</span>
-        <strong>x20</strong>
-      </div>
-
-      <div class="pay-row">
-        <span>7 / 10</span>
-        <strong>x10</strong>
-      </div>
-
-      <div class="pay-row">
-        <span>6 / 10</span>
-        <strong>x5</strong>
-      </div>
-
-      <div class="pay-row">
-        <span>5 / 10</span>
-        <strong>x2</strong>
-      </div>
-
-    </div>
-
-  </section>
+  <div class="footer">
+    FREE CASINO // NEON GAMING NETWORK
+  </div>
 
 </div>
 
-
-<p id="message"></p>
-
-<div class="footer">
-  FREE CASINO // SECURE GAMING NETWORK
-</div>
-
-</main>
-
-
-<!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-/* =========================
+/* =====================================================
    SUPABASE
-========================= */
+===================================================== */
 
 const SUPABASE_URL =
-  "https://nambmvqtpktwhwcethbi.supabase.co";
+"https://nambmvqtpktwhwcethbi.supabase.co";
 
 const SUPABASE_KEY =
-  "sb_publishable_YNmyLuQv9f8Kk5v5GVNPdA_Cyd_1432";
+"sb_publishable_YNmyLuQv9f8Kk5v5GVNPdA_Cyd_1432";
 
-const {createClient}=supabase;
+const { createClient } = supabase;
 
-const client=createClient(
+const client = createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
 
 
-/* =========================
-   VARIABLES
-========================= */
+/* =====================================================
+   STATE
+===================================================== */
 
-let balance=0;
-
-const bets={
-  slots:100,
-  blackjack:100,
-  mines:100,
-  keno:100
-};
+let currentUser = null;
+let coins = 0;
 
 
-/* =========================
+/* =====================================================
    MESSAGE
-========================= */
+===================================================== */
 
-function showMessage(text){
-  document.getElementById("message").textContent=text;
+function message(text){
+
+  document.getElementById("casinoMessage").textContent =
+    text;
+
 }
 
 
-/* =========================
-   TABS
-========================= */
+/* =====================================================
+   BALANCE
+===================================================== */
 
-document.getElementById("loginTab").onclick=()=>{
+function updateBalance(){
 
-  document.getElementById("loginTab")
-    .classList.add("active");
+  document.getElementById("balance").textContent =
+    Number(coins).toLocaleString();
 
-  document.getElementById("signupTab")
-    .classList.remove("active");
-
-  document.getElementById("loginForm")
-    .classList.add("active");
-
-  document.getElementById("signupForm")
-    .classList.remove("active");
-
-};
+}
 
 
-document.getElementById("signupTab").onclick=()=>{
+/* =====================================================
+   SAVE COINS
+===================================================== */
 
-  document.getElementById("signupTab")
-    .classList.add("active");
+async function saveCoins(){
 
-  document.getElementById("loginTab")
-    .classList.remove("active");
-
-  document.getElementById("signupForm")
-    .classList.add("active");
-
-  document.getElementById("loginForm")
-    .classList.remove("active");
-
-};
-
-
-/* =========================
-   REGISTER
-========================= */
-
-document.getElementById("signupButton").onclick=async()=>{
-
-  const username=
-    document.getElementById("signupUsername")
-      .value.trim();
-
-  const email=
-    document.getElementById("signupEmail")
-      .value.trim();
-
-  const password=
-    document.getElementById("signupPassword")
-      .value;
-
-
-  if(!username||!email||!password){
-
-    showMessage(
-      "ERROR // ALL FIELDS REQUIRED"
-    );
-
-    return;
-
+  if(!currentUser){
+    return false;
   }
 
-
-  const {data,error}=
-    await client.auth.signUp({
-
-      email,
-      password,
-
-      options:{
-        data:{
-          username
-        }
-      }
-
-    });
-
-
-  if(error){
-
-    showMessage(
-      "ERROR // "+error.message
-    );
-
-    return;
-
-  }
-
-
-  showMessage(
-    "SYSTEM // ACCOUNT CREATED"
-  );
-
-};
-
-
-/* =========================
-   LOGIN
-========================= */
-
-document.getElementById("loginButton").onclick=async()=>{
-
-  const email=
-    document.getElementById("loginEmail")
-      .value.trim();
-
-  const password=
-    document.getElementById("loginPassword")
-      .value;
-
-
-  if(!email||!password){
-
-    showMessage(
-      "ERROR // EMAIL AND PASSWORD REQUIRED"
-    );
-
-    return;
-
-  }
-
-
-  const {data,error}=
-    await client.auth.signInWithPassword({
-
-      email,
-      password
-
-    });
-
-
-  if(error){
-
-    showMessage(
-      "ERROR // "+error.message
-    );
-
-    return;
-
-  }
-
-
-  showMessage(
-    "SYSTEM // ACCESS GRANTED"
-  );
-
-
-  await loadProfile();
-
-};
-
-
-/* =========================
-   PROFILE
-========================= */
-
-async function loadProfile(){
-
-  const {
-    data:{user}
-  }=
-    await client.auth.getUser();
-
-
-  if(!user)return;
-
-
-  const {
-    data:profile,
-    error
-  }=
-    await client
-      .from("profiles")
-      .select("username,coins")
-      .eq("id",user.id)
-      .single();
-
+  const { error } = await client
+    .from("profiles")
+    .update({
+      coins: Math.floor(coins)
+    })
+    .eq("id", currentUser.id);
 
   if(error){
 
     console.error(error);
 
-    showMessage(
-      "ERROR // PROFILE LOAD FAILED"
+    message(
+      "ERROR // COIN SAVE FAILED"
     );
 
-    return;
-
+    return false;
   }
 
-
-  document.getElementById("username")
-    .textContent=
-      profile.username||"UNKNOWN";
+  return true;
+}
 
 
-  balance=
-    Number(profile.coins)||0;
+/* =====================================================
+   CHANGE COINS
+===================================================== */
 
+async function changeCoins(amount){
+
+  const newCoins = coins + amount;
+
+  if(newCoins < 0){
+
+    message(
+      "ERROR // INSUFFICIENT COINS"
+    );
+
+    return false;
+  }
+
+  coins = Math.floor(newCoins);
 
   updateBalance();
 
+  return await saveCoins();
+}
+
+
+/* =====================================================
+   LOAD PROFILE
+===================================================== */
+
+async function loadProfile(){
+
+  const {
+    data,
+    error
+  } = await client.auth.getUser();
+
+  if(error || !data.user){
+
+    return false;
+  }
+
+  currentUser = data.user;
+
+  const {
+    data: profile,
+    error: profileError
+  } = await client
+    .from("profiles")
+    .select("username, coins")
+    .eq("id", currentUser.id)
+    .single();
+
+  if(profileError){
+
+    console.error(profileError);
+
+    return false;
+  }
+
+  coins =
+    Number(profile.coins ?? 10000);
+
+  document.getElementById("username")
+    .textContent =
+    profile.username || "UNKNOWN";
+
+  updateBalance();
 
   document.getElementById("authCard")
-    .style.display="none";
-
-
-  document.getElementById("account")
-    .style.display="block";
-
+    .classList.add("hidden");
 
   document.getElementById("casino")
-    .style.display="block";
+    .classList.remove("hidden");
 
+  return true;
 }
 
 
-/* =========================
-   BALANCE
-========================= */
+/* =====================================================
+   AUTH TABS
+===================================================== */
 
-function updateBalance(){
+document.getElementById("loginTab")
+.addEventListener("click",()=>{
 
-  document.getElementById("coins")
-    .textContent=
-      balance.toLocaleString();
+  document.getElementById("loginTab")
+    .classList.add("active");
 
-}
+  document.getElementById("signupTab")
+    .classList.remove("active");
+
+  document.getElementById("loginForm")
+    .classList.add("active");
+
+  document.getElementById("signupForm")
+    .classList.remove("active");
+
+});
 
 
-/* =========================
-   LOGOUT
-========================= */
+document.getElementById("signupTab")
+.addEventListener("click",()=>{
 
-document.getElementById("logoutButton").onclick=async()=>{
+  document.getElementById("signupTab")
+    .classList.add("active");
 
-  const {error}=
-    await client.auth.signOut();
+  document.getElementById("loginTab")
+    .classList.remove("active");
 
+  document.getElementById("signupForm")
+    .classList.add("active");
+
+  document.getElementById("loginForm")
+    .classList.remove("active");
+
+});
+
+
+/* =====================================================
+   SIGNUP
+===================================================== */
+
+document.getElementById("signupButton")
+.addEventListener("click",async()=>{
+
+  const username =
+    document.getElementById("signupUsername")
+    .value.trim();
+
+  const email =
+    document.getElementById("signupEmail")
+    .value.trim();
+
+  const password =
+    document.getElementById("signupPassword")
+    .value;
+
+  if(!username || !email || !password){
+
+    document.getElementById("authMessage")
+      .textContent =
+      "ERROR // ALL FIELDS REQUIRED";
+
+    return;
+  }
+
+  const {
+    data,
+    error
+  } =
+  await client.auth.signUp({
+
+    email,
+    password,
+
+    options:{
+      data:{
+        username
+      }
+    }
+
+  });
 
   if(error){
 
-    showMessage(
-      "ERROR // LOGOUT FAILED"
-    );
+    document.getElementById("authMessage")
+      .textContent =
+      "ERROR // " + error.message;
 
     return;
-
   }
 
+  document.getElementById("authMessage")
+    .textContent =
+    "SYSTEM // ACCOUNT CREATED";
 
-  document.getElementById("account")
-    .style.display="none";
-
-  document.getElementById("casino")
-    .style.display="none";
-
-  document.getElementById("authCard")
-    .style.display="block";
+});
 
 
-  showMessage(
-    "SYSTEM // DISCONNECTED"
-  );
+/* =====================================================
+   LOGIN
+===================================================== */
 
-};
+document.getElementById("loginButton")
+.addEventListener("click",async()=>{
+
+  const email =
+    document.getElementById("loginEmail")
+    .value.trim();
+
+  const password =
+    document.getElementById("loginPassword")
+    .value;
+
+  if(!email || !password){
+
+    document.getElementById("authMessage")
+      .textContent =
+      "ERROR // EMAIL AND PASSWORD REQUIRED";
+
+    return;
+  }
+
+  const {
+    error
+  } =
+  await client.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if(error){
+
+    document.getElementById("authMessage")
+      .textContent =
+      "ERROR // " + error.message;
+
+    return;
+  }
+
+  await loadProfile();
+
+});
 
 
-/* =========================
+/* =====================================================
    GAME TABS
-========================= */
+===================================================== */
 
 document.querySelectorAll(".game-tab")
 .forEach(button=>{
 
-  button.onclick=()=>{
+  button.addEventListener("click",()=>{
 
     document.querySelectorAll(".game-tab")
-    .forEach(b=>b.classList.remove("active"));
+      .forEach(b=>b.classList.remove("active"));
 
-    document.querySelectorAll(".game-panel")
-    .forEach(p=>p.classList.remove("active"));
-
+    document.querySelectorAll(".game")
+      .forEach(g=>g.classList.remove("active"));
 
     button.classList.add("active");
 
@@ -1659,180 +1496,132 @@ document.querySelectorAll(".game-tab")
       button.dataset.game
     ).classList.add("active");
 
-  };
+  });
 
 });
 
 
-/* =========================
-   BET
-========================= */
+/* =====================================================
+   SLOT
+===================================================== */
 
-function changeBet(game,value){
+const symbols=[
+  "💎",
+  "7️⃣",
+  "⭐",
+  "🍒",
+  "🔔",
+  "💰"
+];
 
-  bets[game]+=value;
+function randomSymbol(){
 
-
-  if(bets[game]<100)
-    bets[game]=100;
-
-
-  if(bets[game]>10000)
-    bets[game]=10000;
-
-
-  const id=
-    game==="mines"
-      ?"minesBetControl"
-      :game+"Bet";
-
-
-  document.getElementById(id)
-    .textContent=
-      bets[game].toLocaleString();
-
-
-  if(game==="mines"){
-
-    document.getElementById("minesBet")
-      .textContent=
-        bets[game].toLocaleString();
-
-  }
-
+  return symbols[
+    Math.floor(Math.random()*symbols.length)
+  ];
 }
 
+document.getElementById("spinButton")
+.addEventListener("click",async()=>{
 
-/* =========================
-   SLOTS
-========================= */
+  const bet =
+    Number(
+      document.getElementById("slotBet").value
+    );
 
-function spinSlots(){
+  if(!Number.isFinite(bet) || bet<=0){
 
-  const bet=bets.slots;
-
-
-  if(balance<bet){
-
-    document.getElementById("slotResult")
-      .textContent=
-        "NOT ENOUGH COINS";
+    message("ERROR // INVALID BET");
 
     return;
-
   }
 
+  if(bet>coins){
 
-  balance-=bet;
+    message("ERROR // INSUFFICIENT COINS");
 
+    return;
+  }
 
-  const symbols=[
-    "🍋",
-    "🔔",
-    "💎",
-    "7️⃣"
-  ];
+  await changeCoins(-bet);
 
+  const a=randomSymbol();
+  const b=randomSymbol();
+  const c=randomSymbol();
 
-  const result=[
-    symbols[Math.floor(Math.random()*4)],
-    symbols[Math.floor(Math.random()*4)],
-    symbols[Math.floor(Math.random()*4)]
-  ];
-
-
-  document.getElementById("slot1")
-    .textContent=result[0];
-
-  document.getElementById("slot2")
-    .textContent=result[1];
-
-  document.getElementById("slot3")
-    .textContent=result[2];
-
+  document.getElementById("reel1").textContent=a;
+  document.getElementById("reel2").textContent=b;
+  document.getElementById("reel3").textContent=c;
 
   let multiplier=0;
 
+  if(a===b && b===c){
 
-  if(
-    result[0]==="7️⃣"&&
-    result[1]==="7️⃣"&&
-    result[2]==="7️⃣"
-  ){
-    multiplier=50;
-  }
+    if(a==="💎") multiplier=20;
+    else if(a==="7️⃣") multiplier=15;
+    else if(a==="⭐") multiplier=10;
+    else if(a==="🍒") multiplier=5;
+    else multiplier=3;
 
-  else if(
-    result.every(x=>x==="💎")
-  ){
-    multiplier=20;
-  }
+  }else if(a===b || b===c || a===c){
 
-  else if(
-    result.every(x=>x==="🔔")
-  ){
-    multiplier=10;
-  }
-
-  else if(
-    result.every(x=>x==="🍋")
-  ){
-    multiplier=5;
-  }
-
-  else if(
-    result[0]===result[1]||
-    result[1]===result[2]||
-    result[0]===result[2]
-  ){
     multiplier=2;
   }
 
-
   const payout=bet*multiplier;
 
-  balance+=payout;
+  if(payout>0){
+
+    await changeCoins(payout);
+
+    document.getElementById("slotResult")
+      .textContent =
+      `WIN // +${payout.toLocaleString()} COINS`;
+
+  }else{
+
+    document.getElementById("slotResult")
+      .textContent =
+      "LOSE // BET LOST";
+
+  }
+
+});
 
 
-  document.getElementById("slotResult")
-    .textContent=
-      multiplier
-      ? "WIN // +"+payout.toLocaleString()+" COINS"
-      : "LOSE // -"+bet.toLocaleString();
+document.getElementById("maxSlotBet")
+.addEventListener("click",()=>{
+
+  document.getElementById("slotBet")
+    .value=coins;
+
+});
 
 
-  updateBalance();
-
-}
-
-
-/* =========================
+/* =====================================================
    BLACKJACK
-========================= */
+===================================================== */
 
 let deck=[];
-let playerHand=[];
-let dealerHand=[];
+let player=[];
+let dealer=[];
 let blackjackActive=false;
-
 
 function createDeck(){
 
   const suits=["♠","♥","♦","♣"];
-
   const ranks=[
     "A","2","3","4","5","6","7",
     "8","9","10","J","Q","K"
   ];
 
-  const newDeck=[];
-
+  const d=[];
 
   for(const suit of suits){
 
     for(const rank of ranks){
 
-      newDeck.push({
+      d.push({
         suit,
         rank
       });
@@ -1841,151 +1630,131 @@ function createDeck(){
 
   }
 
-
-  return newDeck.sort(
-    ()=>Math.random()-.5
-  );
-
+  return d.sort(()=>Math.random()-.5);
 }
 
-
-function handValue(hand){
+function cardValue(hand){
 
   let total=0;
   let aces=0;
 
-
-  hand.forEach(card=>{
+  for(const card of hand){
 
     if(card.rank==="A"){
 
       total+=11;
       aces++;
 
-    }
-
-    else if(
-      ["J","Q","K"].includes(card.rank)
+    }else if(
+      ["K","Q","J"].includes(card.rank)
     ){
 
       total+=10;
 
-    }
-
-    else{
+    }else{
 
       total+=Number(card.rank);
 
     }
 
-  });
+  }
 
-
-  while(total>21&&aces){
+  while(total>21 && aces>0){
 
     total-=10;
     aces--;
 
   }
 
-
   return total;
-
 }
 
+function renderHand(){
 
-function renderBlackjack(){
-
-  const player=
-    document.getElementById("playerCards");
-
-  const dealer=
+  const dealerDiv =
     document.getElementById("dealerCards");
 
+  const playerDiv =
+    document.getElementById("playerCards");
 
-  player.innerHTML="";
-  dealer.innerHTML="";
+  dealerDiv.innerHTML="";
+  playerDiv.innerHTML="";
 
-
-  playerHand.forEach(card=>{
-
-    const div=document.createElement("div");
-
-    div.className="playing-card";
-
-    div.textContent=
-      card.rank+card.suit;
-
-    player.appendChild(div);
-
-  });
-
-
-  dealerHand.forEach(card=>{
+  dealer.forEach((card,i)=>{
 
     const div=document.createElement("div");
 
     div.className="playing-card";
 
-    div.textContent=
-      card.rank+card.suit;
+    div.textContent =
+      i===1 && blackjackActive
+      ? "?"
+      : card.rank+card.suit;
 
-    dealer.appendChild(div);
+    dealerDiv.appendChild(div);
 
   });
 
+  player.forEach(card=>{
+
+    const div=document.createElement("div");
+
+    div.className="playing-card";
+
+    div.textContent =
+      card.rank+card.suit;
+
+    playerDiv.appendChild(div);
+
+  });
 
   document.getElementById("playerScore")
-    .textContent=
-      "SCORE: "+handValue(playerHand);
-
+    .textContent =
+    "(" + cardValue(player) + ")";
 
   document.getElementById("dealerScore")
-    .textContent=
-      "SCORE: "+handValue(dealerHand);
+    .textContent =
+    blackjackActive
+    ? ""
+    : "(" + cardValue(dealer) + ")";
 
 }
 
+document.getElementById("dealButton")
+.addEventListener("click",async()=>{
 
-function startBlackjack(){
+  const bet =
+    Number(
+      document.getElementById("blackjackBet").value
+    );
 
-  if(blackjackActive)return;
+  if(bet<=0 || bet>coins){
 
-
-  const bet=bets.blackjack;
-
-
-  if(balance<bet){
-
-    document.getElementById("blackjackResult")
-      .textContent=
-        "NOT ENOUGH COINS";
+    message("ERROR // INVALID BET");
 
     return;
-
   }
 
-
-  balance-=bet;
-
+  await changeCoins(-bet);
 
   deck=createDeck();
 
-
-  playerHand=[
+  player=[
     deck.pop(),
     deck.pop()
   ];
 
-
-  dealerHand=[
+  dealer=[
     deck.pop(),
     deck.pop()
   ];
-
 
   blackjackActive=true;
 
+  renderHand();
+
+  document.getElementById("blackjackResult")
+    .textContent="";
 
   document.getElementById("hitButton")
     .disabled=false;
@@ -1993,25 +1762,22 @@ function startBlackjack(){
   document.getElementById("standButton")
     .disabled=false;
 
+  document.getElementById("dealButton")
+    .disabled=true;
 
-  renderBlackjack();
-
-
-  if(handValue(playerHand)===21){
-
-    const payout=
-      Math.floor(bet*2.5);
-
-    balance+=payout;
+  if(cardValue(player)===21){
 
     blackjackActive=false;
 
+    renderHand();
+
+    await changeCoins(
+      Math.floor(bet*2.5)
+    );
 
     document.getElementById("blackjackResult")
-      .textContent=
-        "BLACKJACK // +"+
-        payout.toLocaleString();
-
+      .textContent =
+      "BLACKJACK // ×2.5";
 
     document.getElementById("hitButton")
       .disabled=true;
@@ -2019,101 +1785,96 @@ function startBlackjack(){
     document.getElementById("standButton")
       .disabled=true;
 
-  }
-
-
-  updateBalance();
-
-}
-
-
-function hitBlackjack(){
-
-  if(!blackjackActive)return;
-
-
-  playerHand.push(deck.pop());
-
-  renderBlackjack();
-
-
-  if(handValue(playerHand)>21){
-
-    finishBlackjack(
-      "BUST // YOU LOSE",
-      0
-    );
+    document.getElementById("dealButton")
+      .disabled=false;
 
   }
 
-  else if(handValue(playerHand)===21){
-
-    standBlackjack();
-
-  }
-
-}
+});
 
 
-function standBlackjack(){
+document.getElementById("hitButton")
+.addEventListener("click",async()=>{
 
-  if(!blackjackActive)return;
+  player.push(deck.pop());
 
+  renderHand();
 
-  while(handValue(dealerHand)<17){
+  if(cardValue(player)>21){
 
-    dealerHand.push(deck.pop());
+    blackjackActive=false;
 
-  }
+    renderHand();
 
+    document.getElementById("blackjackResult")
+      .textContent =
+      "BUST // YOU LOSE";
 
-  renderBlackjack();
+    document.getElementById("hitButton")
+      .disabled=true;
 
+    document.getElementById("standButton")
+      .disabled=true;
 
-  const player=handValue(playerHand);
-  const dealer=handValue(dealerHand);
-
-
-  if(dealer>21||player>dealer){
-
-    finishBlackjack(
-      "WIN // +2x",
-      bets.blackjack*2
-    );
+    document.getElementById("dealButton")
+      .disabled=false;
 
   }
 
-  else if(player===dealer){
-
-    finishBlackjack(
-      "PUSH // BET RETURNED",
-      bets.blackjack
-    );
-
-  }
-
-  else{
-
-    finishBlackjack(
-      "LOSE",
-      0
-    );
-
-  }
-
-}
+});
 
 
-function finishBlackjack(message,payout){
-
-  balance+=payout;
+document.getElementById("standButton")
+.addEventListener("click",async()=>{
 
   blackjackActive=false;
 
+  while(cardValue(dealer)<17){
+
+    dealer.push(deck.pop());
+
+  }
+
+  renderHand();
+
+  const p=cardValue(player);
+  const d=cardValue(dealer);
+
+  let payout=0;
+  let text="";
+
+  if(d>21 || p>d){
+
+    payout=
+      Number(
+        document.getElementById("blackjackBet").value
+      )*2;
+
+    text="WIN // ×2";
+
+  }else if(p===d){
+
+    payout=
+      Number(
+        document.getElementById("blackjackBet").value
+      );
+
+    text="DRAW // BET RETURNED";
+
+  }else{
+
+    text="LOSE // BET LOST";
+
+  }
+
+  if(payout){
+
+    await changeCoins(payout);
+
+  }
 
   document.getElementById("blackjackResult")
-    .textContent=message;
-
+    .textContent=text;
 
   document.getElementById("hitButton")
     .disabled=true;
@@ -2121,293 +1882,63 @@ function finishBlackjack(message,payout){
   document.getElementById("standButton")
     .disabled=true;
 
+  document.getElementById("dealButton")
+    .disabled=false;
 
-  updateBalance();
-
-}
+});
 
 
-/* =========================
+/* =====================================================
    MINES
-========================= */
+===================================================== */
 
-let mineMap=[];
-let minesActive=false;
-let minesRevealed=0;
+let mines=[];
+let mineActive=false;
+let mineBet=0;
+let mineMultiplier=1;
+let safeCount=0;
 
+function createMines(){
 
-function startMines(){
+  mines=Array(25).fill(false);
 
-  if(minesActive)return;
+  let placed=0;
 
-
-  const bet=bets.mines;
-
-
-  if(balance<bet){
-
-    document.getElementById("minesResult")
-      .textContent=
-        "NOT ENOUGH COINS";
-
-    return;
-
-  }
-
-
-  balance-=bet;
-
-
-  mineMap=
-    Array(25).fill(false);
-
-
-  let count=0;
-
-
-  while(count<3){
+  while(placed<5){
 
     const index=
       Math.floor(Math.random()*25);
 
+    if(!mines[index]){
 
-    if(!mineMap[index]){
-
-      mineMap[index]=true;
-
-      count++;
+      mines[index]=true;
+      placed++;
 
     }
 
   }
 
+}
 
-  minesActive=true;
-  minesRevealed=0;
+function renderMines(){
 
-
-  const grid=
+  const grid =
     document.getElementById("mineGrid");
 
   grid.innerHTML="";
 
-
   for(let i=0;i<25;i++){
 
-    const tile=
+    const button =
       document.createElement("button");
 
-    tile.className="mine-tile";
+    button.className="mine-cell";
+    button.dataset.index=i;
 
-    tile.textContent="?";
-
-    tile.onclick=()=>{
-      revealMine(i,tile);
-    };
-
-    grid.appendChild(tile);
-
-  }
-
-
-  document.getElementById("mineMultiplier")
-    .textContent="1.00x";
-
-
-  document.getElementById("minesResult")
-    .textContent="GAME STARTED";
-
-
-  updateBalance();
-
-}
-
-
-function revealMine(index,tile){
-
-  if(!minesActive)return;
-
-
-  if(mineMap[index]){
-
-    tile.classList.add("mine");
-    tile.textContent="💣";
-
-    minesActive=false;
-
-
-    document.querySelectorAll(".mine-tile")
-    .forEach((t,i)=>{
-
-      if(mineMap[i]){
-
-        t.classList.add("mine");
-        t.textContent="💣";
-
-      }
-
-    });
-
-
-    document.getElementById("minesResult")
-      .textContent=
-        "BOOM // BET LOST";
-
-    return;
-
-  }
-
-
-  tile.classList.add("safe");
-  tile.textContent="◆";
-  tile.disabled=true;
-
-
-  minesRevealed++;
-
-
-  const multipliers=[
-    1.12,
-    1.25,
-    1.40,
-    1.65,
-    2.00,
-    2.50,
-    3.20,
-    4.00
-  ];
-
-
-  const multiplier=
-    multipliers[
-      Math.min(
-        minesRevealed-1,
-        multipliers.length-1
-      )
-    ];
-
-
-  document.getElementById("mineMultiplier")
-    .textContent=
-      multiplier.toFixed(2)+"x";
-
-
-  document.getElementById("minesResult")
-    .textContent=
-      "SAFE // "+
-      multiplier.toFixed(2)+"x";
-
-}
-
-
-function cashoutMines(){
-
-  if(!minesActive)return;
-
-
-  const multipliers=[
-    1.12,
-    1.25,
-    1.40,
-    1.65,
-    2.00,
-    2.50,
-    3.20,
-    4.00
-  ];
-
-
-  const multiplier=
-    minesRevealed===0
-      ?1
-      :multipliers[
-        Math.min(
-          minesRevealed-1,
-          multipliers.length-1
-        )
-      ];
-
-
-  const payout=
-    Math.floor(
-      bets.mines*multiplier
+    button.addEventListener(
+      "click",
+      ()=>clickMine(i,button)
     );
-
-
-  balance+=payout;
-
-  minesActive=false;
-
-
-  document.getElementById("minesResult")
-    .textContent=
-      "CASH OUT // +"+
-      payout.toLocaleString();
-
-
-  updateBalance();
-
-}
-
-
-/* =========================
-   KENO
-========================= */
-
-let selectedNumbers=[];
-
-
-function createKeno(){
-
-  const grid=
-    document.getElementById("kenoGrid");
-
-
-  for(let i=1;i<=40;i++){
-
-    const button=
-      document.createElement("button");
-
-    button.className="keno-number";
-
-    button.textContent=i;
-
-
-    button.onclick=()=>{
-
-      if(selectedNumbers.includes(i)){
-
-        selectedNumbers=
-          selectedNumbers.filter(
-            n=>n!==i
-          );
-
-        button.classList.remove(
-          "selected"
-        );
-
-      }
-
-      else{
-
-        if(selectedNumbers.length>=10)
-          return;
-
-        selectedNumbers.push(i);
-
-        button.classList.add(
-          "selected"
-        );
-
-      }
-
-
-      document.getElementById("kenoSelected")
-        .textContent=
-          selectedNumbers.length;
-
-    };
-
 
     grid.appendChild(button);
 
@@ -2415,135 +1946,393 @@ function createKeno(){
 
 }
 
+async function clickMine(index,button){
 
-function playKeno(){
+  if(!mineActive || button.disabled){
+    return;
+  }
 
-  if(selectedNumbers.length!==10){
+  button.disabled=true;
 
-    document.getElementById("kenoResult")
-      .textContent=
-        "SELECT EXACTLY 10 NUMBERS";
+  if(mines[index]){
+
+    button.textContent="💣";
+    button.classList.add("mine");
+
+    mineActive=false;
+
+    document.getElementById("mineResult")
+      .textContent =
+      "BOOM // BET LOST";
+
+    document.getElementById("mineCashout")
+      .disabled=true;
 
     return;
+  }
+
+  safeCount++;
+
+  mineMultiplier =
+    1 + safeCount * .15;
+
+  button.textContent="◆";
+  button.classList.add("safe");
+
+  document.getElementById("mineMultiplier")
+    .textContent =
+    "×"+mineMultiplier.toFixed(2);
+
+  if(safeCount===20){
+
+    await cashoutMines();
 
   }
 
+}
 
-  const bet=bets.keno;
+document.getElementById("mineStart")
+.addEventListener("click",async()=>{
 
+  mineBet =
+    Number(
+      document.getElementById("mineBet").value
+    );
 
-  if(balance<bet){
+  if(mineBet<=0 || mineBet>coins){
 
-    document.getElementById("kenoResult")
-      .textContent=
-        "NOT ENOUGH COINS";
+    message("ERROR // INVALID BET");
 
     return;
-
   }
 
+  await changeCoins(-mineBet);
 
-  balance-=bet;
+  createMines();
+
+  mineActive=true;
+  mineMultiplier=1;
+  safeCount=0;
+
+  renderMines();
+
+  document.getElementById("mineMultiplier")
+    .textContent="×1.00";
+
+  document.getElementById("mineResult")
+    .textContent="";
+
+  document.getElementById("mineCashout")
+    .disabled=false;
+
+});
 
 
-  const drawn=[];
+async function cashoutMines(){
 
-
-  while(drawn.length<10){
-
-    const number=
-      Math.floor(Math.random()*40)+1;
-
-
-    if(!drawn.includes(number)){
-
-      drawn.push(number);
-
-    }
-
+  if(!mineActive){
+    return;
   }
 
+  mineActive=false;
 
-  document.querySelectorAll(".keno-number")
-  .forEach(button=>{
+  const payout =
+    Math.floor(
+      mineBet * mineMultiplier
+    );
 
-    const number=
-      Number(button.textContent);
+  await changeCoins(payout);
 
+  document.getElementById("mineResult")
+    .textContent =
+    `CASH OUT // +${payout.toLocaleString()} COINS`;
 
-    if(drawn.includes(number)){
-
-      button.classList.add("drawn");
-
-    }
-
-  });
-
-
-  const hits=
-    selectedNumbers.filter(
-      n=>drawn.includes(n)
-    ).length;
-
-
-  const payouts={
-    10:1000,
-    9:100,
-    8:20,
-    7:10,
-    6:5,
-    5:2
-  };
-
-
-  const multiplier=
-    payouts[hits]||0;
-
-
-  const payout=
-    bet*multiplier;
-
-
-  balance+=payout;
-
-
-  document.getElementById("kenoResult")
-    .textContent=
-      hits+
-      "/10 HIT // "+
-      (payout
-        ?"+"+payout.toLocaleString()
-        :"LOSE");
-
-
-  updateBalance();
+  document.getElementById("mineCashout")
+    .disabled=true;
 
 }
 
 
-createKeno();
+document.getElementById("mineCashout")
+.addEventListener(
+  "click",
+  cashoutMines
+);
+
+renderMines();
 
 
-/* =========================
-   SESSION CHECK
-========================= */
+/* =====================================================
+   KENO
+===================================================== */
+
+let kenoSelected=[];
+
+const kenoGrid =
+  document.getElementById("kenoGrid");
+
+for(let i=1;i<=40;i++){
+
+  const button =
+    document.createElement("button");
+
+  button.className="keno-number";
+  button.textContent=i;
+
+  button.addEventListener("click",()=>{
+
+    if(kenoSelected.includes(i)){
+
+      kenoSelected =
+        kenoSelected.filter(
+          n=>n!==i
+        );
+
+      button.classList.remove("selected");
+
+    }else{
+
+      if(kenoSelected.length>=5){
+        return;
+      }
+
+      kenoSelected.push(i);
+
+      button.classList.add("selected");
+
+    }
+
+    document.getElementById("kenoSelected")
+      .textContent =
+      kenoSelected.length;
+
+  });
+
+  kenoGrid.appendChild(button);
+
+}
+
+
+document.getElementById("kenoPlay")
+.addEventListener("click",async()=>{
+
+  if(kenoSelected.length!==5){
+
+    message("ERROR // SELECT 5 NUMBERS");
+
+    return;
+  }
+
+  const bet =
+    Number(
+      document.getElementById("kenoBet").value
+    );
+
+  if(bet<=0 || bet>coins){
+
+    message("ERROR // INVALID BET");
+
+    return;
+  }
+
+  await changeCoins(-bet);
+
+  const draw=[];
+
+  while(draw.length<5){
+
+    const n =
+      Math.floor(Math.random()*40)+1;
+
+    if(!draw.includes(n)){
+      draw.push(n);
+    }
+
+  }
+
+  let hits=0;
+
+  draw.forEach(n=>{
+
+    if(kenoSelected.includes(n)){
+      hits++;
+    }
+
+    document.querySelectorAll(
+      ".keno-number"
+    )[n-1]
+      .classList.add("hit");
+
+  });
+
+  let multiplier=0;
+
+  if(hits===5) multiplier=10;
+  else if(hits===4) multiplier=4;
+  else if(hits===3) multiplier=2;
+
+  const payout=bet*multiplier;
+
+  if(payout){
+
+    await changeCoins(payout);
+
+  }
+
+  document.getElementById("kenoResult")
+    .textContent =
+    `DRAW: ${draw.join(", ")} // HITS: ${hits} // PAYOUT: ${payout.toLocaleString()}`;
+
+});
+
+
+/* =====================================================
+   ROULETTE
+===================================================== */
+
+let rouletteChoice=null;
+
+document.querySelectorAll(
+  ".roulette-options button"
+)
+.forEach(button=>{
+
+  button.addEventListener("click",()=>{
+
+    document.querySelectorAll(
+      ".roulette-options button"
+    ).forEach(b=>{
+      b.classList.remove("selected");
+    });
+
+    button.classList.add("selected");
+
+    rouletteChoice =
+      button.dataset.color;
+
+  });
+
+});
+
+
+document.getElementById("roulettePlay")
+.addEventListener("click",async()=>{
+
+  if(!rouletteChoice){
+
+    message("ERROR // SELECT COLOR");
+
+    return;
+  }
+
+  const bet =
+    Number(
+      document.getElementById("rouletteBet").value
+    );
+
+  if(bet<=0 || bet>coins){
+
+    message("ERROR // INVALID BET");
+
+    return;
+  }
+
+  await changeCoins(-bet);
+
+  const number =
+    Math.floor(Math.random()*37);
+
+  document.getElementById("rouletteNumber")
+    .textContent=number;
+
+  let color;
+
+  if(number===0){
+
+    color="green";
+
+  }else if(number%2===0){
+
+    color="black";
+
+  }else{
+
+    color="red";
+
+  }
+
+  let multiplier=0;
+
+  if(color===rouletteChoice){
+
+    if(color==="green"){
+      multiplier=14;
+    }else{
+      multiplier=2;
+    }
+
+  }
+
+  const payout=bet*multiplier;
+
+  if(payout){
+
+    await changeCoins(payout);
+
+    document.getElementById("rouletteResult")
+      .textContent =
+      `WIN // ${number} ${color.toUpperCase()} // +${payout.toLocaleString()} COINS`;
+
+  }else{
+
+    document.getElementById("rouletteResult")
+      .textContent =
+      `LOSE // ${number} ${color.toUpperCase()}`;
+
+  }
+
+});
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+document.getElementById("logoutButton")
+.addEventListener("click",async()=>{
+
+  await client.auth.signOut();
+
+  currentUser=null;
+  coins=0;
+
+  document.getElementById("casino")
+    .classList.add("hidden");
+
+  document.getElementById("authCard")
+    .classList.remove("hidden");
+
+});
+
+
+/* =====================================================
+   AUTO LOGIN
+===================================================== */
 
 async function checkLogin(){
 
   const {
-    data:{session}
-  }=
-    await client.auth.getSession();
+    data
+  } =
+  await client.auth.getSession();
 
-
-  if(session){
+  if(data.session){
 
     await loadProfile();
 
   }
 
 }
-
 
 checkLogin();
 
