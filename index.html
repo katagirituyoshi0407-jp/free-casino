@@ -5,7 +5,41 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FREE CASINO</title>
 <style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#18204a,#05070d 60%);color:#fff;font-family:Arial,sans-serif;padding:20px}main{max-width:900px;margin:auto}.logo{text-align:center;margin:15px 0 25px}.logo h1{letter-spacing:6px;text-shadow:0 0 8px #00eaff,0 0 25px #006eff}.card{background:#0d1424ef;border:1px solid #00eaff55;border-radius:15px;padding:22px;box-shadow:0 0 30px #00eaff12}.tabs,.nav{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.nav{grid-template-columns:repeat(4,1fr);margin-bottom:18px}.tab,.nav button,.action{padding:12px;border:1px solid #00eaff44;border-radius:8px;background:#0b1220;color:#fff;cursor:pointer}.active,.tab.active,.nav button.active,.action:hover{border-color:#00eaff;background:#00eaff18}.form{display:none}.form.active{display:block}.input{width:100%;padding:13px;margin:7px 0 14px;border:1px solid #00eaff33;border-radius:8px;background:#080d18;color:#fff}.action{width:100%}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.user{color:#7befff}.coins{font-size:20px;color:#00eaff;border:1px solid #00eaff55;border-radius:8px;padding:10px 14px}.game{display:none}.game.active{display:block}.bet{display:flex;gap:8px;margin:15px 0}.bet .input{margin:0;flex:1}.reels,.cards{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px 0}.reel{width:90px;height:90px;display:flex;align-items:center;justify-content:center;background:#080d18;border:1px solid #00eaff;border-radius:10px;font-size:38px}.bjcard{width:58px;height:78px;background:#fff;color:#111;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:20px}.red{color:#d22}.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.numbers{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}.num,.mine{padding:10px;border:1px solid #345;border-radius:7px;background:#0a1020;color:#fff;cursor:pointer}.num.sel{border-color:#00eaff;background:#123448}.minegrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.mine{aspect-ratio:1}.safe{background:#063d4b}.boom{background:#641c30}.result{text-align:center;min-height:25px;color:#7befff;margin:14px 0}.logout{margin-top:18px;border-color:#ff508066;color:#ff789e}.small{color:#8290a8;font-size:12px}@media(max-width:600px){body{padding:12px}.nav{grid-template-columns:repeat(2,1fr)}.numbers{grid-template-columns:repeat(5,1fr)}.controls{grid-template-columns:1fr}.top{align-items:flex-start;gap:10px;flex-direction:column}.reel{width:70px;height:70px}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#18204a,#05070d 60%);color:#fff;font-family:Arial,sans-serif;padding:20px}
+main{max-width:900px;margin:auto}
+.logo{text-align:center;margin:15px 0 25px}
+.logo h1{letter-spacing:6px;text-shadow:0 0 8px #00eaff,0 0 25px #006eff}
+.card{background:#0d1424ef;border:1px solid #00eaff55;border-radius:15px;padding:22px;box-shadow:0 0 30px #00eaff12}
+.tabs,.nav{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.nav{grid-template-columns:repeat(4,1fr);margin-bottom:18px}
+.tab,.nav button,.action{padding:12px;border:1px solid #00eaff44;border-radius:8px;background:#0b1220;color:#fff;cursor:pointer}
+.active,.tab.active,.nav button.active,.action:hover{border-color:#00eaff;background:#00eaff18}
+.form{display:none}.form.active{display:block}
+.input{width:100%;padding:13px;margin:7px 0 14px;border:1px solid #00eaff33;border-radius:8px;background:#080d18;color:#fff}
+.action{width:100%}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.user{color:#7befff}.coins{font-size:20px;color:#00eaff;border:1px solid #00eaff55;border-radius:8px;padding:10px 14px}
+.game{display:none}.game.active{display:block}
+.bet{display:flex;gap:8px;align-items:flex-end;margin:15px 0}
+.bet-field{flex:1;min-width:0}
+.bet-label{display:block;color:#7befff;font-size:11px;letter-spacing:1px;margin:0 0 4px 2px}
+.bet .input{margin:0}
+.bet .action{width:auto;min-width:120px;white-space:nowrap}
+.bet-help{color:#8290a8;font-size:11px;margin-top:-7px}
+.reels,.cards{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px 0}
+.reel{width:90px;height:90px;display:flex;align-items:center;justify-content:center;background:#080d18;border:1px solid #00eaff;border-radius:10px;font-size:38px}
+.bjcard{width:58px;height:78px;background:#fff;color:#111;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:20px}
+.red{color:#d22}.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.numbers{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.num,.mine{padding:10px;border:1px solid #345;border-radius:7px;background:#0a1020;color:#fff;cursor:pointer}
+.num.sel{border-color:#00eaff;background:#123448}
+.minegrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.mine{aspect-ratio:1}.safe{background:#063d4b}.boom{background:#641c30}
+.result{text-align:center;min-height:25px;color:#7befff;margin:14px 0}
+.logout{margin-top:18px;border-color:#ff508066;color:#ff789e}
+.small{color:#8290a8;font-size:12px}
+@media(max-width:600px){body{padding:12px}.nav{grid-template-columns:repeat(2,1fr)}.numbers{grid-template-columns:repeat(5,1fr)}.controls{grid-template-columns:1fr}.top{align-items:flex-start;gap:10px;flex-direction:column}.reel{width:70px;height:70px}.bet .action{min-width:105px}}
 </style>
 </head>
 <body>
@@ -19,10 +53,10 @@
 <div id="account" class="card" style="display:none">
 <div class="top"><div><div class="small">CURRENT USER</div><div id="username" class="user">-</div></div><div class="coins">💰 <span id="coins">0</span> COINS</div></div>
 <div class="nav"><button class="active" data-g="slot">🎰 SLOT</button><button data-g="bj">🃏 BLACKJACK</button><button data-g="keno">🎱 KENO</button><button data-g="mines">💣 MINES</button></div>
-<section id="slot" class="game active"><h2>🎰 SLOT</h2><div class="bet"><input id="sb" class="input" type="number" min="1" value="10"><button id="spin" class="action">SPIN</button></div><div class="reels"><div id="r1" class="reel">🍒</div><div id="r2" class="reel">⭐</div><div id="r3" class="reel">💎</div></div><div id="sr" class="result">READY</div></section>
-<section id="bj" class="game"><h2>🃏 BLACKJACK</h2><div class="bet"><input id="bb" class="input" type="number" min="1" value="10"><button id="deal" class="action">DEAL</button></div><div class="small">DEALER</div><div id="dealer" class="cards"></div><div id="ds">SCORE: -</div><div class="small">PLAYER</div><div id="player" class="cards"></div><div id="ps">SCORE: -</div><div id="br" class="result">READY</div><div class="controls"><button id="hit" class="action" disabled>HIT</button><button id="stand" class="action" disabled>STAND</button><button id="double" class="action" disabled>DOUBLE</button></div></section>
-<section id="keno" class="game"><h2>🎱 KENO</h2><div class="bet"><input id="kb" class="input" type="number" min="1" value="10"><button id="draw" class="action">DRAW</button></div><div class="small">1〜10個を選択</div><div id="nums" class="numbers"></div><div id="drawn" class="small" style="margin:15px 0"></div><div id="kr" class="result">SELECT NUMBERS</div></section>
-<section id="mines" class="game"><h2>💣 MINES</h2><div class="bet"><input id="mb" class="input" type="number" min="1" value="10"><button id="startMine" class="action">START</button></div><div class="small">5×5 / 5 MINES</div><div id="mg" class="minegrid" style="margin-top:15px"></div><button id="cash" class="action" disabled style="margin-top:12px">CASH OUT</button><div id="mr" class="result">START GAME</div></section>
+<section id="slot" class="game active"><h2>🎰 SLOT</h2><div class="bet"><div class="bet-field"><label class="bet-label">BET AMOUNT</label><input id="sb" class="input" type="number" min="1" value="10"></div><button id="spin" class="action">SPIN</button></div><div class="bet-help">1回のスピンに使用するコイン数</div><div class="reels"><div id="r1" class="reel">🍒</div><div id="r2" class="reel">⭐</div><div id="r3" class="reel">💎</div></div><div id="sr" class="result">READY</div></section>
+<section id="bj" class="game"><h2>🃏 BLACKJACK</h2><div class="bet"><div class="bet-field"><label class="bet-label">BET AMOUNT</label><input id="bb" class="input" type="number" min="1" value="10"></div><button id="deal" class="action">DEAL</button></div><div class="small">DEALER</div><div id="dealer" class="cards"></div><div id="ds">SCORE: -</div><div class="small">PLAYER</div><div id="player" class="cards"></div><div id="ps">SCORE: -</div><div id="br" class="result">READY</div><div class="controls"><button id="hit" class="action" disabled>HIT</button><button id="stand" class="action" disabled>STAND</button><button id="double" class="action" disabled>DOUBLE</button></div></section>
+<section id="keno" class="game"><h2>🎱 KENO</h2><div class="bet"><div class="bet-field"><label class="bet-label">BET AMOUNT</label><input id="kb" class="input" type="number" min="1" value="10"></div><button id="draw" class="action">DRAW</button></div><div class="bet-help">1〜10個の数字を選択して抽選</div><div class="small" style="margin-top:12px">1〜10個を選択</div><div id="nums" class="numbers"></div><div id="drawn" class="small" style="margin:15px 0"></div><div id="kr" class="result">SELECT NUMBERS</div></section>
+<section id="mines" class="game"><h2>💣 MINES</h2><div class="bet"><div class="bet-field"><label class="bet-label">BET AMOUNT</label><input id="mb" class="input" type="number" min="1" value="10"></div><button id="startMine" class="action">START</button></div><div class="small">5×5 / 5 MINES</div><div id="mg" class="minegrid" style="margin-top:15px"></div><button id="cash" class="action" disabled style="margin-top:12px">CASH OUT</button><div id="mr" class="result">START GAME</div></section>
 <button id="logout" class="action logout">DISCONNECT</button>
 </div>
 <div id="message" class="result"></div>
@@ -57,14 +91,17 @@ $('hit').onclick=()=>{if(!bjactive)return;ph.push(deck.pop());renderBJ();if(val(
 $('stand').onclick=standBJ;
 $('double').onclick=async()=>{if(!bjactive)return;if(coins<bjbet)return message('ERROR // NOT ENOUGH COINS FOR DOUBLE');if(!await changeCoins(-bjbet))return;bjbet*=2;ph.push(deck.pop());renderBJ();val(ph)>21?finishBJ('lose'):standBJ()};
 let selected=[];for(let i=1;i<=40;i++){const b=document.createElement('button');b.className='num';b.textContent=i;b.onclick=()=>{if(selected.includes(i)){selected=selected.filter(x=>x!==i);b.classList.remove('sel')}else if(selected.length<10){selected.push(i);b.classList.add('sel')}else message('MAXIMUM 10 NUMBERS')};$('nums').appendChild(b)}
-$('draw').onclick=async()=>{const b=Math.floor(Number($('kb').value));if(!Number.isFinite(b)||b<=0)return message('ERROR // INVALID BET');if(!selected.length)return message('SELECT NUMBERS');if(b>coins)return message('ERROR // NOT ENOUGH COINS');if(!await changeCoins(-b))return;const d=[];while(d.length<20){const n=1+Math.floor(Math.random()*40);if(!d.includes(n))d.push(n)}$('drawn').textContent='DRAWN: '+d.join(' / ');const h=selected.filter(x=>d.includes(x)).length;const m=({'1-1':3,'2-2':8,'3-3':20,'4-4':40,'5-4':10,'5-5':80,'6-5':15,'6-6':120,'7-6':30,'7-7':200,'8-7':40,'8-8':300,'9-8':60,'9-9':500,'10-9':80,'10-10':800})[selected.length+'-'+h]||0;const p=b*m;if(p)await changeCoins(p);$('kr').textContent=h+' HIT // '+(p?'+'+p.toLocaleString()+' COINS':'LOSE')};
-let mines=[],revealed=[],mbet=0,mactive=false;
-function makeMines(){mines=[];revealed=[];while(mines.length<5){const n=Math.floor(Math.random()*25);if(!mines.includes(n))mines.push(n)}$('mg').innerHTML='';for(let i=0;i<25;i++){const c=document.createElement('button');c.className='mine';c.onclick=()=>{if(!mactive||revealed.includes(i))return;if(mines.includes(i)){c.classList.add('boom');c.textContent='💣';mines.forEach(m=>{const x=$('mg').children[m];x.classList.add('boom');x.textContent='💣'});mactive=false;$('cash').disabled=true;$('mr').textContent='BOOM // LOSE '+mbet+' COINS';return}revealed.push(i);c.classList.add('safe');c.textContent='◆';$('mr').textContent='SAFE '+revealed.length+' // x'+(1+revealed.length*.18).toFixed(2);if(revealed.length===20)cashOut()};$('mg').appendChild(c)}}
-$('startMine').onclick=async()=>{if(mactive)return;const b=Math.floor(Number($('mb').value));if(!Number.isFinite(b)||b<=0)return message('ERROR // INVALID BET');if(b>coins)return message('ERROR // NOT ENOUGH COINS');if(!await changeCoins(-b))return;mbet=b;mactive=true;$('cash').disabled=false;makeMines();$('mr').textContent='GAME ACTIVE'};
-async function cashOut(){if(!mactive)return;mactive=false;$('cash').disabled=true;const p=Math.floor(mbet*(1+revealed.length*.18));await changeCoins(p);$('mr').textContent='CASH OUT // +'+p.toLocaleString()+' COINS'}
-$('cash').onclick=cashOut;
-$('logout').onclick=async()=>{await client.auth.signOut();user=null;setCoins(0);$('account').style.display='none';$('auth').style.display='block';message('SYSTEM // DISCONNECTED')};
-(async()=>{const {data}=await client.auth.getSession();if(data.session)await loadProfile()})();
+$('draw').onclick=async()=>{const b=Math.floor(Number($('kb').value));if(!Number.isFinite(b)||b<=0)return message('ERROR // INVALID BET');if(!selected.length)return message('SELECT NUMBERS');if(b>coins)return message('ERROR // NOT ENOUGH COINS');if(!await changeCoins(-b))return;const d=[];while(d.length<20){const n=1+Math.floor(Math.random()*40);if(!d.includes(n))d.push(n)}$('drawn').textContent='DRAWN: '+d.join(' / ');const h=selected.filter(x=>d.includes(x)).length;const m=({'1-1':3,'2-2':8,'3-3':20,'4-4':40,'5-4':10,'5-5':80,'6-5':15,'6-6':120,'7-6':30,'7-7':200,'8-7':40,'8-8':300,'9-8':60,'9-9':500,'10-9':80,'10-10':800})[selected.length+'-'+h]||0;const p=b*m;if(p)await changeCoins(p);$('kr').textContent=p?'WIN // '+h+' HIT // +'+p.toLocaleString()+' COINS':h+' HIT // LOSE'};
+let mine={active:false,bet:0,mines:[],safe:[]};
+function buildMines(){const g=$('mg');g.innerHTML='';for(let i=0;i<25;i++){const c=document.createElement('button');c.className='mine';c.dataset.i=i;c.onclick=()=>clickMine(i,c);g.appendChild(c)}}
+function randomMines(){const a=[];while(a.length<5){const n=Math.floor(Math.random()*25);if(!a.includes(n))a.push(n)}return a}
+function endMine(text){mine.active=false;$('cash').disabled=true;$('mr').textContent=text}
+function clickMine(i,c){if(!mine.active||mine.safe.includes(i))return;if(mine.mines.includes(i)){c.classList.add('boom');c.textContent='💣';mine.mines.forEach(n=>{const x=document.querySelector('.mine[data-i="'+n+'"]');if(x){x.classList.add('boom');x.textContent='💣'}});return endMine('BOOM // LOSE '+mine.bet+' COINS')}mine.safe.push(i);c.classList.add('safe');c.textContent='◆';$('mr').textContent='SAFE '+mine.safe.length+' // CASH OUT AVAILABLE'}
+$('startMine').onclick=async()=>{if(mine.active)return message('GAME ALREADY ACTIVE');const b=Math.floor(Number($('mb').value));if(!Number.isFinite(b)||b<=0)return message('ERROR // INVALID BET');if(b>coins)return message('ERROR // NOT ENOUGH COINS');if(!await changeCoins(-b))return;mine={active:true,bet:b,mines:randomMines(),safe:[]};buildMines();$('cash').disabled=false;$('mr').textContent='GAME ACTIVE'};
+$('cash').onclick=async()=>{if(!mine.active)return;const mult=1+mine.safe.length*0.15;const p=Math.floor(mine.bet*mult);endMine('CASH OUT // +'+p.toLocaleString()+' COINS');await changeCoins(p)};
+$('logout').onclick=async()=>{await client.auth.signOut();user=null;coins=0;$('account').style.display='none';$('auth').style.display='block';message('SYSTEM // DISCONNECTED')};
+buildMines();
+(async()=>{const {data:{session}}=await client.auth.getSession();if(session)await loadProfile()})();
 </script>
 </body>
 </html>
